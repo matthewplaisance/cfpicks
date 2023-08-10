@@ -1,0 +1,29 @@
+{
+    "week1":{
+        "game1":{
+            "winner":"UT",
+            "score":"55-1"
+
+        },
+        "game2":{
+            "winner":"LSU",
+            "score":"55-1"
+
+        },
+        "game3":{
+            "winner":"Utah",
+            "score":"553-1"
+
+        },
+        "game4":{
+            "winner":"OU",
+            "score":"545-1"
+
+        },
+        "game5":{
+            "winner":"Bama",
+            "score":"5-1"
+
+        }
+    }
+}

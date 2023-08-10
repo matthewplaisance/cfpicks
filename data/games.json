@@ -1,0 +1,30 @@
+{
+    "week1":{
+        "game1":{
+            "home":"Rice",
+            "away": "UT",
+            "time": 1693639800
+        },
+        "game2":{
+            "home":"LSI",
+            "away": "Flordia State",
+            "time": 1693639800
+        },
+        "game3":{
+            "home":"Flordia",
+            "away": "Utah",
+            "time": 1693639800
+        },
+        "game4":{
+            "home":"OU",
+            "away": "OSU",
+            "time": 1693639800
+        },
+        "game5":{
+            "home":"Bama",
+            "away": "A&M",
+            "time": 1693639800
+        }
+
+    }
+}
