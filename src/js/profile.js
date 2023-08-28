@@ -1,11 +1,18 @@
 import { getDatabase, ref, set, onValue } from 'firebase/database'
-import {onAuthStateChangedFb} from './auth'
+import {onAuthStateChangedFb, logoutFb} from './auth'
 import { json } from 'd3';
 
 
 function submit(week, picks){
     const times = document.querySelectorAll('.time');
     const unixNow = Math.floor(new Date().getTime() / 1000);
+    console.log('picks :>> ', picks);
+    for (let p in picks){
+        console.log('p :>> ', p);
+        if (picks[p].points == undefined || picks[p].pick == undefined){
+            document.getElementById('err_msg').innerText = 'Select both a team and a confidence points for your picks.'
+        } 
+    }
     times.forEach(time => {
         const game = time.parentElement.id;
         if (time.id < unixNow) delete picks[game]
@@ -13,7 +20,6 @@ function submit(week, picks){
 
     for (let game in picks) {
         const info = picks[game];
-        console.log('info :>> ', info);
         set(ref(db, `users/${uid}/${week}/${game}`), {
             "pick": info["pick"],
             "points": String(info["points"])
@@ -50,27 +56,29 @@ async function fetchData() {
 }
 
 async function colorWinners(week) {
+    console.log('picks :>> ', picks);
     let data = await json("../data/winners.json")
     if (data.hasOwnProperty(week)) data = data[week]
     else return;
-    console.log('data :>> ', data);
     const cards = document.querySelectorAll('.clearfix')
     let points = 0;
     cards.forEach(card => {
         const game = card.id;
-        const winner = data[game].winner
-        const score = data[game].score
-        if (picks[game].pick == winner) {
-            card.parentElement.style.background = '#c9e782';
-            points += parseInt(picks[game].points)
-        } else card.parentElement.style.background = 'red';
-    })
+        const winner = data[game].winner;
+        const score = data[game].score;
+        if (picks.hasOwnProperty(game)){
+            if (picks[game].pick == winner) {
+                card.parentElement.style.background = '#c9e782';
+                points += parseInt(picks[game].points)
+            } else card.parentElement.style.background = 'red';
+        }
+        
+    });
     document.getElementById('selected-week').textContent += ` points: ${points}`
 
 }
 
-function createCard(data,game,wrapper){
-    console.log('data :>> ', data);
+function createCard(data,game,wrapper,gn){
     const outerDiv = document.createElement('div');
     outerDiv.className = 'col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4';
 
@@ -94,7 +102,7 @@ function createCard(data,game,wrapper){
 
     const leftTeamH4 = document.createElement('h4');
     leftTeamH4.className = 'bold-text team';
-    leftTeamH4.id = 'g1t1';
+    leftTeamH4.id = `g${gn}t1`;
     leftTeamH4.style.cursor = 'pointer';
     leftTeamH4.textContent = data.away;
 
@@ -103,7 +111,7 @@ function createCard(data,game,wrapper){
 
     const rightTeamH4 = document.createElement('h4');
     rightTeamH4.className = 'bold-text team';
-    rightTeamH4.id = 'g1t2';
+    rightTeamH4.id = `g${gn}t2`;
     rightTeamH4.style.cursor = 'pointer';
     rightTeamH4.textContent = data.home;
 
@@ -124,6 +132,7 @@ function createCard(data,game,wrapper){
         const boxDiv = document.createElement('div');
         boxDiv.className = 'box';
         boxDiv.textContent = i;
+        boxDiv.id = i;
         cardBodyDiv.appendChild(boxDiv);
     }
     cardDiv.appendChild(cardBodyDiv);
@@ -133,28 +142,17 @@ function createCard(data,game,wrapper){
 
 function initCards(data,week) {
     const wrapper = document.getElementById('card-wrapper');
-    console.log('wrapper :>> ', wrapper);
     while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
     if (data.hasOwnProperty(week)) {
+        let gn = 1;
         for (let game in data[week]){
-            createCard(data[week][game],game,wrapper);
+            createCard(data[week][game],game,wrapper,gn);
+            gn++
         }
-        const submitButton = document.createElement('button');
-        submitButton.id = 'submit';
-        submitButton.type = 'button';
-        submitButton.className = 'form__button';
-        submitButton.textContent = 'Submit';
-
-        const errorMsgP = document.createElement('p');
-        errorMsgP.id = 'error_msg';
-
-        wrapper.appendChild(submitButton);
-        wrapper.appendChild(errorMsgP);
-
-
     }
 
 }
+
 onAuthStateChangedFb();
 
 $(document).ready(function () {
@@ -162,56 +160,63 @@ $(document).ready(function () {
 });
 
 const uid = localStorage.uid;
-console.log('uid :>> ', uid);
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
 const refer = ref(db, `users/${uid}/${week}`)  
 const chosenColor = 'rgba(209, 119, 17, 0.2)'
+
 let picks = await fetchData();
+if (picks == null) picks = {};
 const gameData = await json('../data/games.json')
-console.log('picks :>> ', picks);
 let pointsPicked = [];
 
 for (let game in picks) pointsPicked.push(String(picks[game].points))
-console.log('pointsPicked :>> ', pointsPicked);
-setup(picks);
+
 initCards(gameData,week);
+setup(picks);
 colorWinners(week);
+console.log('pointsPicked out:>> ', pointsPicked);
 const teams = document.querySelectorAll('.team');
 const submitBtn = document.getElementById('submit');
 const points = document.querySelectorAll('.box');
 
+const sidebar = document.getElementById('sidebar')
+const weeks = sidebar.querySelectorAll('.nav-link')
+
 teams.forEach(el => {
     el.addEventListener('click', function() {
-        
-
+        console.log('this :>> ', this);
+        console.log('document.getElementById(this.id).parentElement :>> ', document.getElementById(this.id).parentElement);
         const parent = document.getElementById(this.id).parentElement.parentElement;
+        console.log('parent :>> ', parent);
         const time = parent.querySelector('.time').id
         const unixNow = Math.floor(new Date().getTime() / 1000);
+
         if (unixNow > time) return;
         this.style.color = chosenColor;
 
         const children = parent.querySelectorAll(".team");
-        console.log('parent.id :>> ', parent.id);
         picks[parent.id] = {
             pick:"",
             points: ""
         }
-        picks[parent.id]['pick'] = this.textContent
-        picks[parent.id]['points'] = "10"
+        picks[parent.id]['pick'] = this.textContent;
+        picks[parent.id]['points'] = null;
 
-
+        console.log('children :>> ', children);
         children.forEach(child => {
+            console.log('child :>> ', child);
             if (child.textContent != this.textContent) child.style.color = 'black';
         })
-        console.log('picks :>> ', picks);
     });
 });
 
 points.forEach(el => {
     el.addEventListener('click', function() {
+        console.log('pointsPicked :>> ', pointsPicked);
         if (pointsPicked.includes(this.textContent)) return;
+
         this.style.background = chosenColor;
         const parent = this.parentNode;
         const children = parent.querySelectorAll(".box");
@@ -222,9 +227,11 @@ points.forEach(el => {
         teams.forEach(team => {
             if (team.style.color == chosenColor) selected = team.textContent
         })
+
         if (picks.hasOwnProperty(game.id)){
             if (picks[game.id].hasOwnProperty('points'))pointsPicked = pointsPicked.filter(item => item !== picks[game.id].points);
         }
+
         picks[game.id] = {
             pick:selected,
             points: this.textContent
@@ -234,16 +241,12 @@ points.forEach(el => {
             if (child.textContent != this.textContent) child.style.background = 'whitesmoke'; 
         });
         pointsPicked.push(String(picks[game.id].points))
-        console.log('pointsPicked :>> ', pointsPicked);
     });
 });
 
 submitBtn.addEventListener('click',function () {
     submit(week,picks);
 });
-
-const sidebar = document.getElementById('sidebar')
-const weeks = sidebar.querySelectorAll('.nav-link')
 
 weeks.forEach(w => { 
     let week = w.innerText.replace(' ','').toLocaleLowerCase()
@@ -254,3 +257,5 @@ weeks.forEach(w => {
         colorWinners(week);
     })
 })
+
+document.getElementById("btnLogout").addEventListener('click', logoutFb);

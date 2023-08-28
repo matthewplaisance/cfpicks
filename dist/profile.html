@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../src/css/profile.css" />
     <link rel="stylesheet" href="../src/css/main.css" />
 
-<script defer src="vendors-node_modules_firebase_app_dist_esm_index_esm_js-node_modules_firebase_auth_dist_esm_i-17252e.bundle.js"></script><script defer src="vendors-node_modules_d3_src_index_js-node_modules_firebase_database_dist_esm_index_esm_js.bundle.js"></script><script defer src="profile.bundle.js"></script></head>
+<script defer src="vendors-node_modules_firebase_app_dist_esm_index_esm_js-node_modules_firebase_auth_dist_esm_i-d0574a.bundle.js"></script><script defer src="vendors-node_modules_d3_src_index_js.bundle.js"></script><script defer src="profile.bundle.js"></script></head>
 <style>
   #change_pwd_form {
   position: fixed;
@@ -38,7 +38,6 @@
   color: #000;
   cursor: pointer;
 }
-
 
 </style>
 <body>
@@ -258,11 +257,17 @@
               </div>
             </div>
           </div>
-          <button id="submit" type="button" class="form__button">Submit</button>
-          <p id="error_msg">
-            
-          </p>
-        </div>        
+          
+        </div>  
+        <div class="footer">
+          <div class="buttons-container">
+            <button id="submit" type="button" class="form__button mb-4">Submit</button>
+            <button id="btnLogout" type="button" class="form__button">Logout</button>
+          </div>
+          <div class="err_div">
+            <p id="err_msg"></p>
+          </div>
+        </div>  
       </div>
     </div>
   </div>

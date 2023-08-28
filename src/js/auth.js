@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updatePassword, updateProfile } from 'firebase/auth';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updatePassword, updateProfile, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getDatabase, ref, set } from 'firebase/database'
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyC8J8_Bo2YSeM1aTkE3--bQLCaeuGU3hQE",
@@ -12,7 +14,6 @@ const firebaseConfig = {
   
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-
 
 const onAuthStateChangedFb = () => {
     auth.onAuthStateChanged((user) => {
@@ -31,14 +32,22 @@ const onAuthStateChangedFb = () => {
     });
 };
 
-const up = () => {
+const updateName = (displayName) => {
     updateProfile(auth.currentUser, {
-        displayName: ''
+        displayName: displayName
       }).then(() => {
         console.log('userCredential.user.displayName :>> ', auth.currentUser.displayName);
       }).catch((error) => {
         console.log('error :>> ', error);
       });
+};
+
+const initDb = (uid,displayName) => {
+    const db = getDatabase();
+    set(ref(db, `users/${uid}/`), {
+        "name": displayName,
+        "week1": {}
+    });
 };
 
 const loginFb = (email, password) => {
@@ -58,5 +67,9 @@ const updatePasswordFb = (newPassword) => {
     return Promise.reject(new Error('No user is currently signed in.'));
 };
 
-export { auth, onAuthStateChangedFb, loginFb, logoutFb, updatePasswordFb };
+const createUser = (email,password) => {
+    return createUserWithEmailAndPassword(auth,email,password);
+}
+
+export { auth, onAuthStateChangedFb, loginFb, logoutFb, updatePasswordFb, createUser, updateName,initDb };
 

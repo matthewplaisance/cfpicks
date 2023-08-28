@@ -22,6 +22,12 @@ export const lblLoginErrorMessage = document.querySelector('#lblLoginErrorMessag
 export const divPwdError = document.querySelector('#divPwdError');
 export const pwdErr = document.querySelector('#pwdErr');
 
+export const signUpBtn = document.querySelector('#btnSignup');
+export const toggleSignup = document.querySelector('#showSignup');
+
+export const rptPwdDiv = document.querySelector('#rptPwdDiv')
+export const rptPwd = document.querySelector('#userPasswordRpt')
+
 export const showLoginForm = () => {
   const currPage = window.location.pathname.split("/").pop();
   if (currPage != 'index.html'){
@@ -51,7 +57,6 @@ export const showLoginError = (error) => {
     lblLoginErrorMessage.innerHTML = error;      
   }else {
     lblLoginErrorMessage.innerHTML = `Error: ${error}`;      
-
   }
 }
 

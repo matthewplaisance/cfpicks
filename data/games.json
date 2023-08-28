@@ -3,28 +3,63 @@
         "game1":{
             "home":"Rice",
             "away": "UT",
-            "time": 1693639800
+            "time": 1693665000
         },
         "game2":{
-            "home":"LSI",
-            "away": "Flordia State",
-            "time": 1693639800
+            "home":"Flordia State",
+            "away": "LSU",
+            "time": 1693765800
         },
         "game3":{
             "home":"Flordia",
             "away": "Utah",
-            "time": 1693639800
+            "time": 1693508400
         },
         "game4":{
-            "home":"OU",
-            "away": "OSU",
-            "time": 1693639800
+            "home":"Minnesota",
+            "away": "Nebraska",
+            "time": 1693508400
         },
         "game5":{
-            "home":"Bama",
-            "away": "A&M",
-            "time": 1693639800
-        }
-
+            "home":"Georgia Tech",
+            "away": "Louisville",
+            "time": 1693593000
+        },
+        "game6":{
+            "home":"Tennesse",
+            "away": "Virginia",
+            "time": 1693652400
+        },
+        "game7":{
+            "home":"TCU",
+            "away": "Colorado",
+            "time": 1693652400
+        },
+        "game8":{
+            "home":"Baylor",
+            "away": "Texas St",
+            "time": 1693677600
+        },
+        "game9":{
+            "home":"Houston",
+            "away": "UTSA",
+            "time": 1693677600
+        },
+        "game10":{
+            "home":"South Carolina",
+            "away": "North Carolina",
+            "time": 1693679400
+        },
+        "game11":{
+            "home":"Penn St",
+            "away": "West Virginia",
+            "time": 1693679400
+        },
+        "game12":{
+            "home":"Wyoming",
+            "away": "Texas Tech",
+            "time": 1693679400
+        },
+        "tiebreaker":"How many points will Colorado score against TCU?"
     }
 }

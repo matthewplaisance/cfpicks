@@ -23,7 +23,14 @@ body {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: var(--border-radius);
     background: #ffffff;
-    color: rgba(209, 119, 17, 0.2)
+    color: rgba(209, 119, 17, 0.2);
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    justify-content: center;
+    align-items: center;
 }
 
 .container,
@@ -67,7 +74,6 @@ body {
 }
 
 .form__input {
-    display: block;
     width: 100%;
     padding: 0.75rem;
     box-sizing: border-box;
@@ -131,7 +137,6 @@ body {
 
 #cmlLogo {
     margin: auto;
-    display: block;
 }
 
 .mr-auto,
@@ -144,7 +149,16 @@ body {
 }
 .errorlabel {
     text-align: center;
+    color: var(--color-error);
     margin-bottom: 1rem;
+}
+
+#showSignup {
+    color:  rgb(43, 138, 226);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align:  center;
 }
 
 @media (max-width: 767px) {

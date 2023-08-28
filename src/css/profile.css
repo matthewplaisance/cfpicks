@@ -33,21 +33,33 @@ html {
 
 @-ms-viewport {
   width: device-width; }
-
- nav {
-  display: block; }
-  .form__button {
-    width: 100%;
-    padding: 1rem 2rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #ffffff;
-    border: none;
-    border-radius: var(--border-radius);
-    outline: none;
-    cursor: pointer;
-    background: var(--color-primary);
-    font: 500 1rem 'Quicksand', sans-serif;
+.err_div{
+  text-align: center;
+  align-items: center;
+}
+nav {
+  display: block;
+}
+.footer{
+  display: flex;
+  flex-direction: column; /* stack els y */
+  align-items: center; /* center x */
+  justify-content: center; /* center y */
+  height: 20vh; 
+  background-color: #f2f7f8; 
+}
+.form__button {
+  width: 50%;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius);
+  outline: none;
+  cursor: pointer;
+  background: var(--color-primary);
+  font: 500 1rem 'Quicksand', sans-serif;
 
 }
 

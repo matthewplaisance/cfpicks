@@ -89,3 +89,4 @@ weeks.forEach(w => {
         if (data.hasOwnProperty(week)) initTable(userData,data,week);
     })
 })
+

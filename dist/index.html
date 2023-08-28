@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CML Production</title>
+  <title>Pick em</title>
   <link rel="stylesheet" href="../src/css/index.css">
   <link rel="icon" type="image/x-icon" href="../favicon_package/favicon-32x32.png">
   <link rel="apple-touch-icon" href="../favicon_package/cml140.png">
-<script defer src="vendors-node_modules_firebase_app_dist_esm_index_esm_js-node_modules_firebase_auth_dist_esm_i-17252e.bundle.js"></script><script defer src="main.bundle.js"></script></head>
+<script defer src="vendors-node_modules_firebase_app_dist_esm_index_esm_js-node_modules_firebase_auth_dist_esm_i-d0574a.bundle.js"></script><script defer src="main.bundle.js"></script></head>
 
 <body>
-  <div class="container ">
+  <div class="container">
     <form id="login" class="login-form">
       <img id="cmlLogo" src="../favicon_package/logo-cml.jpg" alt="CML">
       <div class="form__input-group">
@@ -23,11 +23,19 @@
         <input id="userPassword" type="password" class="form__input" autofocus placeholder="Password">
         <div class="form__input-error-message"></div>
       </div>
+      <div class="form__input-group" id="rptPwdDiv" style="display: none;">
+        <input id="userPasswordRpt" type="password" class="form__input" autofocus placeholder="Repeat Password">
+      </div>
       <div id="divLoginError" class="group">
         <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
       </div>
       <button id="btnLogin" type="button" class="form__button">Login</button>
+      <button id="btnSignup" type="button" class="form__button" style="display: none;">Sign Up</button>
+      <div class="group">
+        <div id="showSignup" class="">Sign Up</div>
+      </div>
     </form>
+
     <form id="update-pwd" class="login-form">
       <p id='btnBack' style="float: right;">X</p>
       <img id="cmlLogo" src="../favicon_package/logo-cml.jpg" alt="CML">
