@@ -7,13 +7,13 @@
             "humanDate":"Sep 02, 2:30"
         },
         "game2":{
-            "home":"Flordia State",
+            "home":"Florida State",
             "away": "LSU",
             "time": 1693783800,
             "humanDate":"Sep 03, 6:30"
         },
         "game3":{
-            "home":"Flordia",
+            "home":"Florida",
             "away": "Utah",
             "time": 1693526400,
             "humanDate":"Aug 31, 7:00"

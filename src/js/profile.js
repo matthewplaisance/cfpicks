@@ -44,7 +44,7 @@ function submit(week, picks){
             set(ref(db, `users/${uid}/ddd`),ddd);
         }
 
-        msgEl.innerText = 'Success!';
+        msgEl.innerText = 'Submitted!';
         msgEl.style.color = 'green';
         //if (deleted.length != 0){
         //    const ps = deleted.join(",");
