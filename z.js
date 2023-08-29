@@ -1,3 +1,5 @@
-a = 'tt'
-aa = a.split('_').join(' ')
-console.log('a :>> ', aa);
+a = 'tt '
+if (a.includes(" ")){
+    console.log('no');
+}
+

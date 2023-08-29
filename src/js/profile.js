@@ -4,26 +4,55 @@ import { json } from 'd3';
 
 
 function submit(week, picks){
-    const times = document.querySelectorAll('.time');
+    const msgEl = document.getElementById('err_msg')
     const unixNow = Math.floor(new Date().getTime() / 1000);
     console.log('picks :>> ', picks);
     for (let p in picks){
         console.log('p :>> ', p);
-        if (picks[p].points == undefined || picks[p].pick == undefined){
-            document.getElementById('err_msg').innerText = 'Select both a team and a confidence points for your picks.'
+        console.log('p.points :>> ', picks[p].points);
+        if (picks[p].points == 'null' || picks[p].points == null || picks[p].points == undefined){
+            console.log("null?");
+            msgEl.innerText = `Select confidence points for ${p}.`;
+            msgEl.style.color = 'red';
+            return;
         } 
+        if (picks[p].pick == 'null'|| picks[p].pick == null || picks[p].pick == undefined){
+            msgEl.innerText = `Select winner for ${p}. `;
+            msgEl.style.color = 'red';
+            return;
+        }
     }
+    let deleted = [];
+    const times = document.querySelectorAll('.time');
+    console.log('times :>> ', times);
     times.forEach(time => {
-        const game = time.parentElement.id;
-        if (time.id < unixNow) delete picks[game]
-    })
 
-    for (let game in picks) {
-        const info = picks[game];
-        set(ref(db, `users/${uid}/${week}/${game}`), {
-            "pick": info["pick"],
-            "points": String(info["points"])
-        });
+        const game = time.parentElement.id;
+        if (time.id < unixNow) {
+            delete picks[game]
+            deleted.push(picks[game])
+        }
+    })
+    console.log('deleted :>> ', deleted);
+    console.log('picks :>> ', picks);
+    try{
+        for (let game in picks) {
+            const info = picks[game];
+            
+            set(ref(db, `users/${uid}/${week}/${game}`), {
+                "pick": info["pick"],
+                "points": String(info["points"])
+            });
+        }
+        msgEl.innerText = 'Success!';
+        msgEl.style.color = 'green';
+        //if (deleted.length != 0){
+        //    const ps = deleted.join(",");
+        //    msgEl.innerText += ` But, picks for ${ps} are past kick off time.`
+        //}
+    }catch (err) {
+        msgEl.innerText = `FB Err: ${err}`;
+        msgEl.style.color = 'red';
     }
 }
 
@@ -40,6 +69,9 @@ function setup(data) {
             if (box.textContent == data[game]['points']) box.style.background = chosenColor;
         })
     }
+    if (data.hasOwnProperty('tb')) {
+        document.getElementById('tb').value = data['tb'].pick;
+    }else document.getElementById('tb').value = 0;
 }
 
 async function fetchData() {
@@ -79,6 +111,10 @@ async function colorWinners(week) {
 }
 
 function createCard(data,game,wrapper,gn){
+    const tb = data.hasOwnProperty("away") ? false : true;
+    if (tb){
+        console.log('data :>> ', data);
+    }
     const outerDiv = document.createElement('div');
     outerDiv.className = 'col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4';
 
@@ -112,14 +148,17 @@ function createCard(data,game,wrapper,gn){
     const rightTeamH4 = document.createElement('h4');
     rightTeamH4.className = 'bold-text team';
     rightTeamH4.id = `g${gn}t2`;
+
+    if (tb) {
+        rightTeamH4.className = 'bold-text';
+        rightTeamH4.style.fontSize = 6;
+    }
     rightTeamH4.style.cursor = 'pointer';
     rightTeamH4.textContent = data.home;
 
     const dateP = document.createElement('p');
     dateP.className = 'text-muted';
-    dateP.innerHTML = `<i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data.time}`;
-
-    
+    dateP.innerHTML = `<i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data.humanDate}`;
 
     leftTeamDiv.appendChild(leftTeamH4);
     rightTeamDiv.appendChild(rightTeamH4);
@@ -128,13 +167,24 @@ function createCard(data,game,wrapper,gn){
     clearfixDiv.appendChild(rightTeamDiv);
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
-    for (let i = 1; i <= 10; i++) {
-        const boxDiv = document.createElement('div');
-        boxDiv.className = 'box';
-        boxDiv.textContent = i;
-        boxDiv.id = i;
-        cardBodyDiv.appendChild(boxDiv);
+
+    if (data.hasOwnProperty("away")){
+        for (let i = 1; i <= 12; i++) {
+            const boxDiv = document.createElement('div');
+            boxDiv.className = 'box';
+            boxDiv.textContent = i;
+            boxDiv.id = i;
+            cardBodyDiv.appendChild(boxDiv);
+        }
+    }else{
+        const tbInput = document.createElement('input');
+        tbInput.value = 0;
+        tbInput.id = 'tb'
+        tbInput.className = "form__input";
+        cardBodyDiv.append(tbInput);
     }
+    
+    
     cardDiv.appendChild(cardBodyDiv);
     outerDiv.appendChild(cardDiv);
     wrapper.appendChild(outerDiv);
@@ -164,7 +214,7 @@ const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
 const refer = ref(db, `users/${uid}/${week}`)  
-const chosenColor = 'rgba(209, 119, 17, 0.2)'
+const chosenColor = 'green'
 
 let picks = await fetchData();
 if (picks == null) picks = {};
@@ -175,7 +225,7 @@ for (let game in picks) pointsPicked.push(String(picks[game].points))
 
 initCards(gameData,week);
 setup(picks);
-colorWinners(week);
+//colorWinners(week);
 console.log('pointsPicked out:>> ', pointsPicked);
 const teams = document.querySelectorAll('.team');
 const submitBtn = document.getElementById('submit');
@@ -184,6 +234,7 @@ const points = document.querySelectorAll('.box');
 const sidebar = document.getElementById('sidebar')
 const weeks = sidebar.querySelectorAll('.nav-link')
 
+console.log('picks :>> ', picks);
 teams.forEach(el => {
     el.addEventListener('click', function() {
         console.log('this :>> ', this);
@@ -197,12 +248,14 @@ teams.forEach(el => {
         this.style.color = chosenColor;
 
         const children = parent.querySelectorAll(".team");
-        picks[parent.id] = {
-            pick:"",
-            points: ""
+        let selectedpoints = null;
+        if (picks.hasOwnProperty(parent.id)){
+            selectedpoints = picks[parent.id].points
         }
-        picks[parent.id]['pick'] = this.textContent;
-        picks[parent.id]['points'] = null;
+        picks[parent.id] = {
+            pick:this.textContent,
+            points: selectedpoints
+        }
 
         console.log('children :>> ', children);
         children.forEach(child => {
@@ -241,17 +294,24 @@ points.forEach(el => {
             if (child.textContent != this.textContent) child.style.background = 'whitesmoke'; 
         });
         pointsPicked.push(String(picks[game.id].points))
+        console.log('picks :>> ', picks);
     });
 });
 
 submitBtn.addEventListener('click',function () {
+    const tbel = document.getElementById('tb')
+    console.log('tbel.value :>> ', String(tbel.value));
+    picks['tb'] ={
+        pick:String(tbel.value),
+        points:0
+    }
     submit(week,picks);
 });
 
 weeks.forEach(w => { 
     let week = w.innerText.replace(' ','').toLocaleLowerCase()
     w.addEventListener('click', () => {
-        weekEl.textContent = w.innerText
+        weekEl.textContent = w.innerText;
         initCards(gameData,week);
         setup(picks);
         colorWinners(week);

@@ -3,6 +3,11 @@ import { AuthErrorCodes } from 'firebase/auth';
 export const userName = document.querySelector('#userEmail');
 export const userPassword = document.querySelector('#userPassword');
 
+export const lnDiv = document.querySelector('#lnDiv');
+export const fnDiv = document.querySelector('#fnDiv');
+export const lName = document.querySelector('#lName');
+export const fName = document.querySelector('#fName');
+
 export const btnChangePwd = document.querySelector('#btnChangePwd');
 export const newPwd = document.querySelector('#new_pwd');
 export const newPwdRpt = document.querySelector('#new_pwd_rpt');
@@ -25,8 +30,8 @@ export const pwdErr = document.querySelector('#pwdErr');
 export const signUpBtn = document.querySelector('#btnSignup');
 export const toggleSignup = document.querySelector('#showSignup');
 
-export const rptPwdDiv = document.querySelector('#rptPwdDiv')
-export const rptPwd = document.querySelector('#userPasswordRpt')
+export const rptPwdDiv = document.querySelector('#rptPwdDiv');
+export const rptPwd = document.querySelector('#userPasswordRpt');
 
 export const showLoginForm = () => {
   const currPage = window.location.pathname.split("/").pop();

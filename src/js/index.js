@@ -18,14 +18,18 @@ import {
   toggleSignup,
   signUpBtn,
   rptPwd,
-  rptPwdDiv
+  rptPwdDiv,
+  lnDiv,
+  fnDiv,
+  lName,
+  fName
 } from './ui'
 
-import {loginFb, updatePasswordFb, createUser, initDb, updateName } from './auth';
+import { loginFb, updatePasswordFb, createUser, initDb, updateName } from './auth';
 
-const initStorage = (userCreds) => {
+const initStorage = (userCreds, name) => {  
   localStorage.uid = userCreds.uid;
-  localStorage.displayName = userCreds.displayName.split('_').join(' ');
+  localStorage.displayName = userCreds.displayName == null ? name : userCreds.displayName
   sessionStorage.changePwd = false;
 };
 
@@ -33,8 +37,7 @@ const login = async () => {
   let cleanUid = cleanEmail();
   const password = userPassword.value;
 
-
-  loginFb(cleanUid,password).then((userCredential) => {
+  loginFb(cleanUid, password).then((userCredential) => {
     console.log('userCredential :>> ', userCredential);
     initStorage(userCredential.user);
     showApp();
@@ -46,26 +49,34 @@ const login = async () => {
 };
 
 const signup = async (repeatPwd) => {
-console.log('rptPwd :>> ', rptPwd);
-
   let cleanUid = cleanEmail();
+  console.log('cleanUid :>> ', cleanUid);
+  if (cleanUid === false) return;
+
   const password = userPassword.value;
-  if (password !== repeatPwd){
+  if (password !== repeatPwd) {
     showLoginError("Passwords do not match");
     return;
   }
-  createUser(cleanUid,password)
-  .then(userCreds => {
-    const name = cleanUid.slice(0,-8).split('_').join(' ');
-    updateName(cleanUid.slice(0,-8));
-    initDb(userCreds.user.uid,name);
-    initStorage(userCreds);
-  })
-  .catch(err =>  showLoginError(err))
+  let name = `${fName.value} ${lName.value} `;
+  if (name == " ") {
+    showLoginError("Enter name")
+    return;
+  }
+  
+  createUser(cleanUid, password)
+    .then(userCreds => {
+      
+      updateName(name);
+      initDb(userCreds.user.uid, name);
+      initStorage(userCreds.user, name);
+      showApp();
+    })
+    .catch(err => showLoginError(err))
 }
 
 const changePwd = async () => {
-  if (newPwd.value !== newPwdRpt.value){
+  if (newPwd.value !== newPwdRpt.value) {
     showPwdErr('Passwords do not match');
     return;
   }
@@ -79,39 +90,37 @@ const changePwd = async () => {
 
 const cleanEmail = () => {
   let username = userName.value;
-  if (username.slice(-1,username.length) == " "){
-    showLoginError('No trailing spaces');
-    return;
+  if (username.includes(" ") || userPassword.value.includes(" ")) {
+    showLoginError('No spaces');
+    return false;
   }
 
-  let cleanUid = username.replace(/\s/g,"_");
-  if (cleanUid.substring(cleanUid.length - 8) != '@cml.com'){
-    cleanUid = `${cleanUid}@cml.com`;
+  if (username.substring(username.length - 8) != '@cml.com') {
+    username = `${username}@cml.com`;
   }
-  return cleanUid;
+  return username;
 };
 
 const init = () => {
   const state = sessionStorage.changePwd;
-  console.log('rptPwd :>> ', rptPwd);
 
-  if (state == "true"){
+  if (state == "true") {
     formUpdate.style.display = 'block';
     form.style.display = 'none';
-  }else if (state == "success"){
+  } else if (state == "success") {
     formUpdate.style.display = 'none';
     form.style.display = 'block';
     showLoginError("Please login back in with new password");
-  }else {
+  } else {
     formUpdate.style.display = 'none';
     form.style.display = 'block';
   };
 
   btnLogin.addEventListener('click', login);
-  signUpBtn.addEventListener('click',function() {
+  signUpBtn.addEventListener('click', function () {
     signup(rptPwd.value)
   });
-  btnChangePwd.addEventListener('click',changePwd);
+  btnChangePwd.addEventListener('click', changePwd);
   backBtn.addEventListener('click', () => {
     window.location.href = './profile.html';
     sessionStorage.changePwd = false;
@@ -120,33 +129,37 @@ const init = () => {
   toggleSignup.addEventListener('click', () => {
     let signupState = toggleSignup.textContent;
     console.log('signupState :>> ', signupState);
-    if (signupState == 'Sign Up'){
+    if (signupState == 'Sign Up') {
       console.log('in');
       signUpBtn.style.display = 'block';
       btnLogin.style.display = 'none';
       toggleSignup.textContent = 'Login';
       rptPwdDiv.style.display = 'block';
-    }else {
+      fnDiv.style.display = 'block';
+      lnDiv.style.display = 'block';
+
+    } else {
       signUpBtn.style.display = 'none';
       btnLogin.style.display = 'block';
       toggleSignup.textContent = 'Sign Up';
       rptPwdDiv.style.display = 'none';
-
+      fnDiv.style.display = 'none';
+      lnDiv.style.display = 'none';
     }
   });
-  
-  form.addEventListener("keydown", function(event) {
+
+  form.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
       event.preventDefault();
       btnLogin.click();
     }
   });
-  
-  formUpdate.addEventListener("keydown", function(event) {
+
+  formUpdate.addEventListener("keydown", function (event) {
     if (event.key == "Enter") {
       event.preventDefault();
       btnChangePwd.click();
-      
+
     }
   });
 };

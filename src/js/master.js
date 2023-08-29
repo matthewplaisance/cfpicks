@@ -73,7 +73,7 @@ const data = await json('../data//winners.json');
 console.log('data :>> ', userData);
 let weekEl = document.getElementById('selected-week')
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
-if (data.hasOwnProperty(week)) initTable(userData,data,week);
+//if (data.hasOwnProperty(week)) initTable(userData,data,week);
 
 const sidebar = document.getElementById('sidebar')
 const weeks = sidebar.querySelectorAll('.nav-link')
@@ -86,7 +86,7 @@ weeks.forEach(w => {
         while (table.firstChild){
             table.removeChild(table.firstChild);
         }
-        if (data.hasOwnProperty(week)) initTable(userData,data,week);
+        //if (data.hasOwnProperty(week)) initTable(userData,data,week);
     })
 })
 

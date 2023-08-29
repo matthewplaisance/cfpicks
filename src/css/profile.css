@@ -33,10 +33,7 @@ html {
 
 @-ms-viewport {
   width: device-width; }
-.err_div{
-  text-align: center;
-  align-items: center;
-}
+
 nav {
   display: block;
 }
@@ -48,8 +45,9 @@ nav {
   height: 20vh; 
   background-color: #f2f7f8; 
 }
+
 .form__button {
-  width: 50%;
+  width: 85%;
   padding: 1rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;

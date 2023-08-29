@@ -14,8 +14,18 @@
 <body>
   <div class="container">
     <form id="login" class="login-form">
-      <img id="cmlLogo" src="../favicon_package/logo-cml.jpg" alt="CML">
+      <img id="cmlLogo" src="../assests/logo-cml.jpg" alt="CML">
+      <img id="cmlLogo" src="../assests/output.png" alt="CML">
+
       <div class="form__input-group">
+        <div class="form__input-group" style="display: flex; justify-content: space-between;">
+          <div id="fnDiv" style="flex: 1; margin-right: 10px; display: none;">
+              <input id="fName" type="text" class="form__input" autofocus placeholder="First Name">
+          </div>
+          <div id="lnDiv" style="flex: 1; margin-left: 10px; display: none;">
+              <input id="lName" type="text" class="form__input" autofocus placeholder="Last Name">
+          </div>
+      </div>
         <input id="userEmail" type="text" class="form__input" autofocus placeholder="Username">
         <div class="form__input-error-message"></div>
       </div>
@@ -38,7 +48,8 @@
 
     <form id="update-pwd" class="login-form">
       <p id='btnBack' style="float: right;">X</p>
-      <img id="cmlLogo" src="../favicon_package/logo-cml.jpg" alt="CML">
+      <img id="cmlLogo" src="../assests/logo-cml.jpg" alt="CML">
+      <img id="cmlLogo" src="../assests/output.png" alt="CML">
       <div class="form__input-group">
         <input id="new_pwd" type="password" class="form__input" autofocus placeholder="New Password">
         <div class="form__input-error-message"></div>

@@ -3,63 +3,83 @@
         "game1":{
             "home":"Rice",
             "away": "UT",
-            "time": 1693665000
+            "time": 1693683000,
+            "humanDate":"Sep 02, 2:30"
         },
         "game2":{
             "home":"Flordia State",
             "away": "LSU",
-            "time": 1693765800
+            "time": 1693783800,
+            "humanDate":"Sep 03, 6:30"
         },
         "game3":{
             "home":"Flordia",
             "away": "Utah",
-            "time": 1693508400
+            "time": 1693526400,
+            "humanDate":"Aug 31, 7:00"
         },
         "game4":{
             "home":"Minnesota",
             "away": "Nebraska",
-            "time": 1693508400
+            "time": 1693526400,
+            "humanDate":"Aug 31, 7:00"
         },
         "game5":{
             "home":"Georgia Tech",
             "away": "Louisville",
-            "time": 1693593000
+            "time": 1693611000,
+            "humanDate":"Sep 1, 6:30"
+
         },
         "game6":{
             "home":"Tennesse",
             "away": "Virginia",
-            "time": 1693652400
+            "time": 1693670400,
+            "humanDate":"Sep 2, 11:00am"
+
         },
         "game7":{
             "home":"TCU",
             "away": "Colorado",
-            "time": 1693652400
+            "time": 1693670400,
+            "humanDate":"Sep 2, 11:00am"
         },
         "game8":{
             "home":"Baylor",
-            "away": "Texas St",
-            "time": 1693677600
+            "away": "Texas ST",
+            "time": 1693695600,
+            "humanDate":"Sep 2, 6:00"
+
         },
         "game9":{
             "home":"Houston",
             "away": "UTSA",
-            "time": 1693677600
+            "time": 1693695600,
+            "humanDate":"Sep 2, 6:00"
         },
         "game10":{
-            "home":"South Carolina",
-            "away": "North Carolina",
-            "time": 1693679400
+            "home":"S Carolina",
+            "away": "N Carolina",
+            "time": 1693697400,
+            "humanDate":"Sep 2, 6:30"
+
         },
         "game11":{
-            "home":"Penn St",
+            "home":"Penn ST",
             "away": "West Virginia",
-            "time": 1693679400
+            "time": 1693697400,
+            "humanDate":"Sep 2, 6:30"
         },
         "game12":{
             "home":"Wyoming",
             "away": "Texas Tech",
-            "time": 1693679400
+            "time": 1693697400,
+            "humanDate":"Sep 2, 6:30"
         },
-        "tiebreaker":"How many points will Colorado score against TCU?"
+        "tiebreaker":{
+            "home": "How many points will Colorado score against TCU?",
+            "time": 1693670400,
+            "humanDate":"Sep 2, 11:00am"
+        }
     }
 }
