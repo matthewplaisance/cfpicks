@@ -273,8 +273,13 @@ teams.forEach(el => {
 points.forEach(el => {
     el.addEventListener('click', function() {
         console.log('pointsPicked :>> ', pointsPicked);
-        if (pointsPicked.includes(this.textContent)) return;
-
+        if (pointsPicked.includes(this.textContent)) {
+            let msgEl = document.getElementById('err_msg')
+            msgEl.innerText = `You cannot repeat confidence points`;
+            msgEl.style.color = 'red';
+            return;
+        }
+        document.getElementById('err_msg').innerText = '';
         this.style.background = chosenColor;
         const parent = this.parentNode;
         const children = parent.querySelectorAll(".box");
