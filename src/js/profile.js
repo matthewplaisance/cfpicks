@@ -211,8 +211,9 @@ onAuthStateChangedFb();
 $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
 });
+
 const ddd = sessionStorage.ddd;
-sessionStorage.ddd = "ignore";
+sessionStorage.ddd = "null";
 const uid = localStorage.uid;
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
