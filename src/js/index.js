@@ -150,8 +150,17 @@ const init = () => {
 
   form.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
+      console.log('enter');
       event.preventDefault();
-      btnLogin.click();
+      let signupState = toggleSignup.textContent;
+      console.log('signupState :>> ', signupState);
+      if (signupState == "Sign Up"){
+        btnLogin.click();
+
+      }else{
+        signUpBtn.click();
+
+      }
     }
   });
 
