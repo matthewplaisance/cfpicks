@@ -61,8 +61,6 @@ function initTable(userData,data,week) {
     }
 
     Array.from(tableBody.getElementsByTagName('tr')).forEach((row,idx) =>{
-        console.log('idx :>> ', idx);
-        console.log('row :>> ', row);
         if (idx == winner['idx']) row.style.background = '#c9e782';
     })
 }
@@ -70,7 +68,7 @@ function initTable(userData,data,week) {
 const db = getDatabase();
 const userData = await fetchData();
 const data = await json('../data//winners.json');
-console.log('data :>> ', userData);
+
 let weekEl = document.getElementById('selected-week')
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
 //if (data.hasOwnProperty(week)) initTable(userData,data,week);

@@ -6,10 +6,8 @@ import { json } from 'd3';
 function submit(week, picks){
     const msgEl = document.getElementById('err_msg')
     const unixNow = Math.floor(new Date().getTime() / 1000);
-    console.log('picks :>> ', picks);
     for (let p in picks){
         if (picks[p].points == 'null' || picks[p].points == null || picks[p].points == undefined){
-            console.log("null?");
             msgEl.innerText = `Select confidence points for ${p}.`;
             msgEl.style.color = 'red';
             return;
@@ -22,7 +20,7 @@ function submit(week, picks){
     }
     let deleted = [];
     const times = document.querySelectorAll('.time');
-    console.log('times :>> ', times);
+
     times.forEach(time => {
 
         const game = time.parentElement.id;
@@ -31,8 +29,7 @@ function submit(week, picks){
             deleted.push(picks[game])
         }
     })
-    console.log('deleted :>> ', deleted);
-    console.log('picks :>> ', picks);
+
     try{
         for (let game in picks) {
             const info = picks[game];
@@ -91,7 +88,6 @@ async function fetchData() {
 }
 
 async function colorWinners(week) {
-    console.log('picks :>> ', picks);
     let data = await json("../data/winners.json")
     if (data.hasOwnProperty(week)) data = data[week]
     else return;
@@ -115,9 +111,7 @@ async function colorWinners(week) {
 
 function createCard(data,game,wrapper,gn){
     const tb = data.hasOwnProperty("away") ? false : true;
-    if (tb){
-        console.log('data :>> ', data);
-    }
+
     const outerDiv = document.createElement('div');
     outerDiv.className = 'col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4';
 
@@ -231,7 +225,6 @@ for (let game in picks) pointsPicked.push(String(picks[game].points))
 initCards(gameData,week);
 setup(picks);
 //colorWinners(week);
-console.log('pointsPicked out:>> ', pointsPicked);
 const teams = document.querySelectorAll('.team');
 const submitBtn = document.getElementById('submit');
 const points = document.querySelectorAll('.box');
@@ -239,13 +232,9 @@ const points = document.querySelectorAll('.box');
 const sidebar = document.getElementById('sidebar')
 const weeks = sidebar.querySelectorAll('.nav-link')
 
-console.log('picks :>> ', picks);
 teams.forEach(el => {
     el.addEventListener('click', function() {
-        console.log('this :>> ', this);
-        console.log('document.getElementById(this.id).parentElement :>> ', document.getElementById(this.id).parentElement);
         const parent = document.getElementById(this.id).parentElement.parentElement;
-        console.log('parent :>> ', parent);
         const time = parent.querySelector('.time').id
         const unixNow = Math.floor(new Date().getTime() / 1000);
 
@@ -262,9 +251,7 @@ teams.forEach(el => {
             points: selectedpoints
         }
 
-        console.log('children :>> ', children);
         children.forEach(child => {
-            console.log('child :>> ', child);
             if (child.textContent != this.textContent) child.style.color = 'black';
         })
     });
@@ -272,7 +259,6 @@ teams.forEach(el => {
 
 points.forEach(el => {
     el.addEventListener('click', function() {
-        console.log('pointsPicked :>> ', pointsPicked);
         if (pointsPicked.includes(this.textContent)) {
             let msgEl = document.getElementById('err_msg')
             msgEl.innerText = `You cannot repeat confidence points`;
@@ -304,13 +290,11 @@ points.forEach(el => {
             if (child.textContent != this.textContent) child.style.background = 'whitesmoke'; 
         });
         pointsPicked.push(String(picks[game.id].points))
-        console.log('picks :>> ', picks);
     });
 });
 
 submitBtn.addEventListener('click',function () {
     const tbel = document.getElementById('tb')
-    console.log('tbel.value :>> ', String(tbel.value));
     picks['tb'] ={
         pick:String(tbel.value),
         points:0
