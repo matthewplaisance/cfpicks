@@ -14,20 +14,28 @@ const firebaseConfig = {
   
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getDatabase();
 
 const onAuthStateChangedFb = () => {
     auth.onAuthStateChanged((user) => {
         if (user) {
             console.log('user mon :>> ', user);
-            //up();
+            const currPage = window.location.pathname.split("/").pop();
+            if (currPage == 'index.html'){
+                window.location.href = './profile.html';
+            }
         } else {
-            console.log("none");
-            window.location.replace('index.html');
-            const currentState = window.history.state;
-            window.history.replaceState(currentState, '', window.location.href);
-            window.onpopstate = function () {
-            window.history.replaceState(currentState, '', window.location.href);
-            };
+            const currPage = window.location.pathname.split("/").pop();
+            console.log('currPage :>> ', currPage);
+            if (currPage != 'index.html'){
+                window.location.replace('index.html');
+                const currentState = window.history.state;
+                window.history.replaceState(currentState, '', window.location.href);
+                window.onpopstate = function () {
+                window.history.replaceState(currentState, '', window.location.href);
+                };
+                
+            }
         }
     });
 };
@@ -43,7 +51,7 @@ const updateName = (displayName) => {
 };
 
 const initDb = (uid,displayName) => {
-    const db = getDatabase();
+    console.log('indb :>> ');
     set(ref(db, `users/${uid}/`), {
         "name": displayName,
         "week1": {}
@@ -71,5 +79,5 @@ const createUser = (email,password) => {
     return createUserWithEmailAndPassword(auth,email,password);
 }
 
-export { auth, onAuthStateChangedFb, loginFb, logoutFb, updatePasswordFb, createUser, updateName,initDb };
+export { auth, db, onAuthStateChangedFb, loginFb, logoutFb, updatePasswordFb, createUser, updateName, initDb, onAuthStateChanged };
 

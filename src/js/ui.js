@@ -54,12 +54,16 @@ export const hideLoginError = () => {
 }
 
 export const showLoginError = (error) => {
+  console.log('error :>> ', error);
+  console.log('error.code :>> ', error.code);
   divLoginError.style.display = 'block'    
   if (error.code == AuthErrorCodes.INVALID_PASSWORD) {
     lblLoginErrorMessage.innerHTML = `Wrong password`
   }
   else if (sessionStorage.changePwd == "success") {
     lblLoginErrorMessage.innerHTML = error;      
+  }else if (error.code == AuthErrorCodes.INVALID_EMAIL) {
+    lblLoginErrorMessage.innerHTML = `Enter generic username like yourname123, no @ signs.`;  
   }else {
     lblLoginErrorMessage.innerHTML = `Error: ${error}`;      
   }

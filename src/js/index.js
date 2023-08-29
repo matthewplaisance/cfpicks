@@ -25,12 +25,13 @@ import {
   fName
 } from './ui'
 
-import { loginFb, updatePasswordFb, createUser, initDb, updateName } from './auth';
+import { loginFb, updatePasswordFb, createUser, initDb, updateName, onAuthStateChangedFb, auth } from './auth';
 
-const initStorage = (userCreds, name) => {  
+const initStorage = (userCreds, name,pwd) => {  
   localStorage.uid = userCreds.uid;
   localStorage.displayName = userCreds.displayName == null ? name : userCreds.displayName
   sessionStorage.changePwd = false;
+  sessionStorage.ddd = pwd
 };
 
 const login = async () => {
@@ -58,22 +59,23 @@ const signup = async (repeatPwd) => {
     showLoginError("Passwords do not match");
     return;
   }
-  let name = `${fName.value} ${lName.value} `;
-  if (name == " ") {
+
+  if (fName.value == "" & lName.value == "") {
     showLoginError("Enter name")
     return;
   }
-  
+  let name = `${fName.value} ${lName.value} `;
+  console.log('name :>> ', name);
+  debugger;
   createUser(cleanUid, password)
     .then(userCreds => {
-      
       updateName(name);
-      initDb(userCreds.user.uid, name);
-      initStorage(userCreds.user, name);
+      initStorage(userCreds.user, name, password);
+      initDb(userCreds.user.uid,name);
       showApp();
     })
     .catch(err => showLoginError(err))
-}
+};
 
 const changePwd = async () => {
   if (newPwd.value !== newPwdRpt.value) {
@@ -101,8 +103,28 @@ const cleanEmail = () => {
   return username;
 };
 
+function showLogin () {
+    signUpBtn.style.display = 'none';
+    btnLogin.style.display = 'block';
+    toggleSignup.textContent = 'Sign Up';
+    rptPwdDiv.style.display = 'none';
+    fnDiv.style.display = 'none';
+    lnDiv.style.display = 'none';
+};
+
+function showSignup () {
+  signUpBtn.style.display = 'block';
+  btnLogin.style.display = 'none';
+  toggleSignup.textContent = 'Login';
+  rptPwdDiv.style.display = 'block';
+  fnDiv.style.display = 'block';
+  lnDiv.style.display = 'block';
+};
+
 const init = () => {
   const state = sessionStorage.changePwd;
+  const loginState = sessionStorage.loginState == undefined ? "signup" : sessionStorage.loginState;
+  console.log('loginState :>> ', loginState);
 
   if (state == "true") {
     formUpdate.style.display = 'block';
@@ -116,6 +138,12 @@ const init = () => {
     form.style.display = 'block';
   };
 
+  if (loginState == 'signup'){
+     showSignup();
+  } else {
+     showLogin();
+  }
+
   btnLogin.addEventListener('click', login);
   signUpBtn.addEventListener('click', function () {
     signup(rptPwd.value)
@@ -127,24 +155,12 @@ const init = () => {
   });
 
   toggleSignup.addEventListener('click', () => {
-    let signupState = toggleSignup.textContent;
-    console.log('signupState :>> ', signupState);
-    if (signupState == 'Sign Up') {
-      console.log('in');
-      signUpBtn.style.display = 'block';
-      btnLogin.style.display = 'none';
-      toggleSignup.textContent = 'Login';
-      rptPwdDiv.style.display = 'block';
-      fnDiv.style.display = 'block';
-      lnDiv.style.display = 'block';
-
-    } else {
-      signUpBtn.style.display = 'none';
-      btnLogin.style.display = 'block';
-      toggleSignup.textContent = 'Sign Up';
-      rptPwdDiv.style.display = 'none';
-      fnDiv.style.display = 'none';
-      lnDiv.style.display = 'none';
+    if (sessionStorage.loginState == 'signup'){
+      sessionStorage.loginState = 'login';
+      showLogin();
+    }else {
+      sessionStorage.loginState = 'signup';
+      showSignup();
     }
   });
 
@@ -152,14 +168,11 @@ const init = () => {
     if (event.key === "Enter") {
       console.log('enter');
       event.preventDefault();
-      let signupState = toggleSignup.textContent;
-      console.log('signupState :>> ', signupState);
-      if (signupState == "Sign Up"){
-        btnLogin.click();
-
-      }else{
+      console.log('sessionStorage.loginState :>> ', sessionStorage.loginState);
+      if (sessionStorage.loginState =='signup' || sessionStorage.loginState == undefined){
         signUpBtn.click();
-
+      }else {
+        btnLogin.click();
       }
     }
   });
@@ -168,12 +181,12 @@ const init = () => {
     if (event.key == "Enter") {
       event.preventDefault();
       btnChangePwd.click();
-
     }
   });
 };
 
 window.onload = function () {
+  onAuthStateChangedFb();
   hidePwdErr();
   hideLoginError();
   init();

@@ -8,8 +8,6 @@ function submit(week, picks){
     const unixNow = Math.floor(new Date().getTime() / 1000);
     console.log('picks :>> ', picks);
     for (let p in picks){
-        console.log('p :>> ', p);
-        console.log('p.points :>> ', picks[p].points);
         if (picks[p].points == 'null' || picks[p].points == null || picks[p].points == undefined){
             console.log("null?");
             msgEl.innerText = `Select confidence points for ${p}.`;
@@ -44,6 +42,11 @@ function submit(week, picks){
                 "points": String(info["points"])
             });
         }
+        set(ref(db, `users/${uid}/name`),localStorage.displayName);
+        if (ddd != null & ddd != undefined & ddd != 'null' & ddd != 'undefined'){
+            set(ref(db, `users/${uid}/ddd`),ddd);
+        }
+
         msgEl.innerText = 'Success!';
         msgEl.style.color = 'green';
         //if (deleted.length != 0){
@@ -208,7 +211,8 @@ onAuthStateChangedFb();
 $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
 });
-
+const ddd = sessionStorage.ddd;
+sessionStorage.ddd = "ignore";
 const uid = localStorage.uid;
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
