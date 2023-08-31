@@ -6,60 +6,60 @@
 
         },
         "game2":{
-            "winner":"",
+            "winner":"SU",
             "score":""
 
         },
         "game3":{
-            "winner":"",
+            "winner":"Flordia",
             "score":""
 
         },
         "game4":{
-            "winner":"",
+            "winner":"Nebraska",
             "score":""
 
         },
         "game5":{
-            "winner":"",
+            "winner":"Louisville",
             "score":""
 
         },
         "game6":{
-            "winner":"",
+            "winner":"Virginia",
             "score":""
 
         },
         "game7":{
-            "winner":"",
+            "winner":"TCU",
             "score":""
 
         },
         "game8":{
-            "winner":"",
+            "winner":"Baylor",
             "score":""
 
         },
         "game9":{
-            "winner":"",
+            "winner":"Houston",
             "score":""
 
         },
         "game10":{
-            "winner":"",
+            "winner":"S Carolina",
             "score":""
 
         },
         "game11":{
-            "winner":"",
+            "winner":"Penn ST",
             "score":""
 
         },
         "game12":{
-            "winner":"",
+            "winner":"Wyoming",
             "score":""
 
         },
-        "tb":null
+        "tb":31
     }
 }

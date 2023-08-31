@@ -213,7 +213,7 @@ const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
 const refer = ref(db, `users/${uid}/${week}`)  
-const chosenColor = 'green'
+const chosenColor = '#FF8000'
 
 let picks = await fetchData();
 if (picks == null) picks = {};
@@ -238,7 +238,12 @@ teams.forEach(el => {
         const time = parent.querySelector('.time').id
         const unixNow = Math.floor(new Date().getTime() / 1000);
 
-        if (unixNow > time) return;
+        if (unixNow > time) {
+            let msgEl = document.getElementById('err_msg')
+            msgEl.innerText = `Cannot change pick for ${parent.id}, it has already kickoffed`;
+            msgEl.style.color = 'red';
+            return;
+        };
         this.style.color = chosenColor;
 
         const children = parent.querySelectorAll(".team");
@@ -290,6 +295,7 @@ points.forEach(el => {
             if (child.textContent != this.textContent) child.style.background = 'whitesmoke'; 
         });
         pointsPicked.push(String(picks[game.id].points))
+        console.log('pointsedPicked after:>> ', pointsPicked);
     });
 });
 

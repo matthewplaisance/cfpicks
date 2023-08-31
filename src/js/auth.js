@@ -20,6 +20,7 @@ const onAuthStateChangedFb = () => {
     auth.onAuthStateChanged((user) => {
         if (user) {
             console.log('user mon :>> ', user);
+            localStorage.uid = user.uid;
             const currPage = window.location.pathname.split("/").pop();
             if (currPage == 'index.html'){
                 window.location.href = './profile.html';
