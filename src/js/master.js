@@ -19,7 +19,6 @@ async function fetchData() {
     return data;
 }
 
-
 function initTable(userData,dataWinners,dataGames,week) {
     let unixNow = Math.floor(new Date().getTime() / 1000);
     console.log('dataGames :>> ', dataGames);
@@ -105,9 +104,12 @@ function initTable(userData,dataWinners,dataGames,week) {
         tableBody.append(row);
         cnt++
     }
-    for (let w of winner.user) document.getElementById(w).style.background = colorW;
+    //for (let w of winner.user) document.getElementById(w).style.background = colorW;
     const userRow = document.getElementById(uid);
-    if (userRow) userRow.style.fontWeight = 600;
+    if (userRow) {
+        userRow.style.fontWeight = 600;
+        localStorage.displayName = userRow.textContent
+    }
 }
 
 const week1Map = {

@@ -220,7 +220,7 @@ let picks = await fetchData();
 if (picks == null) picks = {};
 const gameData = await json('../data/games.json')
 let pointsPicked = [];
-
+console.log('picks :>> ', picks);
 for (let game in picks) pointsPicked.push(String(picks[game].points))
 
 initCards(gameData,week);
