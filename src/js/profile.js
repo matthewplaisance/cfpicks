@@ -6,6 +6,7 @@ import { json } from 'd3';
 function submit(week, picks){
     const msgEl = document.getElementById('err_msg')
     const unixNow = Math.floor(new Date().getTime() / 1000);
+    console.log('picks :>> ', picks);
     for (let p in picks){
         if (picks[p].points == 'null' || picks[p].points == null || picks[p].points == undefined){
             msgEl.innerText = `Select confidence points for ${p}.`;
@@ -255,10 +256,12 @@ teams.forEach(el => {
             pick:this.textContent,
             points: selectedpoints
         }
+        console.log('picksbefore hit :>> ', picks);
 
         children.forEach(child => {
             if (child.textContent != this.textContent) child.style.color = 'black';
         })
+        console.log('picksafhit :>> ', picks);
     });
 });
 
@@ -277,13 +280,11 @@ points.forEach(el => {
         const game = parent.querySelector('.clearfix');
         const teams = game.querySelectorAll('.team');
 
-        let selected;
-        teams.forEach(team => {
-            if (team.style.color == chosenColor) selected = team.textContent
-        })
-
+        let selected = null;
+        
         if (picks.hasOwnProperty(game.id)){
             if (picks[game.id].hasOwnProperty('points'))pointsPicked = pointsPicked.filter(item => item !== picks[game.id].points);
+            selected = picks[game.id].pick
         }
 
         picks[game.id] = {
