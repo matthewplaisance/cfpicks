@@ -132,7 +132,9 @@ let userData = await fetchData();
 const dataWinners = await json('../data//winners.json');
 const dataGames = await json('../data/games.json');
 console.log('userData :>> ', userData);
-
+for (let user in userData){
+    console.log('userData[user]["name"] :>> ', userData[user]["name"]);
+}
 //for (let key in userData){
 //if (key !== '7QSsNsOFhDaOlYC5Cdp0syqGHye2') delete userData[key]
 //}

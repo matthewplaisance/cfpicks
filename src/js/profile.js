@@ -216,9 +216,13 @@ const refer = ref(db, `users/${uid}`)
 const chosenColor = '#FF8000'
 
 let userData = await fetchData();
+console.log('userData :>> ', userData);
 let picks = {};
-if (userData.hasOwnProperty(week)) picks = userData[week];
-if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]
+if (userData){
+    if (userData.hasOwnProperty(week)) picks = userData[week];
+    if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]
+    
+}
 
 const gameData = await json('../data/games.json')
 let pointsPicked = [];
