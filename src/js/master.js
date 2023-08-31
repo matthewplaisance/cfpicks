@@ -106,10 +106,7 @@ function initTable(userData,dataWinners,dataGames,week) {
     }
     //for (let w of winner.user) document.getElementById(w).style.background = colorW;
     const userRow = document.getElementById(uid);
-    if (userRow) {
-        userRow.style.fontWeight = 600;
-        localStorage.displayName = userRow.textContent
-    }
+    if (userRow) userRow.style.fontWeight = 600;
 }
 
 const week1Map = {

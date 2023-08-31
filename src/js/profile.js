@@ -213,14 +213,16 @@ const uid = localStorage.uid;
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
-const refer = ref(db, `users/${uid}/${week}`)  
+const refer = ref(db, `users/${uid}`)  
 const chosenColor = '#FF8000'
 
-let picks = await fetchData();
-if (picks == null) picks = {};
+let userData = await fetchData();
+let picks = {};
+if (userData.hasOwnProperty(week)) picks = userData[week];
+if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]
+
 const gameData = await json('../data/games.json')
 let pointsPicked = [];
-console.log('picks :>> ', picks);
 for (let game in picks) pointsPicked.push(String(picks[game].points))
 
 initCards(gameData,week);
