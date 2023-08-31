@@ -23,7 +23,6 @@ function submit(week, picks){
     const times = document.querySelectorAll('.time');
 
     times.forEach(time => {
-
         const game = time.parentElement.id;
         if (time.id < unixNow) {
             delete picks[game]
@@ -269,7 +268,34 @@ teams.forEach(el => {
 
 points.forEach(el => {
     el.addEventListener('click', function() {
+        const parent = this.parentNode;
+        const children = parent.querySelectorAll(".box");
+        const game = parent.querySelector('.clearfix');
+        const teams = game.querySelectorAll('.team');
+        console.log('parent :>> ', parent);
+
+        const time = parent.querySelector('.time').id
+        const unixNow = Math.floor(new Date().getTime() / 1000);
+
+        if (unixNow > time) {
+            let msgEl = document.getElementById('err_msg')
+            msgEl.innerText = `Cannot change points for ${game.id}, it has already kickoffed`;
+            msgEl.style.color = 'red';
+            return;
+        };
+
         if (pointsPicked.includes(this.textContent)) {
+            if (picks.hasOwnProperty(game.id)){
+                if (picks[game.id].points == this.textContent){
+                    pointsPicked = pointsPicked.filter(item => item !== picks[game.id].points);
+                    picks[game.id].points = null;
+                    this.style.background = 'whitesmoke';
+                    if (!picks[game.id].pick) delete picks[game.id]
+                    console.log('picks :>> ', picks);
+                    return;
+                }
+
+            }
             let msgEl = document.getElementById('err_msg')
             msgEl.innerText = `You cannot repeat confidence points`;
             msgEl.style.color = 'red';
@@ -277,11 +303,6 @@ points.forEach(el => {
         }
         document.getElementById('err_msg').innerText = '';
         this.style.background = chosenColor;
-        const parent = this.parentNode;
-        const children = parent.querySelectorAll(".box");
-        const game = parent.querySelector('.clearfix');
-        const teams = game.querySelectorAll('.team');
-
         let selected = null;
         
         if (picks.hasOwnProperty(game.id)){
@@ -299,6 +320,7 @@ points.forEach(el => {
         });
         pointsPicked.push(String(picks[game.id].points))
         console.log('pointsedPicked after:>> ', pointsPicked);
+        console.log('picks :>> ', picks);
     });
 });
 
