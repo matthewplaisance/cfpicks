@@ -1,6 +1,6 @@
-import { getDatabase, ref, set, onValue } from 'firebase/database'
+import { getDatabase, ref, onValue } from 'firebase/database'
 import {onAuthStateChangedFb} from './auth'
-import { color, json, partition } from 'd3';
+import { json } from 'd3';
 
 onAuthStateChangedFb();
 
@@ -8,10 +8,10 @@ $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
 });
 
-async function fetchData() {
+async function fetchData(refer) {
     let data;
     await new Promise((resolve, reject) => {
-        onValue(ref(db, `users`) , (snapshot) => {
+        onValue(refer , (snapshot) => {
             data = snapshot.val();
             resolve();
         });
@@ -19,16 +19,15 @@ async function fetchData() {
     return data;
 }
 
+
 function initTable(userData,dataWinners,dataGames,week) {
     let unixNow = Math.floor(new Date().getTime() / 1000);
-    console.log('dataGames :>> ', dataGames);
     let tableBody = document.getElementById('tbody');
     let winner = {
         "points":0,
         "user":[],
         'tb':0
     };
-    console.log('winner :>> ', winner);
     let cnt = 0;
 
     for (let user in userData) {
@@ -41,7 +40,6 @@ function initTable(userData,dataWinners,dataGames,week) {
         cell.textContent = userData[user]['name']
         cell.id = user
         row.append(cell)
-        if (user == 'IWBJNJ2Zd2OEIndMcKgXpRfRF3C3')console.log('weekInfo :>> ', weekInfo);
         //for (let game in weekInfo){
         //    console.log('game :>> ', game);
         //    const p = weekInfo[game]['pick'];
@@ -64,7 +62,7 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[game]
                 if (dataGames[game].time < unixNow) row.cells[idx].textContent = `${info["pick"]}: ${info["points"]}`;
                 if (dataWinners.hasOwnProperty(game)) {
-                    if (dataWinners[game].winner == info.pick) {
+                    if (dataWinners[game] == info.pick) {
                         row.cells[idx].style.background = colorW;
                         points += parseInt(info.points);
                     }
@@ -80,15 +78,16 @@ function initTable(userData,dataWinners,dataGames,week) {
             winner.user = [user];
             winner.tb = weekInfo['tb'].pick;
         }else if (points == winner.points){
-            if (dataWinners.hasOwnProperty('tb')){
-                const currDiff = Math.abs(dataWinners['tb'] - weekInfo['tb'].pick);
-                const winnerDiff = Math.abs(dataWinners['tb'] - winner.tb);
+            const tbr = dataWinners.tb;
+            if (tbr){
+                const currDiff = Math.abs(tbr - weekInfo['tb'].pick);
+                const winnerDiff = Math.abs(tbr - winner.tb);
                 if (currDiff < winnerDiff){
                     winner["points"] = points;
                     winner.user = [user];
                     winner.tb = weekInfo['tb'].pick;
                 }else if (currDiff == winnerDiff) winner.user.push(user)
-            }
+            }else winner.user.push(user)
         }
 
         let cellt = document.createElement('td');
@@ -109,6 +108,17 @@ function initTable(userData,dataWinners,dataGames,week) {
     if (userRow) userRow.style.fontWeight = 600;
 }
 
+function displayTBR(data) {
+    if (data) {
+        const tbr = data.tb
+        if (tbr){
+            let tbr_th = document.getElementById('tb_res');
+            tbr_th.textContent = tbr;
+            tbr_th.style.background = colorW;
+        }
+    }
+}
+
 const week1Map = {
     11:"game1",
     12:"game2",
@@ -123,22 +133,22 @@ const week1Map = {
     9:"game11",
     10:"game12"
 }
-console.log("hh");
+
 const uid = localStorage.uid;
 console.log('uid :>> ', uid);
 const colorW = '#C0FF00'
 const db = getDatabase();
-let userData = await fetchData();
-const dataWinners = await json('../data//winners.json');
+let userData = await fetchData(ref(db, `users`));
+let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 
-//for (let key in userData){
-//if (key !== '7QSsNsOFhDaOlYC5Cdp0syqGHye2') delete userData[key]
-//}
-
-let weekEl = document.getElementById('selected-week')
+let weekEl = document.getElementById('selected-week');
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
-if (dataGames.hasOwnProperty(week)) initTable(userData,dataWinners[week],dataGames[week],week);
+
+if (dataGames) {
+    initTable(userData,winnerData[week],dataGames[week],week);
+    displayTBR(winnerData[week]);
+}
 
 const sidebar = document.getElementById('sidebar')
 const weeks = sidebar.querySelectorAll('.nav-link')

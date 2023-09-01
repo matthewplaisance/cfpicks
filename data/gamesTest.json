@@ -3,11 +3,11 @@
         "game1":{
             "home":"Rice",
             "away": "UT",
-            "time": 1693683000,
+            "time": 0,
             "humanDate":"Sep 02, 2:30"
         },
         "game2":{
-            "home":"Flordia State",
+            "home":"Florida State",
             "away": "LSU",
             "time": 0,
             "humanDate":"Sep 03, 6:30"
