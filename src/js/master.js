@@ -123,7 +123,7 @@ const week1Map = {
     9:"game11",
     10:"game12"
 }
-
+console.log("hh");
 const uid = localStorage.uid;
 console.log('uid :>> ', uid);
 const colorW = '#C0FF00'
