@@ -8,6 +8,15 @@ body {
   height: 100%;
 }
 
+td,.date-holder > th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  padding: 5px;
+}
+.date-holder > th{
+  color: #167bc8
+}
 #cumlativeData {
   white-space: nowrap;
 }

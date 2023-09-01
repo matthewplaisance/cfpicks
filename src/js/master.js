@@ -131,15 +131,11 @@ const db = getDatabase();
 let userData = await fetchData();
 const dataWinners = await json('../data//winners.json');
 const dataGames = await json('../data/games.json');
-console.log('userData :>> ', userData);
-for (let user in userData){
-    console.log('userData[user]["name"] :>> ', userData[user]["name"]);
-}
+
 //for (let key in userData){
 //if (key !== '7QSsNsOFhDaOlYC5Cdp0syqGHye2') delete userData[key]
 //}
 
-console.log('userData :>> ', userData);
 let weekEl = document.getElementById('selected-week')
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
 if (dataGames.hasOwnProperty(week)) initTable(userData,dataWinners[week],dataGames[week],week);
