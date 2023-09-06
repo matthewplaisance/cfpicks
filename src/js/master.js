@@ -140,7 +140,7 @@ const colorW = '#C0FF00'
 const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
-const dataGames = await json('../data/games.json');
+const dataGames = await json('../data/gamesTest.json');
 
 let weekEl = document.getElementById('selected-week');
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();

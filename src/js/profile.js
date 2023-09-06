@@ -40,9 +40,6 @@ function submit(week, picks){
             });
         }
         set(ref(db, `users/${uid}/name`),localStorage.displayName);
-        if (ddd != null & ddd != undefined & ddd != 'null' & ddd != 'undefined'){
-            set(ref(db, `users/${uid}/ddd`),ddd);
-        }
 
         msgEl.innerText = 'Submitted!';
         msgEl.style.color = 'green';
@@ -59,6 +56,7 @@ function submit(week, picks){
 function setup(data) {
     for (let game in data) {
         const gameEl = document.getElementById(game);
+        if (!gameEl) continue;
         const teams = gameEl.querySelectorAll('.team');
         const boxes = gameEl.parentNode.querySelectorAll('.box');
         
@@ -69,9 +67,12 @@ function setup(data) {
             if (box.textContent == data[game]['points']) box.style.background = chosenColor;
         })
     }
-    if (data.hasOwnProperty('tb')) {
-        document.getElementById('tb').value = data['tb'].pick;
-    }else document.getElementById('tb').value = 0;
+    let ttbel = document.getElementById('tb');
+    if (ttbel){
+        if (data.hasOwnProperty('tb')) ttbel.value = data['tb'].pick;
+        else document.getElementById('tb').value = 0;
+    }
+    
 }
 
 async function fetchData() {
@@ -85,28 +86,6 @@ async function fetchData() {
     });
 
     return picks;
-}
-
-async function colorWinners(week) {
-    let data = await json("../data/winners.json")
-    if (data.hasOwnProperty(week)) data = data[week]
-    else return;
-    const cards = document.querySelectorAll('.clearfix')
-    let points = 0;
-    cards.forEach(card => {
-        const game = card.id;
-        const winner = data[game].winner;
-        const score = data[game].score;
-        if (picks.hasOwnProperty(game)){
-            if (picks[game].pick == winner) {
-                card.parentElement.style.background = '#c9e782';
-                points += parseInt(picks[game].points)
-            } else card.parentElement.style.background = 'red';
-        }
-        
-    });
-    document.getElementById('selected-week').textContent += ` points: ${points}`
-
 }
 
 function createCard(data,game,wrapper,gn){
@@ -164,13 +143,15 @@ function createCard(data,game,wrapper,gn){
     clearfixDiv.appendChild(rightTeamDiv);
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
-
     if (data.hasOwnProperty("away")){
         for (let i = 1; i <= 12; i++) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
             boxDiv.id = i;
+            if (pointsPicked.includes(String(i))) {
+                boxDiv.style.background = pickedPColor;
+            };
             cardBodyDiv.appendChild(boxDiv);
         }
     }else{
@@ -206,22 +187,22 @@ $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
 });
 
-const ddd = sessionStorage.ddd;
-sessionStorage.ddd = "null";
 const uid = localStorage.uid;
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
 const refer = ref(db, `users/${uid}`)  
 const chosenColor = '#FF8000'
+const ccRgb = 'rgb(255, 128, 0)'
+const pickedPColor = "#9494b8";
+
 
 let userData = await fetchData();
 console.log('userData :>> ', userData);
 let picks = {};
 if (userData){
     if (userData.hasOwnProperty(week)) picks = userData[week];
-    if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]
-    
+    if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]   
 }
 
 const gameData = await json('../data/games.json')
@@ -230,13 +211,10 @@ for (let game in picks) pointsPicked.push(String(picks[game].points))
 
 initCards(gameData,week);
 setup(picks);
-//colorWinners(week);
 const teams = document.querySelectorAll('.team');
 const submitBtn = document.getElementById('submit');
 const points = document.querySelectorAll('.box');
 
-const sidebar = document.getElementById('sidebar')
-const weeks = sidebar.querySelectorAll('.nav-link')
 
 teams.forEach(el => {
     el.addEventListener('click', function() {
@@ -261,12 +239,10 @@ teams.forEach(el => {
             pick:this.textContent,
             points: selectedpoints
         }
-        console.log('picksbefore hit :>> ', picks);
 
         children.forEach(child => {
             if (child.textContent != this.textContent) child.style.color = 'black';
         })
-        console.log('picksafhit :>> ', picks);
     });
 });
 
@@ -276,7 +252,6 @@ points.forEach(el => {
         const children = parent.querySelectorAll(".box");
         const game = parent.querySelector('.clearfix');
         const teams = game.querySelectorAll('.team');
-        console.log('parent :>> ', parent);
 
         const time = parent.querySelector('.time').id
         const unixNow = Math.floor(new Date().getTime() / 1000);
@@ -295,7 +270,10 @@ points.forEach(el => {
                     picks[game.id].points = null;
                     this.style.background = 'whitesmoke';
                     if (!picks[game.id].pick) delete picks[game.id]
-                    console.log('picks :>> ', picks);
+                    document.querySelectorAll('.box').forEach(bx => {
+                        if (bx.id == this.id) bx.style.background = 'whitesmoke';
+                    })
+
                     return;
                 }
 
@@ -320,11 +298,19 @@ points.forEach(el => {
         }
     
         children.forEach(child => {
-            if (child.textContent != this.textContent) child.style.background = 'whitesmoke'; 
+            if (child.textContent != this.textContent) child.style.background = 'whitesmoke';
         });
         pointsPicked.push(String(picks[game.id].points))
-        console.log('pointsedPicked after:>> ', pointsPicked);
-        console.log('picks :>> ', picks);
+        const bxs = document.querySelectorAll('.box');
+        bxs.forEach(bx => {
+            if (pointsPicked.includes(bx.id) ) {
+                if (bx.style.background != ccRgb & bx.style.background != chosenColor){
+                    bx.style.background = pickedPColor;
+                }
+            }else{
+                bx.style.background = 'whitesmoke';
+            };
+        })
     });
 });
 
@@ -336,15 +322,5 @@ submitBtn.addEventListener('click',function () {
     }
     submit(week,picks);
 });
-
-weeks.forEach(w => { 
-    let week = w.innerText.replace(' ','').toLocaleLowerCase()
-    w.addEventListener('click', () => {
-        weekEl.textContent = w.innerText;
-        initCards(gameData,week);
-        setup(picks);
-        colorWinners(week);
-    })
-})
 
 document.getElementById("btnLogout").addEventListener('click', logoutFb);
