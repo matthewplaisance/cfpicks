@@ -77,14 +77,17 @@ function setup(data) {
 
 async function fetchData() {
     let picks;
+    console.log('picks :>> ', picks);
     await new Promise((resolve, reject) => {
+        console.log('refer :>> ', refer);
         onValue(refer, (snapshot) => {
             const data = snapshot.val();
+            console.log('data :>> ', data);
             picks = data;
             resolve();
         });
     });
-
+    console.log("object");
     return picks;
 }
 
@@ -188,6 +191,7 @@ $(document).ready(function () {
 });
 
 const uid = localStorage.uid;
+console.log('uid :>> ', uid);
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
@@ -195,9 +199,10 @@ const refer = ref(db, `users/${uid}`)
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
-
+console.log('db :>> ', db);
 
 let userData = await fetchData();
+console.log('out');
 console.log('userData :>> ', userData);
 let picks = {};
 if (userData){

@@ -1,65 +1,51 @@
 {
-    "week1":{
         "game1":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game2":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game3":{
-            "winner":"Utah",
-            "score":""
+            "winner":""
 
         },
         "game4":{
-            "winner":"Minnesota",
-            "score":""
+            "winner":""
 
         },
         "game5":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game6":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game7":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game8":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game9":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game10":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game11":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "game12":{
-            "winner":"",
-            "score":""
+            "winner":""
 
         },
         "tb":null
-    }
 }
