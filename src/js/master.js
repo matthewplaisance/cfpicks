@@ -47,24 +47,24 @@ function initTable(userData,dataWinners,dataGames,week) {
        
         for (let i = 1; i < 13; i++){
             let cell = document.createElement('td');
-            cell.id = week1Map[i]
-            row.append(cell)
+            cell.id = week1Map[i];
+            row.append(cell);
         }
 
         for (const [idx, game] of Object.entries(week1Map)) {
+            const iRow = parseInt(idx) + 1;
             if (weekInfo.hasOwnProperty(game)){
-                const info = weekInfo[game]
-                console.log('game :>> ', game);
-                console.log('info :>> ', info);
-                if (dataGames[game].time < unixNow) row.cells[parseInt(idx) + 1].textContent = `${info["pick"]}: ${info["points"]}`;
+                const info = weekInfo[game];
+                
+                if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
                 if (dataWinners.hasOwnProperty(game)) {
                     if (dataWinners[game] == info.pick) {
-                        row.cells[idx].style.background = colorW;
+                        row.cells[iRow].style.background = colorW;
                         points += parseInt(info.points);
                     }
                 }
             }else {
-                if (dataGames[game].time < unixNow) row.cells[idx].textContent = 'No pick'
+                if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
             }
             
         }
@@ -95,6 +95,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         tableBody.append(row);
         cnt++
     }
+    console.log('winner', winner)
     if (winner.points != 0) for (let w of winner.user) document.getElementById(w).style.background = colorW;
     const userRow = document.getElementById(uid);
     if (userRow) userRow.style.fontWeight = 600;
