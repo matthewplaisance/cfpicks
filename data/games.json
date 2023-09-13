@@ -164,5 +164,82 @@
             "time": 1694300400,
             "humanDate":"Sep 9, 6:00"
         }
+    },
+    "week3":{
+            "game1":{
+                "home":"Mississippi St",
+                "away": "LSU",
+                "time": 1694880000,
+                "humanDate":"Sep 16, 11:00"
+            },
+            "game2":{
+                "home":"Missouri",
+                "away": "Kanasa St",
+                "time": 1694880000,
+                "humanDate":"Sep 16, 11:00"
+            },
+            "game3":{
+                "home":"Penn St",
+                "away": "Illinois",
+                "time": 1694880000,
+                "humanDate":"Sep 16, 11:00"
+            },
+            "game4":{
+                "home":"Georgia",
+                "away": "South  Carolina",
+                "time": 1694892600,
+                "humanDate":"Sep 16, 2:30"
+            },
+            "game5":{
+                "home":"North Carolina",
+                "away": "Minnesota",
+                "time": 1694892600,
+                "humanDate":"Sep 16, 2:30"
+    
+            },
+            "game6":{
+                "home":"Tennesse",
+                "away": "Flordia",
+                "time": 1694905200,
+                "humanDate":"Sep 16, 6:00"
+    
+            },
+            "game7":{
+                "home":"Arkansas",
+                "away": "BYU",
+                "time": 1694907000,
+                "humanDate":"Sep 16, 6:30"
+            },
+            "game8":{
+                "home":"Pitt",
+                "away": "West Virginia",
+                "time": 1694907000,
+                "humanDate":"Sep 16, 6:30"
+    
+            },
+            "game9":{
+                "home":"Georgia Tech",
+                "away": "Ole Miss",
+                "time": 1694907000,
+                "humanDate":"Sep 16, 6:30"
+            },
+            "game10":{
+                "home":"Houston",
+                "away": "TCU",
+                "time": 1694908800,
+                "humanDate":"Sep 16, 7:00"
+    
+            },
+            "game11":{
+                "home":"Colorado",
+                "away": "Colorado St",
+                "time": 1694916000,
+                "humanDate":"Sep 9, 9:30"
+            },
+            "tiebreaker":{
+                "home": "How many total yards will UT get?",
+                "time": 1694908800,
+                "humanDate":"Sep 16, 7:00"
+            }
     }
 }

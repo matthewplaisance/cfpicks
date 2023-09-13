@@ -136,7 +136,7 @@ let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 
 let weekEl = document.getElementById('selected-week');
-let week = 'week2'
+let week = 'week3'
 
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
