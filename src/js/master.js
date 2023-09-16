@@ -53,18 +53,23 @@ function initTable(userData,dataWinners,dataGames,week) {
 
         for (const [idx, game] of Object.entries(week1Map)) {
             const iRow = parseInt(idx) + 1;
+            console.log('game :>> ', game);
+            console.log('dataGame[games] :>> ', dataGames[game]);
             if (weekInfo.hasOwnProperty(game)){
+
                 const info = weekInfo[game];
-                
-                if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
-                if (dataWinners.hasOwnProperty(game)) {
-                    if (dataWinners[game] == info.pick) {
-                        row.cells[iRow].style.background = colorW;
-                        points += parseInt(info.points);
+                if (info){
+                    if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                    if (dataWinners.hasOwnProperty(game)) {
+                        if (dataWinners[game] == info.pick) {
+                            row.cells[iRow].style.background = colorW;
+                            points += parseInt(info.points);
+                        }
                     }
+                }else {
+                    if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
                 }
-            }else {
-                if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
+                
             }
             
         }
