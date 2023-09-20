@@ -147,7 +147,7 @@ function createCard(data,game,wrapper,gn){
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
     if (data.hasOwnProperty("away")){
-        for (let i = 1; i <= 11; i++) {
+        for (let i = 1; i <= 14; i++) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
@@ -202,8 +202,6 @@ const pickedPColor = "#9494b8";
 console.log('db :>> ', db);
 
 let userData = await fetchData();
-console.log('out');
-console.log('userData :>> ', userData);
 let picks = {};
 if (userData){
     if (userData.hasOwnProperty(week)) picks = userData[week];

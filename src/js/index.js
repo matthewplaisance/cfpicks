@@ -104,6 +104,7 @@ const cleanEmail = () => {
 };
 
 function showLogin () {
+    sessionStorage.loginState = 'login';
     signUpBtn.style.display = 'none';
     btnLogin.style.display = 'block';
     toggleSignup.textContent = 'Sign Up';
@@ -113,6 +114,7 @@ function showLogin () {
 };
 
 function showSignup () {
+  sessionStorage.loginState = 'signup';
   signUpBtn.style.display = 'block';
   btnLogin.style.display = 'none';
   toggleSignup.textContent = 'Login';
@@ -123,7 +125,7 @@ function showSignup () {
 
 const init = () => {
   const state = sessionStorage.changePwd;
-  const loginState = sessionStorage.loginState == undefined ? "signup" : sessionStorage.loginState;
+  const loginState = sessionStorage.loginState == undefined ? "login" : sessionStorage.loginState;
   console.log('loginState :>> ', loginState);
 
   if (state == "true") {

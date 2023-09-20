@@ -241,5 +241,96 @@
                 "time": 1694908800,
                 "humanDate":"Sep 16, 7:00"
             }
-    }
+    },
+    "week4":{
+        "game1":{
+            "home":"Florida St",
+            "away": "Clemson",
+            "time": 1695484800,
+            "humanDate":"Sep 23, 11:00"
+        },
+        "game2":{
+            "home":"OU",
+            "away": "Cincinnati",
+            "time": 1695484800,
+            "humanDate":"Sep 23, 11:00"
+        },
+        "game3":{
+            "home":"Aurburn",
+            "away": "A&M",
+            "time": 1695484800,
+            "humanDate":"Sep 23, 11:00"
+        },
+        "game4":{
+            "home":"SMU",
+            "away": "TCU",
+            "time": 1695484800,
+            "humanDate":"Sep 23, 11:00"
+        },
+        "game5":{
+            "home":"Colorado",
+            "away": "Oregon",
+            "time": 1695497400,
+            "humanDate":"Sep 23, 2:30"
+        },
+        "game6":{
+            "home":"Ole Miss",
+            "away": "Alabama",
+            "time": 1695497400,
+            "humanDate":"Sep 23, 2:30"
+        },
+        "game7":{
+            "home":"BYU",
+            "away": "Kansas",
+            "time": 1695497400,
+            "humanDate":"Sep 23, 2:30"
+        },
+        "game8":{
+            "home":"Texas Tech",
+            "away": "West Virginia",
+            "time": 1695497400,
+            "humanDate":"Sep 23, 2:30"
+        },
+        "game9":{
+            "home":"UTSA",
+            "away": "Tennessee",
+            "time": 1695499200,
+            "humanDate":"Sep 23, 3:00"
+        },
+        "game10":{
+            "home":"Arkansas",
+            "away": "LSU",
+            "time": 1695510000,
+            "humanDate":"Sep 23, 6:00"
+        },
+        "game11":{
+            "home":"Texas",
+            "away": "Baylor",
+            "time": 1695511800,
+            "humanDate":"Sep 23, 6:30"
+        },
+        "game12":{
+            "home":"Ohio St",
+            "away": "Notre Dame",
+            "time": 1695511800,
+            "humanDate":"Sep 23, 6:30"
+        },
+        "game13":{
+            "home":"Mississippi St",
+            "away": "South Carolina",
+            "time": 1695511800,
+            "humanDate":"Sep 23, 6:30"
+        },
+        "game14":{
+            "home":"UCF",
+            "away": "Kansas St",
+            "time": 1695513600,
+            "humanDate":"Sep 23, 6:30"
+        },
+        "tiebreaker":{
+            "home": "How many passing yards will UT get?",
+            "time": 1695511800,
+            "humanDate":"Sep 23, 6:30"
+        }
+}
 }

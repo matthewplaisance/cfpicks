@@ -47,11 +47,11 @@ function initTable(userData,dataWinners,dataGames,week) {
        
         for (let i = 1; i < 13; i++){
             let cell = document.createElement('td');
-            cell.id = week1Map[i];
+            cell.id = posmap[i];
             row.append(cell);
         }
 
-        for (const [idx, game] of Object.entries(week1Map)) {
+        for (const [idx, game] of Object.entries(posmap)) {
             const iRow = parseInt(idx) + 1;
             console.log('game :>> ', game);
             console.log('dataGame[games] :>> ', dataGames[game]);
@@ -117,7 +117,7 @@ function displayTBR(data) {
     }
 }
 
-const week1Map = {
+const posmap = {
     1:"game1",
     2:"game2",
     3:"game3",
@@ -129,7 +129,9 @@ const week1Map = {
     9:"game9",
     10:"game10",
     11:"game11",
-    12:"game12"
+    12:"game12",
+    13:"game13",
+    14:"game14"
 }
 
 const uid = localStorage.uid;
@@ -141,7 +143,7 @@ let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 
 let weekEl = document.getElementById('selected-week');
-let week = 'week3'
+let week = 'week4'
 
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
