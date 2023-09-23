@@ -166,7 +166,7 @@ weeks.forEach(w => {
         while (table.firstChild){
             table.removeChild(table.firstChild);
         }
-        if (week == 'week2'){
+        if (['week1','week2','week3','week4'].includes(week)){
             initTable(userData,winnerData[week],dataGames[week],week);
             displayTBR(winnerData[week]);
         }
