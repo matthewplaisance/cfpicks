@@ -20,6 +20,7 @@ async function fetchData(refer) {
 }
 
 function initTable(userData,dataWinners,dataGames,week) {
+    console.log('in');
     let unixNow = Math.floor(new Date().getTime() / 1000);
     let tableBody = document.getElementById('tbody');
     let winner = {
@@ -45,7 +46,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         cellp.id = `${user}_points`
         row.append(cellp);
        
-        for (let i = 1; i < 13; i++){
+        for (let i = 1; i < 15; i++){
             let cell = document.createElement('td');
             cell.id = posmap[i];
             row.append(cell);
@@ -79,16 +80,19 @@ function initTable(userData,dataWinners,dataGames,week) {
             winner.user = [user];
             winner.tb = weekInfo['tb'].pick;
         }else if (points == winner.points){
-            const tbr = dataWinners.tb;
-            if (tbr){
-                const currDiff = Math.abs(tbr - weekInfo['tb'].pick);
-                const winnerDiff = Math.abs(tbr - winner.tb);
-                if (currDiff < winnerDiff){
-                    winner["points"] = points;
-                    winner.user = [user];
-                    winner.tb = weekInfo['tb'].pick;
-                }else if (currDiff == winnerDiff) winner.user.push(user)
-            }else winner.user.push(user)
+            if (dataWinners.hasOwnProperty('tb')){
+                const tbr = dataWinners.tb;
+                if (tbr){
+                    const currDiff = Math.abs(tbr - weekInfo['tb'].pick);
+                    const winnerDiff = Math.abs(tbr - winner.tb);
+                    if (currDiff < winnerDiff){
+                        winner["points"] = points;
+                        winner.user = [user];
+                        winner.tb = weekInfo['tb'].pick;
+                    }else if (currDiff == winnerDiff) winner.user.push(user)
+                }else winner.user.push(user)
+            }
+            
         }
 
         let cellt = document.createElement('td');
@@ -131,7 +135,7 @@ const posmap = {
     11:"game11",
     12:"game12",
     13:"game13",
-    14:"game14"
+    14:"game14",
 }
 
 const uid = localStorage.uid;
@@ -144,7 +148,8 @@ const dataGames = await json('../data/games.json');
 
 let weekEl = document.getElementById('selected-week');
 let week = 'week4'
-
+console.log('winnerData :>> ', winnerData[week]);
+console.log('dataGames :>> ', dataGames);
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
     displayTBR(winnerData[week]);
