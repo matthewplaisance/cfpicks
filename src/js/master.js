@@ -20,7 +20,7 @@ async function fetchData(refer) {
 }
 
 function initTable(userData,dataWinners,dataGames,week) {
-    console.log('in');
+    th(dataGames)
     let unixNow = Math.floor(new Date().getTime() / 1000);
     let tableBody = document.getElementById('tbody');
     let winner = {
@@ -29,7 +29,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         'tb':0
     };
     let cnt = 0;
-
+    console.log('dataGames :>> ', dataGames);
     for (let user in userData) {
         if (user == "IWBJNJ2Zd2OEIndMcKgXpRfRF3C3") continue;
         let points = 0;
@@ -46,16 +46,14 @@ function initTable(userData,dataWinners,dataGames,week) {
         cellp.id = `${user}_points`
         row.append(cellp);
        
-        for (let i = 1; i < 15; i++){
+        for (let i = 1; i < 10; i++){
             let cell = document.createElement('td');
             cell.id = posmap[i];
             row.append(cell);
         }
 
         for (const [idx, game] of Object.entries(posmap)) {
-            const iRow = parseInt(idx) + 1;
-            console.log('game :>> ', game);
-            console.log('dataGame[games] :>> ', dataGames[game]);
+            const iRow = parseInt(idx) + 2;
             if (weekInfo.hasOwnProperty(game)){
 
                 const info = weekInfo[game];
@@ -104,7 +102,6 @@ function initTable(userData,dataWinners,dataGames,week) {
         tableBody.append(row);
         cnt++
     }
-    console.log('winner', winner)
     if (winner.points != 0) for (let w of winner.user) document.getElementById(w).style.background = colorW;
     const userRow = document.getElementById(uid);
     if (userRow) userRow.style.fontWeight = 600;
@@ -121,6 +118,51 @@ function displayTBR(data) {
     }
 }
 
+const holder = () => {
+    const b = document.createElement('th');
+    b.textContent = 'holder';
+    b.style.color = 'white';
+    return b
+}
+
+function th(data){
+    console.log('data :>> ', data);
+    const rowGames = document.getElementById('rowGames');
+    const rowDates = document.getElementById('rowDates');
+    while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);
+    while (rowDates.firstChild) rowDates.removeChild(rowDates.firstChild);
+
+    rowGames.append(holder());//appending html el removes el from prev loc
+    rowDates.append(holder());
+    rowDates.append(holder());
+    rowDates.append(holder());
+
+
+    const cellp = document.createElement('th')
+    cellp.textContent = 'Current Points'
+    const c = document.createElement('th')
+    c.textContent = 'Potential Points'
+    rowGames.append(cellp)
+    rowGames.append(c)
+    
+
+    for (const [idx, game] of Object.entries(posmap)) {
+        if (data.hasOwnProperty(game)){
+            let cell = document.createElement('th');
+            cell.textContent = `${data[game]['away']} at ${data[game]['home']}`;
+            rowGames.append(cell);
+            let celld = document.createElement('td');
+            celld.style.color = 'blue';
+            celld.textContent = data[game]['humanDate'];
+            rowDates.append(celld);
+        }
+    }
+    console.log('rowGames :>> ', rowGames);
+    const tbcell = document.createElement('td');
+    tbcell.id = 'tb_res';
+    rowDates.append(tbcell);
+}
+
 const posmap = {
     1:"game1",
     2:"game2",
@@ -135,7 +177,7 @@ const posmap = {
     11:"game11",
     12:"game12",
     13:"game13",
-    14:"game14",
+    14:"game14"
 }
 
 const uid = localStorage.uid;
@@ -147,9 +189,8 @@ let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 
 let weekEl = document.getElementById('selected-week');
-let week = 'week4'
-console.log('winnerData :>> ', winnerData[week]);
-console.log('dataGames :>> ', dataGames);
+let week = 'week5'
+
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
     displayTBR(winnerData[week]);
@@ -166,7 +207,7 @@ weeks.forEach(w => {
         while (table.firstChild){
             table.removeChild(table.firstChild);
         }
-        if (['week1','week2','week3','week4'].includes(week)){
+        if (['week1','week2','week3','week4','week5'].includes(week)){
             initTable(userData,winnerData[week],dataGames[week],week);
             displayTBR(winnerData[week]);
         }

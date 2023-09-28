@@ -332,5 +332,84 @@
             "time": 1695511800,
             "humanDate":"Sep 23, 6:30"
         }
-}
+    },
+    "week5":{
+        "game1":{
+            "home":"Oregon St",
+            "away": "Utah",
+            "time": 1696035600,
+            "humanDate":"Sep 29, 8:00"
+        },
+        "game2":{
+            "home":"BYU",
+            "away": "Cincinnati",
+            "time": 1696040100,
+            "humanDate":"Sep 29, 9:15"
+        },
+        "game3":{
+            "home":"Kentucky",
+            "away": "Florida",
+            "time": 1696089600,
+            "humanDate":"Sep 30, 11:00"
+        },
+        "game4":{
+            "home":"Arkansas",
+            "away": "A&M",
+            "time": 1696089600,
+            "humanDate":"Sep 30, 11:00"
+        },
+        "game5":{
+            "home":"Aurburn",
+            "away": "Georiga",
+            "time": 1696102200,
+            "humanDate":"Sep 30, 2:30"
+        },
+        "game6":{
+            "home":"Texas",
+            "away": "Kansas",
+            "time": 1696102200,
+            "humanDate":"Sep 30, 2:30"
+        },
+        "game7":{
+            "home":"Texas Tech",
+            "away": "Houston",
+            "time": 1696102200,
+            "humanDate":"Sep 30, 2:30"
+        },
+        "game8":{
+            "home":"UCF",
+            "away": "Baylor",
+            "time": 1696102200,
+            "humanDate":"Sep 30, 2:30"
+        },
+        "game9":{
+            "home":"Ole Miss",
+            "away": "LSU",
+            "time": 1696111200,
+            "humanDate":"Sep 30, 5:00"
+        },
+        "game10":{
+            "home":"Tennesse",
+            "away": "South Carolina",
+            "time": 1696116600,
+            "humanDate":"Sep 30, 6:30"
+        },
+        "game11":{
+            "home":"TCU",
+            "away": "West Virginia",
+            "time": 1696118400,
+            "humanDate":"Sep 30, 7:00"
+        },
+        "game12":{
+            "home":"Miss St",
+            "away": "Alabama",
+            "time": 1696122000,
+            "humanDate":"Sep 30, 8:00"
+        },
+        "tiebreaker":{
+            "home": "How many total yards for UT?",
+            "time": 1696102200,
+            "humanDate":"Sep 30, 2:30"
+        }
+    }
 }

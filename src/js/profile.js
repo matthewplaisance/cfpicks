@@ -147,7 +147,7 @@ function createCard(data,game,wrapper,gn){
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
     if (data.hasOwnProperty("away")){
-        for (let i = 1; i <= 14; i++) {
+        for (let i = 1; i <= 12; i++) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
