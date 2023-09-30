@@ -33,6 +33,7 @@ function initTable(userData,dataWinners,dataGames,week) {
     for (let user in userData) {
         if (user == "IWBJNJ2Zd2OEIndMcKgXpRfRF3C3") continue;
         let points = 0;
+        let pp = 0;
         let weekInfo = userData[user][week];
         if (!weekInfo) weekInfo = {};
 
@@ -41,16 +42,22 @@ function initTable(userData,dataWinners,dataGames,week) {
         cell.textContent = userData[user]['name']
         cell.id = user
         row.append(cell)
+
         let cellp = document.createElement('td');
         cellp.textContent = points;
         cellp.id = `${user}_points`
+        let cpp = document.createElement('td');
+        cpp.textContent = points;
+        cpp.id = `${user}_ppoints`
         row.append(cellp);
+        row.append(cpp);
+
        
-        for (let i = 1; i < 10; i++){
+        for (let i = 1; i < 13; i++){
             let cell = document.createElement('td');
             cell.id = posmap[i];
             row.append(cell);
-        }
+        }   
 
         for (const [idx, game] of Object.entries(posmap)) {
             const iRow = parseInt(idx) + 2;
@@ -59,10 +66,13 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[game];
                 if (info){
                     if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                    else pp += parseInt(info.points);
+
                     if (dataWinners.hasOwnProperty(game)) {
                         if (dataWinners[game] == info.pick) {
                             row.cells[iRow].style.background = colorW;
                             points += parseInt(info.points);
+                            pp += parseInt(info.points);
                         }
                     }
                 }else {
@@ -99,6 +109,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         }
         row.append(cellt)
         cellp.textContent = points;
+        cpp.textContent = pp;
         tableBody.append(row);
         cnt++
     }
@@ -152,14 +163,18 @@ function th(data){
             cell.textContent = `${data[game]['away']} at ${data[game]['home']}`;
             rowGames.append(cell);
             let celld = document.createElement('td');
-            celld.style.color = 'blue';
+            celld.style.color = '#1fc4ed';
             celld.textContent = data[game]['humanDate'];
             rowDates.append(celld);
         }
     }
-    console.log('rowGames :>> ', rowGames);
+    const tbc = document.createElement('td');
+    tbc.style.color = '#1991EB';
+    tbc.textContent = data['tiebreaker']['home'];
     const tbcell = document.createElement('td');
     tbcell.id = 'tb_res';
+
+    rowGames.append(tbc);
     rowDates.append(tbcell);
 }
 
