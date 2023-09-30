@@ -66,15 +66,15 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[game];
                 if (info){
                     if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
-                    else pp += parseInt(info.points);
+                    
 
                     if (dataWinners.hasOwnProperty(game)) {
                         if (dataWinners[game] == info.pick) {
                             row.cells[iRow].style.background = colorW;
                             points += parseInt(info.points);
-                            pp += parseInt(info.points);
                         }
                     }
+                    if (dataWinners[game] == "" || dataWinners[game] == info.pick)pp += parseInt(info.points);;
                 }else {
                     if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
                 }
