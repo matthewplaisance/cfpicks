@@ -29,7 +29,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         'tb':0
     };
     let cnt = 0;
-    console.log('dataGames :>> ', dataGames);
+
     for (let user in userData) {
         if (user == "IWBJNJ2Zd2OEIndMcKgXpRfRF3C3") continue;
         let points = 0;
@@ -38,26 +38,14 @@ function initTable(userData,dataWinners,dataGames,week) {
         if (!weekInfo) weekInfo = {};
 
         let row = document.createElement('tr')
-        let cell = document.createElement('td');
-        cell.textContent = userData[user]['name']
-        cell.id = user
-        row.append(cell)
+        row.append(cell(user,userData[user]['name']))
 
-        let cellp = document.createElement('td');
-        cellp.textContent = points;
-        cellp.id = `${user}_points`
-        let cpp = document.createElement('td');
-        cpp.textContent = points;
-        cpp.id = `${user}_ppoints`
+        let cellp = cell(`${user}_points`,points)
+        let cpp = cell(`${user}_ppoints`,points)
         row.append(cellp);
         row.append(cpp);
 
-       
-        for (let i = 1; i < 13; i++){
-            let cell = document.createElement('td');
-            cell.id = posmap[i];
-            row.append(cell);
-        }   
+        for (let i = 1; i < Object.keys(dataGames).length + 1; i++) row.append(cell(posmap[i]));  
 
         for (const [idx, game] of Object.entries(posmap)) {
             const iRow = parseInt(idx) + 2;
@@ -66,7 +54,6 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[game];
                 if (info){
                     if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
-                    
 
                     if (dataWinners.hasOwnProperty(game)) {
                         if (dataWinners[game] == info.pick) {
@@ -129,13 +116,6 @@ function displayTBR(data) {
     }
 }
 
-const holder = () => {
-    const b = document.createElement('th');
-    b.textContent = 'holder';
-    b.style.color = 'white';
-    return b
-}
-
 function th(data){
     console.log('data :>> ', data);
     const rowGames = document.getElementById('rowGames');
@@ -168,7 +148,7 @@ function th(data){
             rowDates.append(celld);
         }
     }
-    const tbc = document.createElement('td');
+    const tbc = document.createElement('th');
     tbc.style.color = '#1991EB';
     tbc.textContent = data['tiebreaker']['home'];
     const tbcell = document.createElement('td');
@@ -176,6 +156,20 @@ function th(data){
 
     rowGames.append(tbc);
     rowDates.append(tbcell);
+}
+
+const holder = () => {
+    const b = document.createElement('th');
+    b.textContent = 'holder';
+    b.style.color = 'white';
+    return b
+}
+
+const cell = (id,textContent=null,type='td') => {
+    const cell = document.createElement(type);
+    cell.id = id;
+    cell.textContent = textContent;
+    return cell
 }
 
 const posmap = {
@@ -204,7 +198,7 @@ let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 
 let weekEl = document.getElementById('selected-week');
-let week = 'week5'
+let week = 'week6'
 
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
@@ -222,10 +216,11 @@ weeks.forEach(w => {
         while (table.firstChild){
             table.removeChild(table.firstChild);
         }
-        if (['week1','week2','week3','week4','week5'].includes(week)){
+        if (Object.keys(dataGames).includes(week)){
             initTable(userData,winnerData[week],dataGames[week],week);
             displayTBR(winnerData[week]);
         }
+        if (week == "season") displaySeason();
     })
 })
 

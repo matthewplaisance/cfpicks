@@ -77,7 +77,7 @@
             "humanDate":"Sep 2, 6:30"
         },
         "tiebreaker":{
-            "home": "How many points will Colorado score against TCU?",
+            "home": "Colorado points scored?",
             "time": 1693670400,
             "humanDate":"Sep 2, 11:00am"
         }
@@ -160,7 +160,7 @@
             "humanDate":"Sep 9, 9:30"
         },
         "tiebreaker":{
-            "home": "How many total yards will UT get?",
+            "home": "UT Total Yards?",
             "time": 1694300400,
             "humanDate":"Sep 9, 6:00"
         }
@@ -237,7 +237,7 @@
                 "humanDate":"Sep 9, 9:30"
             },
             "tiebreaker":{
-                "home": "How many total yards will UT get?",
+                "home": "UT Total Yards?",
                 "time": 1694908800,
                 "humanDate":"Sep 16, 7:00"
             }
@@ -328,7 +328,7 @@
             "humanDate":"Sep 23, 6:30"
         },
         "tiebreaker":{
-            "home": "How many passing yards will UT get?",
+            "home": "UT Passing Yards?",
             "time": 1695511800,
             "humanDate":"Sep 23, 6:30"
         }
@@ -407,9 +407,88 @@
             "humanDate":"Sep 30, 8:00"
         },
         "tiebreaker":{
-            "home": "How many total yards for UT?",
+            "home": "UT Total Yards?",
             "time": 1696102200,
             "humanDate":"Sep 30, 2:30"
+        }
+    },
+    "week6":{
+        "game1":{
+            "home":"Oklahoma St",
+            "away": "Kansas St",
+            "time": 1696635000,
+            "humanDate":"Oct 6, 6:30"
+        },
+        "game2":{
+            "home":"Ohio St",
+            "away": "Maryland",
+            "time": 1696694400,
+            "humanDate":"Oct 7, 11:00"
+        },
+        "game3":{
+            "home":"Texas",
+            "away": "OU",
+            "time": 1696694400,
+            "humanDate":"Oct 7, 11:00"
+        },
+        "game4":{
+            "home":"Missouri",
+            "away": "LSU",
+            "time": 1696694400,
+            "humanDate":"Oct 7, 11:00"
+        },
+        "game5":{
+            "home":"Washington St",
+            "away": "UCLA",
+            "time": 1696705200,
+            "humanDate":"Oct 7, 2:00"
+        },
+        "game6":{
+            "home":"A&M",
+            "away": "Alabama",
+            "time": 1696707000,
+            "humanDate":"Oct 7, 2:30"
+        },
+        "game7":{
+            "home":"Kansas",
+            "away": "UCF",
+            "time": 1696708800,
+            "humanDate":"Oct 7, 3:00"
+        },
+        "game8":{
+            "home":"Georgia",
+            "away": "Kentucky",
+            "time": 1696719600,
+            "humanDate":"Oct 7, 6:00"
+        },
+        "game9":{
+            "home":"Louisville",
+            "away": "Notre Dame",
+            "time": 1696721400,
+            "humanDate":"Oct 7, 6:30"
+        },
+        "game10":{
+            "home":"Ole Miss",
+            "away": "Arkansasa",
+            "time": 1696721400,
+            "humanDate":"Oct 7, 6:30"
+        },
+        "game11":{
+            "home":"Baylor",
+            "away": "Texas Tech",
+            "time": 1696723200,
+            "humanDate":"Oct 7, 7:00"
+        },
+        "game12":{
+            "home":"Iowa St",
+            "away": "TCU",
+            "time": 1696723200,
+            "humanDate":"Oct 7, 7:00"
+        },
+        "tiebreaker":{
+            "home": "UT Passing Yards?",
+            "time": 1696694400,
+            "humanDate":"Oct 7, 11:00"
         }
     }
 }
