@@ -196,7 +196,7 @@ const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
-
+//work
 let weekEl = document.getElementById('selected-week');
 let week = 'week7'
 
