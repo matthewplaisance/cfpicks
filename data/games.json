@@ -575,5 +575,91 @@
             "time": 1697281200,
             "humanDate":"Oct 14 11:00"
         }
+    },
+    "week8":{
+        "game1":{
+            "away": "Penn St",
+            "home": "Ohio St",
+            "time": 1697904000,
+            "humanDate": "Oct 21 11:00"
+        },
+        "game2":{
+            "away": "Miss St",
+            "home": "Arkansas",
+            "time": 1697904000,
+            "humanDate": "Oct 21 11:00"
+        },
+        "game3":{
+            "away": "Baylor",
+            "home": "Cinnicinati",
+            "time": 1697904000,
+            "humanDate": "Oct 21 11:00"
+        },
+        "game4":{
+            "away": "Tennessee",
+            "home": "Alabama",
+            "time": 1697916600,
+            "humanDate": "Oct 21 2:30"
+        },
+        "game5":{
+            "away": "Washington St",
+            "home": "Oregon",
+            "time": 1697916600,
+            "humanDate": "Oct 21 2:30"
+        },
+        "game6":{
+            "away": "S Carolina",
+            "home": "Missouri",
+            "time": 1697916600,
+            "humanDate": "Oct 21 2:30"
+        },
+        "game7":{
+            "away": "Oklahoma St",
+            "home": "West Virgina",
+            "time": 1697916600,
+            "humanDate": "Oct 21 2:30"
+        },
+        "game8":{
+            "away": "Texas",
+            "home": "Houston",
+            "time": 1697918400,
+            "humanDate": "Oct 21 3:00"
+        },
+        "game9":{
+            "away": "Ole Miss",
+            "home": "Aurburn",
+            "time": 1697929200,
+            "humanDate": "Oct 21 6:00"
+        },
+        "game10":{
+            "away": "Texas Tech",
+            "home": "BYU",
+            "time": 1697929200,
+            "humanDate": "Oct 21 6:00"
+        },
+        "game11":{
+            "away": "TCU",
+            "home": "Kansas St",
+            "time": 1697929200,
+            "humanDate": "Oct 21 6:00"
+        },
+        "game12":{
+            "away": "Utah",
+            "home": "USC",
+            "time": 1697932800,
+            "humanDate": "Oct 21 7:00"
+        },
+        "game13":{
+            "away": "Clemson",
+            "home": "Miami",
+            "time": 1697932800,
+            "humanDate": "Oct 21 7:00"
+        },
+        "tiebreaker":{
+            "home": "UT Total Yards?",
+            "time": 1697918400,
+            "humanDate": "Oct 21 3:00"
+        }
     }
+
 }

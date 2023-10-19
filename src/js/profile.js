@@ -3,7 +3,7 @@ import {onAuthStateChangedFb, logoutFb} from './auth'
 import { json } from 'd3';
 
 
-function submit(week, picks){
+async function submit(week, picks){
     const msgEl = document.getElementById('err_msg')
     const unixNow = Math.floor(new Date().getTime() / 1000);
     console.log('picks :>> ', picks);
@@ -19,38 +19,33 @@ function submit(week, picks){
             return;
         }
     }
-    let deleted = [];
-    const times = document.querySelectorAll('.time');
-
-    times.forEach(time => {
-        const game = time.parentElement.id;
-        if (time.id < unixNow) {
-            delete picks[game]
-            deleted.push(picks[game])
-        }
-    })
-
+    
     try{
+        msgEl.innerText = 'Submitting...';
+        msgEl.style.color = 'black';
         for (let game in picks) {
             const info = picks[game];
-            
-            set(ref(db, `users/${uid}/${week}/${game}`), {
+            try {
+              await set(ref(db, `users/${uid}/${week}/${game}`), {
                 "pick": info["pick"],
                 "points": String(info["points"])
-            });
+              });
+              console.log('set :>> ', info);
+            } catch (error) {
+                console.log('error :>> ', error);
+                msgEl.innerText = `FB Err: ${error}`;
+                msgEl.style.color = 'red';
+            }
         }
-        set(ref(db, `users/${uid}/name`),localStorage.displayName);
-
         msgEl.innerText = 'Submitted!';
         msgEl.style.color = 'green';
-        //if (deleted.length != 0){
-        //    const ps = deleted.join(",");
-        //    msgEl.innerText += ` But, picks for ${ps} are past kick off time.`
-        //}
+        
     }catch (err) {
+        console.log('err :>> ', err);
         msgEl.innerText = `FB Err: ${err}`;
         msgEl.style.color = 'red';
     }
+    
 }
 
 function setup(data) {
