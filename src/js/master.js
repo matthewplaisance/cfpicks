@@ -1,6 +1,6 @@
 import { getDatabase, ref, onValue } from 'firebase/database'
 import {onAuthStateChangedFb} from './auth'
-import { json } from 'd3';
+import { json, select } from 'd3';
 
 onAuthStateChangedFb();
 
@@ -65,7 +65,6 @@ function initTable(userData,dataWinners,dataGames,week) {
                 }else {
                     if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
                 }
-                
             }
             
         }
@@ -114,6 +113,33 @@ function displayTBR(data) {
             tbr_th.style.background = colorW;
         }
     }
+}
+
+function displaySeason(data){
+    console.log('data :>> ', data);
+    const rowGames = document.getElementById('rowGames');
+    const rowDates = document.getElementById('rowDates');
+    while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);
+    while (rowDates.firstChild) rowDates.removeChild(rowDates.firstChild);
+    rowGames.append(holder());
+
+    const c = document.createElement('th')
+    c.textContent = 'Season Points'
+    rowGames.append(c)
+    let tableBody = document.getElementById('tbody');
+    data.forEach(user => {
+        let row = document.createElement('tr');
+        let nameCell = cell(user, user['name']);
+        let pointsCell = cell(user, user['points']);
+
+        nameCell.style.cssText = 'width: 100px;'; 
+        pointsCell.style.cssText = 'width: 100px;'; 
+
+        row.append(nameCell);
+        row.append(pointsCell);
+
+        tableBody.append(row);
+    })
 }
 
 function th(data){
@@ -172,6 +198,39 @@ const cell = (id,textContent=null,type='td') => {
     return cell
 }
 
+function redirect(key){
+
+}
+function z(userData,results){
+    let res = {}
+    for (let user in userData){
+        res[user] = {'name':userData[user]['name'],'points':0};
+        for (let week in userData[user]){
+            const weekData = userData[user][week] 
+            if (typeof weekData == 'object' && weekData !== null){
+                for (let game in weekData){
+                    if (weekData[game].pick == results[week][game]){
+                        res[user].points += parseInt(weekData[game].points)
+                    }
+                }
+            }
+        }
+    }
+    console.log('res :>> ', res);
+    const dataArray = Object.entries(res).map(([key, value]) => ({ key, ...value }));
+
+    // Sort the array by 'points' in descending order
+    dataArray.sort((a, b) => b.points - a.points);
+
+    // Create a new object from the sorted array
+    console.log('dataArray :>> ', dataArray);
+    const sortedData = {};
+    dataArray.forEach((item) => {
+    sortedData[item.key] = item;
+    });
+    console.log('sortedData :>> ', sortedData);
+}
+
 const posmap = {
     1:"game1",
     2:"game2",
@@ -196,10 +255,11 @@ const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
-//work
-let weekEl = document.getElementById('selected-week');
-let week = 'week8'
+const seasonData = await json('../data/season.json');
 
+let weekEl = document.getElementById('selected-week');
+let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
+z(userData,winnerData)
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
     displayTBR(winnerData[week]);
@@ -220,7 +280,22 @@ weeks.forEach(w => {
             initTable(userData,winnerData[week],dataGames[week],week);
             displayTBR(winnerData[week]);
         }
-        if (week == "season") displaySeason();
+        if (week == "season") displaySeason(seasonData);
     })
 })
 
+select("#weekSelect").on("change", () => {
+    let week = select("#weekSelect").node().value;
+    weekEl.textContent = week
+    week = week.replace(' ','').toLocaleLowerCase()
+    const table = document.getElementById('tbody');
+    
+    while (table.firstChild){
+        table.removeChild(table.firstChild);
+    }
+    if (Object.keys(dataGames).includes(week)){
+        initTable(userData,winnerData[week],dataGames[week],week);
+        displayTBR(winnerData[week]);
+    }
+    if (week == "season") displaySeason(seasonData);
+});

@@ -1,0 +1,86 @@
+[
+    {
+        "away": "OU",
+        "home": "Kansas",
+        "time": 1698508800,
+        "humanDate": "Oct 28 11:00"
+    },
+    {
+        "away": "S Carolina",
+        "home": "A&M",
+        "time": 1698508800,
+        "humanDate": "Oct 28 11:00"
+    },
+    {
+        "away": "Houston",
+        "home": "Kansas St",
+        "time": 1698508800,
+        "humanDate": "Oct 28 11:00"
+    },
+    {
+        "away": "W Virginia",
+        "home": "UCF",
+        "time": 1698508800,
+        "humanDate": "Oct 28 11:00"
+    },
+    {
+        "away": "Georgia",
+        "home": "Florida",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "BYU",
+        "home": "Texas",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "Oregon",
+        "home": "Utah",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "Duke",
+        "home": "Louisville",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "Miss St",
+        "home": "Auburn",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "Iowa St",
+        "home": "Baylor",
+        "time": 1698521400,
+        "humanDate": "Oct 28 14:30"
+    },
+    {
+        "away": "Tennessee",
+        "home": "Kentucky",
+        "time": 1698534000,
+        "humanDate": "Oct 28 18:00"
+    },
+    {
+        "away": "Ohio St",
+        "home": "Wisconsin",
+        "time": 1698535800,
+        "humanDate": "Oct 28 18:30"
+    },
+    {
+        "away": "Cincinnati",
+        "home": "Oklahoma St",
+        "time": 1698537600,
+        "humanDate": "Oct 28 19:00"
+    },
+    {
+        "away": "Oregon St",
+        "home": "Arizona",
+        "time": 1698546600,
+        "humanDate": "Oct 28 21:30"
+    }
+]
