@@ -282,6 +282,7 @@ weeks.forEach(w => {
 
 select("#weekSelect").on("change", () => {
     let week = select("#weekSelect").node().value;
+    if (week == 'default') week = "Week 10";
     weekEl.textContent = week
     week = week.replace(' ','').toLocaleLowerCase()
     const table = document.getElementById('tbody');
