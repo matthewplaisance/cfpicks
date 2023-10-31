@@ -127,12 +127,13 @@ function displaySeason(data){
     c.textContent = 'Season Points'
     rowGames.append(c)
     let tableBody = document.getElementById('tbody');
-    data.forEach(user => {
+    const podium = ['#FCCB00','#D4D8DC','#B1860F']
+
+    data.forEach((user,idx) => {
         let row = document.createElement('tr');
         let nameCell = cell(user, user['name']);
         let pointsCell = cell(user, user['points']);
-
-        nameCell.style.cssText = 'width: 100px;'; 
+        if (idx < podium.length) nameCell.style.cssText = `color:${podium[idx]};`; 
         pointsCell.style.cssText = 'width: 100px;'; 
 
         row.append(nameCell);
@@ -198,9 +199,6 @@ const cell = (id,textContent=null,type='td') => {
     return cell
 }
 
-function redirect(key){
-
-}
 function z(userData,results){
     let res = {}
     for (let user in userData){
@@ -219,10 +217,8 @@ function z(userData,results){
     console.log('res :>> ', res);
     const dataArray = Object.entries(res).map(([key, value]) => ({ key, ...value }));
 
-    // Sort the array by 'points' in descending order
     dataArray.sort((a, b) => b.points - a.points);
 
-    // Create a new object from the sorted array
     console.log('dataArray :>> ', dataArray);
     const sortedData = {};
     dataArray.forEach((item) => {
