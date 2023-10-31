@@ -739,5 +739,96 @@
             "time": 1698521400,
             "humanDate": "Oct 28 14:30"
         }
+    },
+    "week10": {
+            "game1": {
+                "away": "TCU",
+                "home": "Texas Tech",
+                "time": 1698966000,
+                "humanDate": "Nov 02 18:00"
+            },
+            "game2": {
+                "away": "Kansas St",
+                "home": "Texas",
+                "time": 1699113600,
+                "humanDate": "Nov 04 11:00"
+            },
+            "game3": {
+                "away": "A&M",
+                "home": "Ole Miss",
+                "time": 1699113600,
+                "humanDate": "Nov 04 11:00"
+            },
+            "game4": {
+                "away": "Notre Dame",
+                "home": "Clemson",
+                "time": 1699113600,
+                "humanDate": "Nov 04 11:00"
+            },
+            "game5": {
+                "away": "Arkansas",
+                "home": "Florida",
+                "time": 1699113600,
+                "humanDate": "Nov 04 11:00"
+            },
+            "game6": {
+                "away": "Missouri",
+                "home": "Georgia",
+                "time": 1699126200,
+                "humanDate": "Nov 04 14:30"
+            },
+            "game7": {
+                "away": "OU",
+                "home": "Oklahoma St",
+                "time": 1699126200,
+                "humanDate": "Nov 04 14:30"
+            },
+            "game8": {
+                "away": "Houston",
+                "home": "Baylor",
+                "time": 1699126200,
+                "humanDate": "Nov 04 14:30"
+            },
+            "game9": {
+                "away": "Kansas",
+                "home": "Iowa St",
+                "time": 1699138800,
+                "humanDate": "Nov 04 18:00"
+            },
+            "game10": {
+                "away": "BYU",
+                "home": "West Virginia",
+                "time": 1699138800,
+                "humanDate": "Nov 04 18:00"
+            },
+            "game11": {
+                "away": "Washington",
+                "home": "USC",
+                "time": 1699140600,
+                "humanDate": "Nov 04 18:30"
+            },
+            "game12": {
+                "away": "Kentucky",
+                "home": "Miss St",
+                "time": 1699140600,
+                "humanDate": "Nov 04 18:30"
+            },
+            "game13": {
+                "away": "LSU",
+                "home": "Alabama",
+                "time": 1699141500,
+                "humanDate": "Nov 04 18:45"
+            },
+            "game14": {
+                "away": "UCLA",
+                "home": "Arizona",
+                "time": 1699151400,
+                "humanDate": "Nov 04 21:30"
+            },
+            "tiebreaker": {
+                "home": "Jonathon Brooks rushing yards?",
+                "time": 1699113600,
+                "humanDate": "Nov 04 11:00"
+            }
     }
 }

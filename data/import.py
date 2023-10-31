@@ -1,6 +1,8 @@
 import pandas as pd
 from datetime import datetime
 import pytz
+import json
+
 cdt = pytz.timezone('America/Chicago')
 df = pd.read_excel('data\import.xlsx')
 
@@ -9,10 +11,18 @@ df['time'] = df['date'].apply(lambda x: int(cdt.localize(x).astimezone(pytz.utc)
 df['away'] = df['away'].str.title()
 df['home'] = df['home'].str.title()
 
-print(df)
-
-# Parse the string into a datetime object
+df['game'] = [f'game{idx + 1}' for idx in df.index]
 
 df['humanDate'] = df['date'].apply(lambda x: x.strftime("%b %d %H:%M"))
 print(df)
-df.drop(['date'],axis=1).to_json('data/imports.json',orient='records')
+df = df.drop(['date','Unnamed: 1'],axis=1)
+#df.drop(['date'],axis=1).to_json('data/imports.json',orient='records')
+data = df.to_dict(orient='records')
+print(data)
+res = {}
+for obj in data:
+    game = obj['game']
+    del obj['game']
+    res[game] = obj
+
+with open("data/imports.json","w") as f: json.dump(res,f)
