@@ -830,5 +830,97 @@
                 "time": 1699113600,
                 "humanDate": "Nov 04 11:00"
             }
+    },
+    "week11": {
+        "game1": {
+            "away": "Michigan",
+            "home": "Penn St",
+            "time": 1699722000,
+            "humanDate": "Nov 11 11:00"
+        },
+        "game2": {
+            "away": "Alabama",
+            "home": "Kentucky",
+            "time": 1699722000,
+            "humanDate": "Nov 11 11:00"
+        },
+        "game3": {
+            "away": "Texas Tech",
+            "home": "Kansas",
+            "time": 1699722000,
+            "humanDate": "Nov 11 11:00"
+        },
+        "game4": {
+            "away": "Miami",
+            "home": "Florida St",
+            "time": 1699732800,
+            "humanDate": "Nov 11 14:00"
+        },
+        "game5": {
+            "away": "Utah",
+            "home": "Washington",
+            "time": 1699732800,
+            "humanDate": "Nov 11 14:00"
+        },
+        "game6": {
+            "away": "Tennessee",
+            "home": "Missouri",
+            "time": 1699732800,
+            "humanDate": "Nov 11 14:00"
+        },
+        "game7": {
+            "away": "Oklahoma St",
+            "home": "UCF",
+            "time": 1699732800,
+            "humanDate": "Nov 11 14:00"
+        },
+        "game8": {
+            "away": "Auburn",
+            "home": "Arkansas",
+            "time": 1699736400,
+            "humanDate": "Nov 11 15:00"
+        },
+        "game9": {
+            "away": "Ole Miss",
+            "home": "Georgia",
+            "time": 1699747200,
+            "humanDate": "Nov 11 18:00"
+        },
+        "game10": {
+            "away": "West Virginia",
+            "home": "OU",
+            "time": 1699747200,
+            "humanDate": "Nov 11 18:00"
+        },
+        "game11": {
+            "away": "Cinncinnati",
+            "home": "Houston",
+            "time": 1699747200,
+            "humanDate": "Nov 11 18:00"
+        },
+        "game12": {
+            "away": "Texas",
+            "home": "TCU",
+            "time": 1699749000,
+            "humanDate": "Nov 11 18:30"
+        },
+        "game13": {
+            "away": "Florida",
+            "home": "LSU",
+            "time": 1699749000,
+            "humanDate": "Nov 11 18:30"
+        },
+        "game14": {
+            "away": "USC",
+            "home": "Oregon",
+            "time": 1699758000,
+            "humanDate": "Nov 11 21:00"
+        },
+        "tiebreaker": {
+            "home": "UT Total Yards?",
+            "time": 1699749000,
+            "humanDate": "Nov 11 18:30"
+            
+        }
     }
 }
