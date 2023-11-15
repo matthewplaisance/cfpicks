@@ -222,7 +222,7 @@ function z(userData,results){
     console.log('dataArray :>> ', dataArray);
     const sortedData = {};
     dataArray.forEach((item) => {
-    sortedData[item.key] = item;
+        sortedData[item.key] = item;
     });
     console.log('sortedData :>> ', sortedData);
 }

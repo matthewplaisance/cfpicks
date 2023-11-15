@@ -922,5 +922,97 @@
             "humanDate": "Nov 11 18:30"
             
         }
+    },
+    "week12":{
+        "game1": {
+            "away": "Colorado",
+            "home": "Washington St",
+            "time": 1700278200,
+            "humanDate": "Nov 17 21:30"
+        },
+        "game2": {
+            "away": "Louisville",
+            "home": "Miami",
+            "time": 1700326800,
+            "humanDate": "Nov 18 11:00"
+        },
+        "game3": {
+            "away": "Utah",
+            "home": "Arizona",
+            "time": 1700335800,
+            "humanDate": "Nov 18 13:30"
+        },
+        "game4": {
+            "away": "Georiga ",
+            "home": "Tennessee",
+            "time": 1700339400,
+            "humanDate": "Nov 18 14:30"
+        },
+        "game5": {
+            "away": "North Carolina",
+            "home": "Clemson",
+            "time": 1700339400,
+            "humanDate": "Nov 18 14:30"
+        },
+        "game6": {
+            "away": "UCLA",
+            "home": "USC",
+            "time": 1700339400,
+            "humanDate": "Nov 18 14:30"
+        },
+        "game7": {
+            "away": "Baylor",
+            "home": "TCU",
+            "time": 1700339400,
+            "humanDate": "Nov 18 14:30"
+        },
+        "game8": {
+            "away": "Oklahoma St",
+            "home": "Houston",
+            "time": 1700341200,
+            "humanDate": "Nov 18 15:00"
+        },
+        "game9": {
+            "away": " UCF",
+            "home": "Texas Tech",
+            "time": 1700344800,
+            "humanDate": "Nov 18 16:00"
+        },
+        "game10": {
+            "away": "Kansas",
+            "home": "Kansas St",
+            "time": 1700352000,
+            "humanDate": "Nov 18 18:00"
+        },
+        "game11": {
+            "away": "Washington",
+            "home": "Oregon St",
+            "time": 1700353800,
+            "humanDate": "Nov 18 18:30"
+        },
+        "game12": {
+            "away": "Florida",
+            "home": "Missouri",
+            "time": 1700353800,
+            "humanDate": "Nov 18 18:30"
+        },
+        "game13": {
+            "away": "Kentucky",
+            "home": "S Carolina",
+            "time": 1700353800,
+            "humanDate": "Nov 18 18:30"
+        },
+        "game14": {
+            "away": "Texas ",
+            "home": "Iowa St",
+            "time": 1700355600,
+            "humanDate": "Nov 18 19:00"
+        },
+        "tiebreaker": {
+            "home": "Quinn Rushing Yards?",
+            "time": 1700355600,
+            "humanDate": "Nov 18 19:00"
+            
+        }
     }
 }

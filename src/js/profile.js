@@ -6,7 +6,6 @@ import { json } from 'd3';
 async function submit(week, picks){
     const msgEl = document.getElementById('err_msg')
     const unixNow = Math.floor(new Date().getTime() / 1000);
-    console.log('picks :>> ', picks);
     for (let p in picks){
         if (picks[p].points == 'null' || picks[p].points == null || picks[p].points == undefined){
             msgEl.innerText = `Select confidence points for ${p}.`;
@@ -30,9 +29,7 @@ async function submit(week, picks){
                 "pick": info["pick"],
                 "points": String(info["points"])
               });
-              console.log('set :>> ', info);
             } catch (error) {
-                console.log('error :>> ', error);
                 msgEl.innerText = `FB Err: ${error}`;
                 msgEl.style.color = 'red';
             }
@@ -41,7 +38,6 @@ async function submit(week, picks){
         msgEl.style.color = 'green';
         
     }catch (err) {
-        console.log('err :>> ', err);
         msgEl.innerText = `FB Err: ${err}`;
         msgEl.style.color = 'red';
     }
@@ -72,17 +68,13 @@ function setup(data) {
 
 async function fetchData() {
     let picks;
-    console.log('picks :>> ', picks);
     await new Promise((resolve, reject) => {
-        console.log('refer :>> ', refer);
         onValue(refer, (snapshot) => {
             const data = snapshot.val();
-            console.log('data :>> ', data);
             picks = data;
             resolve();
         });
     });
-    console.log("object");
     return picks;
 }
 
@@ -198,12 +190,15 @@ console.log('db :>> ', db);
 
 let userData = await fetchData();
 let picks = {};
+console.log('userData :>> ', userData);
+
 if (userData){
     if (userData.hasOwnProperty(week)) picks = userData[week];
     if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]   
 }
 
-const gameData = await json('../data/games.json')
+const gameData = await json('../data/games.json');
+console.log('gameData :>> ', gameData);
 let pointsPicked = [];
 for (let game in picks) pointsPicked.push(String(picks[game].points))
 
