@@ -255,7 +255,7 @@ const seasonData = await json('../data/season.json');
 
 let weekEl = document.getElementById('selected-week');
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
-z(userData,winnerData)
+//z(userData,winnerData)
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
     displayTBR(winnerData[week]);
