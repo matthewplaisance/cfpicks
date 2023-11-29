@@ -53,7 +53,8 @@ function initTable(userData,dataWinners,dataGames,week) {
 
                 const info = weekInfo[game];
                 if (info){
-                    if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                    //if (dataGames[game].time < unixNow) 
+                    row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
 
                     if (dataWinners.hasOwnProperty(game)) {
                         if (dataWinners[game] == info.pick) {
