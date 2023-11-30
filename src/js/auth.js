@@ -23,7 +23,7 @@ const onAuthStateChangedFb = () => {
             localStorage.uid = user.uid;
             const currPage = window.location.pathname.split("/").pop();
             if (currPage == 'index.html'){
-                window.location.href = './profile.html';
+                window.location.href = './cfp.html';
             }
         } else {
             const currPage = window.location.pathname.split("/").pop();

@@ -152,7 +152,7 @@ const init = () => {
   });
   btnChangePwd.addEventListener('click', changePwd);
   backBtn.addEventListener('click', () => {
-    window.location.href = './profile.html';
+    window.location.href = './cfp.html';
     sessionStorage.changePwd = false;
   });
 
