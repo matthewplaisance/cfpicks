@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-let htmlPageNames = ['profile','master'];
+let htmlPageNames = ['profile','master','cfp'];
 let allHtmlPlugs = htmlPageNames.map(page => {
   return new HtmlWebpackPlugin({
     template: `./src/pages/${page}.html`, 
@@ -19,10 +19,11 @@ module.exports = {
   entry: {
     main:'./src/js/index.js',
     profile: './src/js/profile.js',
-    master: './src/js/master.js'
+    master: './src/js/master.js',
+    cfp: './src/js/cfp.mjs'
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.mjs',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -54,7 +55,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+        
       },
+      
     ],
   },
 };

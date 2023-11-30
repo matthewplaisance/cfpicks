@@ -20,7 +20,7 @@ async function fetchData(refer) {
 }
 
 function initTable(userData,dataWinners,dataGames,week) {
-    th(dataGames)
+    th(dataGames);
     let unixNow = Math.floor(new Date().getTime() / 1000);
     let tableBody = document.getElementById('tbody');
     let winner = {
@@ -38,7 +38,7 @@ function initTable(userData,dataWinners,dataGames,week) {
         if (!weekInfo) weekInfo = {};
 
         let row = document.createElement('tr')
-        row.append(cell(user,userData[user]['name']))
+        row.append(cell(user,userData[user]['name'],'td',true))
 
         let cellp = cell(`${user}_points`,points)
         let cpp = cell(`${user}_ppoints`,points)
@@ -46,15 +46,20 @@ function initTable(userData,dataWinners,dataGames,week) {
         row.append(cpp);
 
         for (let i = 1; i < Object.keys(dataGames).length + 1; i++) row.append(cell(posmap[i]));  
-
+        if (week == 'week14'){
+            for (let i = 1;i<9;i++)row.append(cell(`rank${i}`))
+        }
         for (const [idx, game] of Object.entries(posmap)) {
+            const rank = `rank${idx-5}`
             const iRow = parseInt(idx) + 2;
             if (weekInfo.hasOwnProperty(game)){
-
                 const info = weekInfo[game];
                 if (info){
-                    //if (dataGames[game].time < unixNow) 
-                    row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                    if (info.hasOwnProperty("pick")){
+                        //if (dataGames[game].time < unixNow) 
+                        row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                        if (dataWinners[game] == "" || dataWinners[game] == info.pick)pp += parseInt(info.points);
+                    }
 
                     if (dataWinners.hasOwnProperty(game)) {
                         if (dataWinners[game] == info.pick) {
@@ -62,10 +67,21 @@ function initTable(userData,dataWinners,dataGames,week) {
                             points += parseInt(info.points);
                         }
                     }
-                    if (dataWinners[game] == "" || dataWinners[game] == info.pick)pp += parseInt(info.points);;
-                }else {
-                    if (dataGames[game].time < unixNow) row.cells[iRow].textContent = 'No pick';
                 }
+            }else if (weekInfo.hasOwnProperty(rank)){
+                const info = weekInfo[rank];
+                const p = 9 - (idx-5)
+                if (info.hasOwnProperty("pick")){
+                    //if (1701478800 < unixNow) 
+                    row.cells[iRow].textContent = info['pick'];
+                }
+                if (dataWinners.hasOwnProperty(rank)) {
+                    if (dataWinners[rank] == info.pick) {
+                        row.cells[iRow].style.background = colorW;
+                        points += p;
+                    }
+                }
+                if (dataWinners[rank] == "" || dataWinners[rank] == info.pick)pp += p;
             }
             
         }
@@ -117,7 +133,6 @@ function displayTBR(data) {
 }
 
 function displaySeason(data){
-    console.log('data :>> ', data);
     const rowGames = document.getElementById('rowGames');
     const rowDates = document.getElementById('rowDates');
     while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);
@@ -169,11 +184,21 @@ function th(data){
         if (data.hasOwnProperty(game)){
             let cell = document.createElement('th');
             cell.textContent = `${data[game]['away']} at ${data[game]['home']}`;
+            
             rowGames.append(cell);
             let celld = document.createElement('td');
             celld.style.color = '#1fc4ed';
             celld.textContent = data[game]['humanDate'];
             rowDates.append(celld);
+        }
+    }
+    if (week == 'week14'){
+        for (let i = 1; i < 9;i++){
+            let cell = document.createElement('th');
+            cell.textContent = i;
+            if (i == 1) cell.textContent = "Rankings: 1"
+            cell.style.fontWeight = 'bold;'
+            rowGames.append(cell);
         }
     }
     const tbc = document.createElement('th');
@@ -193,10 +218,16 @@ const holder = () => {
     return b
 }
 
-const cell = (id,textContent=null,type='td') => {
+const cell = (id,textContent=null,type='td',sticky=false) => {
+    
     const cell = document.createElement(type);
     cell.id = id;
     cell.textContent = textContent;
+    if (sticky) {
+        cell.classList.add('sticky-column');
+        cell.style.backgroundColor = '#f7faf8';
+    }
+
     return cell
 }
 
@@ -215,7 +246,6 @@ function z(userData,results){
             }
         }
     }
-    console.log('res :>> ', res);
     const dataArray = Object.entries(res).map(([key, value]) => ({ key, ...value }));
 
     dataArray.sort((a, b) => b.points - a.points);
@@ -246,7 +276,6 @@ const posmap = {
 }
 
 const uid = localStorage.uid;
-console.log('uid :>> ', uid);
 const colorW = '#C0FF00'
 const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
@@ -257,10 +286,16 @@ const seasonData = await json('../data/season.json');
 let weekEl = document.getElementById('selected-week');
 let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
 //z(userData,winnerData)
-if (dataGames) {
-    initTable(userData,winnerData[week],dataGames[week],week);
-    displayTBR(winnerData[week]);
+if (week == 'week14') {
+    console.log('userData :>> ', userData);
+    initTable(userData,winnerData[week],dataGames[week],week)
+}else {
+    if (dataGames) {
+        initTable(userData,winnerData[week],dataGames[week],week);
+        displayTBR(winnerData[week]);
+    }
 }
+
 
 const sidebar = document.getElementById('sidebar')
 const weeks = sidebar.querySelectorAll('.nav-link')

@@ -44,7 +44,7 @@ export const showLoginForm = () => {
 export const showApp = () => {
   const currPage = window.location.pathname.split("/").pop();
   if (currPage == 'index.html'){
-    window.location.href = './master.html';
+    window.location.href = './cfp.html';
   }
   }
 

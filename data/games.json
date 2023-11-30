@@ -1106,5 +1106,44 @@
             "humanDate": "Nov 24 18:30"
             
         }
+    },
+    "week14": {
+        "game1": {
+            "away": "Washington",
+            "home": "Oregon",
+            "time": 1701478800,
+            "humanDate": "Dec 1 7:00pm"
+        },
+        "game2": {
+            "away": "Texas",
+            "home": "OSU",
+            "time": 1701536400,
+            "humanDate": "Dec 2 11:00am"
+
+        },
+        "game3": {
+            "away": "Georgia",
+            "home": "Alabama",
+            "time": 1701550800,
+            "humanDate": "Dec 2 3:00pm"
+        },
+        "game4": {
+            "away": "Louisville",
+            "home": "Florida St",
+            "time": 1701565200,
+            "humanDate": "Dec 2 7:00pm"
+        },
+        "game5": {
+            "away": "Michigan",
+            "home": "Iowa",
+            "time": 1701565200,
+            "humanDate": "Dec 2 7:00pm"
+        },
+        "tiebreaker": {
+            "home": "Texas wins by how many points?",
+            "time": 1701536400,
+            "humanDate": "Dec 2 11:00am"
+            
+        }
     }
 }

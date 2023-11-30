@@ -8,6 +8,13 @@ body {
   height: 100%;
 }
 
+.sticky-column {
+  position: sticky;
+  left: 0;
+  background-color: #e8ebe9;
+  z-index: 1;
+}
+
 td,.date-holder > th {
   white-space: nowrap;
   overflow: hidden;
