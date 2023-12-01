@@ -76,10 +76,10 @@ function initTable(userData,dataWinners,dataGames,week) {
                 if (dataWinners.hasOwnProperty(rank)) {
                     if (dataWinners[rank] == info.pick) {
                         row.cells[iRow].style.background = colorW;
-                        points += p;
+                        points += 2;
                     }
                 }
-                if (dataWinners[rank] == "" || dataWinners[rank] == info.pick)pp += p;
+                if (dataWinners[rank] == "" || dataWinners[rank] == info.pick)pp += 2;
             }
             
         }
