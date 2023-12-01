@@ -2,13 +2,15 @@ import { getDatabase, ref, set, onValue } from 'firebase/database'
 import {onAuthStateChangedFb, logoutFb} from './auth.js'
 import { json } from 'd3';
 
+//Elements
 const teams = document.querySelectorAll('[team-id]');
 const cpMenus = document.querySelectorAll('select[game-id]');
 const rankingMenus = document.querySelectorAll('[rank-id]');
 const tbInput = document.getElementById('tie-breaker');
 const errorMessage = document.getElementById('error-message');
  
-//1701478800
+
+//main
 const matches = {1:['Oregon','Washington',1701478800],
                 2:['OSU','Texas',1701536400],
                 3:['Alabama','Georgia',1701550800],
@@ -34,7 +36,6 @@ let rankings = {
     8:null,
 }
 
-//main
 onAuthStateChangedFb();
 const uid = localStorage.uid;
 const db = getDatabase();
@@ -46,8 +47,10 @@ if (userData){
     if (userData.hasOwnProperty(week)) setupUI(userData[week]);
     if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]   
 }
+//
 
-//Event Listeners
+
+//Listeners
 $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
 });
@@ -55,6 +58,7 @@ $(document).ready(function () {
 document.getElementById('submit-button').addEventListener('click',() => {
     submitData();
 });
+
 document.getElementById("logout-button").addEventListener('click', logoutFb);
 
 teams.forEach(team => {
@@ -73,8 +77,8 @@ cpMenus.forEach(cpMenu => {
 
         if (unixNow > startTime) {
             cpMenu.value = original;
-            errorMessageTop.textContent = 'Game has already started';
-            errorMessageTop.style.color = 'red';
+            errorMessage.textContent = 'Game has already started';
+            errorMessage.style.color = 'red';
         }else {
             selected[game]['cp'] = cpMenu.value;
             original = cpMenu.value;
@@ -90,6 +94,7 @@ rankingMenus.forEach(menu => {
         rankings[rank] = menu.value
     })
 })
+
 
 //Event Logic
 function selectTeam(team){
@@ -218,6 +223,7 @@ async function submitData() {
     }
     
 }
+
 
 //Functions
 async function fetchData(uid,db) {

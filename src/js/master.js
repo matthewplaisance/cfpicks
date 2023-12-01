@@ -56,8 +56,7 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[game];
                 if (info){
                     if (info.hasOwnProperty("pick")){
-                        //if (dataGames[game].time < unixNow) 
-                        row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
+                        if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info["pick"]}: ${info["points"]}`;
                         if (dataWinners[game] == "" || dataWinners[game] == info.pick)pp += parseInt(info.points);
                     }
 
@@ -72,8 +71,7 @@ function initTable(userData,dataWinners,dataGames,week) {
                 const info = weekInfo[rank];
                 const p = 9 - (idx-5)
                 if (info.hasOwnProperty("pick")){
-                    //if (1701478800 < unixNow) 
-                    row.cells[iRow].textContent = info['pick'];
+                    if (1701478800 < unixNow) row.cells[iRow].textContent = info['pick'];
                 }
                 if (dataWinners.hasOwnProperty(rank)) {
                     if (dataWinners[rank] == info.pick) {
