@@ -15,7 +15,7 @@ df['game'] = [f'game{idx + 1}' for idx in df.index]
 
 df['humanDate'] = df['date'].apply(lambda x: x.strftime("%b %d %H:%M"))
 print(df)
-df = df.drop(['date'],axis=1)
+df = df.drop(['date','Unnamed: 1'],axis=1)
 #df.drop(['date'],axis=1).to_json('data/imports.json',orient='records')
 data = df.to_dict(orient='records')
 print(data)

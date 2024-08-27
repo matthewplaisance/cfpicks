@@ -1,1 +1,56 @@
-{"game1": {"away": "Unc", "home": "Minnesota", "time": 1724976000, "humanDate": "Aug 29 19:00"}, "game2": {"away": "N Dakota St", "home": "Colorado", "time": 1724976000, "humanDate": "Aug 29 19:00"}, "game3": {"away": "Tcu", "home": "Stanford", "time": 1725071400, "humanDate": "Aug 30 21:30"}, "game4": {"away": "Clemson ", "home": "Georgia", "time": 1725120000, "humanDate": "Aug 31 11:00"}, "game5": {"away": "Penn St", "home": "West Virginia", "time": 1725163200, "humanDate": "Aug 31 23:00"}, "game6": {"away": "Colorado St", "home": "Texas", "time": 1725132600, "humanDate": "Aug 31 14:30"}, "game7": {"away": "Miami", "home": "Florida", "time": 1725132600, "humanDate": "Aug 31 14:30"}, "game8": {"away": "Notre Dame", "home": "Texas A&M", "time": 1725147000, "humanDate": "Aug 31 18:30"}, "game9": {"away": "Usc ", "home": "Lsu", "time": 1725233400, "humanDate": "Sep 01 18:30"}}
+{
+    "game1": {
+        "away": "Unc",
+        "home": "Minnesota",
+        "time": 1724976000,
+        "humanDate": "Aug 29 19:00"
+    },
+    "game2": {
+        "away": "N Dakota St",
+        "home": "Colorado",
+        "time": 1724976000,
+        "humanDate": "Aug 29 19:00"
+    },
+    "game3": {
+        "away": "Tcu",
+        "home": "Stanford",
+        "time": 1725071400,
+        "humanDate": "Aug 30 21:30"
+    },
+    "game4": {
+        "away": "Clemson ",
+        "home": "Georgia",
+        "time": 1725120000,
+        "humanDate": "Aug 31 11:00"
+    },
+    "game5": {
+        "away": "Penn St",
+        "home": "West Virginia",
+        "time": 1725163200,
+        "humanDate": "Aug 31 23:00"
+    },
+    "game6": {
+        "away": "Colorado St",
+        "home": "Texas",
+        "time": 1725132600,
+        "humanDate": "Aug 31 14:30"
+    },
+    "game7": {
+        "away": "Miami",
+        "home": "Florida",
+        "time": 1725132600,
+        "humanDate": "Aug 31 14:30"
+    },
+    "game8": {
+        "away": "Notre Dame",
+        "home": "Texas A&M",
+        "time": 1725147000,
+        "humanDate": "Aug 31 18:30"
+    },
+    "game9": {
+        "away": "Usc ",
+        "home": "Lsu",
+        "time": 1725233400,
+        "humanDate": "Sep 01 18:30"
+    }
+}

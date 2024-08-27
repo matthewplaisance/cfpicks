@@ -309,7 +309,7 @@ points.forEach(el => {
 
 submitBtn.addEventListener('click',function () {
     const tbel = document.getElementById('tb')
-    picks['tb'] ={
+    picks['tb'] = {
         pick:String(tbel.value),
         points:0
     }
