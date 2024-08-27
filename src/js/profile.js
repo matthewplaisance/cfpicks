@@ -134,7 +134,7 @@ function createCard(data,game,wrapper,gn){
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
     if (data.hasOwnProperty("away")){
-        for (let i = 1; i <= 14; i++) {
+        for (let i = 1; i <= 9; i++) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
@@ -217,7 +217,7 @@ teams.forEach(el => {
 
         if (unixNow > time) {
             let msgEl = document.getElementById('err_msg')
-            msgEl.innerText = `Cannot change pick for ${parent.id}, it has already kickoffed`;
+            msgEl.innerText = `Cannot change pick for ${parent.id}, it has already kickedoff`;
             msgEl.style.color = 'red';
             return;
         };
