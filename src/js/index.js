@@ -66,7 +66,6 @@ const signup = async (repeatPwd) => {
   }
   let name = `${fName.value} ${lName.value} `;
   console.log('name :>> ', name);
-  debugger;
   createUser(cleanUid, password)
     .then(userCreds => {
       updateName(name);
