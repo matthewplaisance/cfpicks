@@ -29,14 +29,14 @@ function initTable(userData,dataWinners,dataGames,week) {
         'tb':0
     };
     let cnt = 0;
-
+    let tableArray = [];
     for (let user in userData) {
         if (user == "IWBJNJ2Zd2OEIndMcKgXpRfRF3C3") continue;
         let points = 0;
         let pp = 0;
         let weekInfo = userData[user][week];
         if (!weekInfo) weekInfo = {};
-
+        let rowArray = []
         let row = document.createElement('tr')
         row.append(cell(user,userData[user]['name'],'td',true))
 
@@ -114,9 +114,11 @@ function initTable(userData,dataWinners,dataGames,week) {
         tableBody.append(row);
         cnt++
     }
-    if (winner.points != 0) for (let w of winner.user) document.getElementById(w).style.background = colorW;
+    if (winner.points != 0) for (let w of winner.user) document.getElementById(w).style.color = '#FCCB00';
     const userRow = document.getElementById(uid);
     if (userRow) userRow.style.fontWeight = 600;
+    if (winner.points == 0) reOrderTable()
+    else reOrderTable(false,1)
 }
 
 function displayTBR(data) {
@@ -256,6 +258,20 @@ function z(userData,results){
     console.log('sortedData :>> ', sortedData);
 }
 
+function reOrderTable(alp=true,cellIdx=0) {
+    let table = document.querySelector("tbody"); 
+    let rows = Array.from(table.rows); 
+    rows.sort((rowA, rowB) => {
+        let cellA = rowA.cells[cellIdx].textContent.trim(); 
+        let cellB = rowB.cells[cellIdx].textContent.trim();
+
+        if (alp) return cellA.localeCompare(cellB);
+        else return parseFloat(cellB) - parseFloat(cellA);
+    });
+
+    rows.forEach(row => table.appendChild(row));
+}
+
 const posmap = {
     1:"game1",
     2:"game2",
@@ -281,8 +297,11 @@ let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 const seasonData = await json('../data/season.json');
 
-let weekEl = document.getElementById('selected-week');
-let week = weekEl.textContent.replace(' ','').toLocaleLowerCase();
+let weekEl = document.getElementById('weekSelect');
+console.log('weekEl', weekEl)
+let w = weekEl.value
+console.log('w', w)
+let week = weekEl.value.replace(' ','').toLocaleLowerCase();
 //z(userData,winnerData)
 if (week == 'week14') {
     initTable(userData,winnerData[week],dataGames[week],week)
@@ -293,30 +312,9 @@ if (week == 'week14') {
     }
 }
 
-
-const sidebar = document.getElementById('sidebar')
-const weeks = sidebar.querySelectorAll('.nav-link')
-
-weeks.forEach(w => { 
-    let week = w.innerText.replace(' ','').toLocaleLowerCase()
-    const table = document.getElementById('tbody');
-    w.addEventListener('click', () => {
-        weekEl.textContent = w.innerText
-        while (table.firstChild){
-            table.removeChild(table.firstChild);
-        }
-        if (Object.keys(dataGames).includes(week)){
-            initTable(userData,winnerData[week],dataGames[week],week);
-            displayTBR(winnerData[week]);
-        }
-        if (week == "season") displaySeason(seasonData);
-    })
-})
-
 select("#weekSelect").on("change", () => {
-    let week = select("#weekSelect").node().value;
+    let week = document.getElementById('weekSelect').value
     if (week == 'default') week = "Week 13";
-    weekEl.textContent = week
     week = week.replace(' ','').toLocaleLowerCase()
     const table = document.getElementById('tbody');
     

@@ -209,6 +209,13 @@ li {
   z-index: 9999;
 }
 
+#weekSelect {
+  display: block;
+  border-radius: 15px;
+  padding: 3px;
+  width: 70%;
+}
+
 @media (min-width: 768px) {
   #filler0,
   #filler4,
@@ -218,10 +225,8 @@ li {
   #recentProdTable {
     width:60%
   }
+
  
-  #weekSelect {
-    display: none;
-  }
 }
 
 @media(max-width:1900px) {

@@ -22,38 +22,16 @@
   <div id="header"></div>
     <!-- -->
   <div class="container-fluid">
-    <div class="row row-offcanvas row-offcanvas-right">
-      <!-- sidebar-->
-      <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" id="well-list">
-          <li class="nav-item active" style="cursor: pointer;">
-            <a class="nav-link">
-              <span class="menu-title">Season</span>
-            </a>
-          </li>
-          <li class="nav-item active" style="cursor: pointer;">
-            <a class="nav-link">
-              <span class="menu-title">Week 1</span>
-            </a>
-            <a class="nav-link">
-              <span class="menu-title">Week 2</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- -->
-      <div class="content-wrapper">
-        <select id="weekSelect" class="active mb-3 mx-auto">
-          <option hidden value="default">Week 2</option>
-          <option>Season</option>
-          <option>Week 1</option>
-          <option>Week 2</option>
-        </select>
         <div class="row mb-2">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
-                <h5 id="selected-week" class="card-title mb-4">Week 2</h5>
+                <select id="weekSelect" class="active mb-3 mx-auto">
+                  <option hidden value="week2">Week 2</option>
+                  <option>Season</option>
+                  <option>Week 1</option>
+                  <option>Week 2</option>
+                </select>
                 <div class="table-responsive">
                   <table class="table center-aligned-table">
                     <thead>
@@ -68,8 +46,6 @@
             </div>
           </div>
         </div>       
-      </div>
-    </div>
   </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
