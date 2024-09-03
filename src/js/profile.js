@@ -134,7 +134,7 @@ function createCard(data,game,wrapper,gn){
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
     if (data.hasOwnProperty("away")){
-        for (let i = 1; i <= 9; i++) {
+        for (let i = 1; i <= NUM_GAMES; i++) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
@@ -186,6 +186,7 @@ const refer = ref(db, `users/${uid}`)
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
+const NUM_GAMES = 13
 console.log('db :>> ', db);
 
 let userData = await fetchData();

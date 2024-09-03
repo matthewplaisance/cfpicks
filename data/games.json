@@ -60,5 +60,91 @@
             "time": 1725132600,
             "humanDate": "Aug 31 14:30"
         }
+    },
+    "week2":
+    {
+        "game1": {
+            "away": "Duke",
+            "home": "Northwestern",
+            "time": 1725670800,
+            "humanDate": "Sep 06 20:00"
+        },
+        "game2": {
+            "away": "Texas",
+            "home": "Michigan",
+            "time": 1725724800,
+            "humanDate": "Sep 07 11:00"
+        },
+        "game3": {
+            "away": "Arkansas",
+            "home": "Oklahoma St",
+            "time": 1725724800,
+            "humanDate": "Sep 07 11:00"
+        },
+        "game4": {
+            "away": "Baylor",
+            "home": "Utah",
+            "time": 1725737400,
+            "humanDate": "Sep 07 14:30"
+        },
+        "game5": {
+            "away": "Iowa",
+            "home": "Iowa St",
+            "time": 1725737400,
+            "humanDate": "Sep 07 14:30"
+        },
+        "game6": {
+            "away": "California",
+            "home": "Auburn",
+            "time": 1725737400,
+            "humanDate": "Sep 07 14:30"
+        },
+        "game7": {
+            "away": "S Carolina",
+            "home": "Kentucky",
+            "time": 1725737400,
+            "humanDate": "Sep 07 14:30"
+        },
+        "game8": {
+            "away": "Kansas",
+            "home": "Illinois",
+            "time": 1725750000,
+            "humanDate": "Sep 07 18:00"
+        },
+        "game9": {
+            "away": "Tennessee",
+            "home": "Nc State",
+            "time": 1725751800,
+            "humanDate": "Sep 07 18:30"
+        },
+        "game10": {
+            "away": "Colorado",
+            "home": "Nebraska",
+            "time": 1725751800,
+            "humanDate": "Sep 07 18:30"
+        },
+        "game11": {
+            "away": "Texas Tech",
+            "home": "Washington St",
+            "time": 1725760800,
+            "humanDate": "Sep 07 21:00"
+        },
+        "game12": {
+            "away": "Boise St",
+            "home": "Oregon",
+            "time": 1725760800,
+            "humanDate": "Sep 07 21:00"
+        },
+        "game13": {
+            "away": "Mississippi St",
+            "home": "Arizona St",
+            "time": 1725762600,
+            "humanDate": "Sep 07 21:30"
+        },
+        "tiebreaker": {
+            "home":"Total yards for Isaiah Bond?",
+            "time": 1725724800,
+            "humanDate": "Sep 07 11:00"
+        }
     }
 }
