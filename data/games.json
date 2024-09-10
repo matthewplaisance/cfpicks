@@ -146,5 +146,96 @@
             "time": 1725724800,
             "humanDate": "Sep 07 11:00"
         }
+    },
+    "week3":{
+        "game1": {
+            "away": "ASU",
+            "home": "Texas St",
+            "time": 1726183800,
+            "humanDate": "Sep 12 18:30"
+        },
+        "game2": {
+            "away": "Arizona",
+            "home": "Kansas St",
+            "time": 1726272000,
+            "humanDate": "Sep 13 19:00"
+        },
+        "game3": {
+            "away": "Alabama",
+            "home": "Wisconsin",
+            "time": 1726329600,
+            "humanDate": "Sep 14 11:00"
+        },
+        "game4": {
+            "away": "LSU",
+            "home": "S Carolina",
+            "time": 1726329600,
+            "humanDate": "Sep 14 11:00"
+        },
+        "game5": {
+            "away": "Memphis",
+            "home": "Florida St",
+            "time": 1726329600,
+            "humanDate": "Sep 14 11:00"
+        },
+        "game6": {
+            "away": "Boston College",
+            "home": "Missouri",
+            "time": 1726332300,
+            "humanDate": "Sep 14 11:45"
+        },
+        "game7": {
+            "away": "Oregon",
+            "home": "Oregon St",
+            "time": 1726342200,
+            "humanDate": "Sep 14 14:30"
+        },
+        "game8": {
+            "away": "Tulane",
+            "home": "OU",
+            "time": 1726342200,
+            "humanDate": "Sep 14 14:30"
+        },
+        "game9": {
+            "away": "Texas A&M",
+            "home": "Florida",
+            "time": 1726342200,
+            "humanDate": "Sep 14 14:30"
+        },
+        "game10": {
+            "away": "Notre Dame",
+            "home": "Purdue",
+            "time": 1726342200,
+            "humanDate": "Sep 14 14:30"
+        },
+        "game11": {
+            "away": "Washington St",
+            "home": "Washington",
+            "time": 1726342200,
+            "humanDate": "Sep 14 14:30"
+        },
+        "game12": {
+            "away": "Georgia",
+            "home": "Kentucky",
+            "time": 1726356600,
+            "humanDate": "Sep 14 18:30"
+        },
+        "game13": {
+            "away": "Colorado",
+            "home": "Colorado St",
+            "time": 1726356600,
+            "humanDate": "Sep 14 18:30"
+        },
+        "game14": {
+            "away": "UCF",
+            "home": "TCU",
+            "time": 1726356600,
+            "humanDate": "Sep 14 18:30"
+        },
+        "tiebreaker": {
+            "home":"Total yards for Shedeur Sanders?",
+            "time": 1726356600,
+            "humanDate": "Sep 14 18:30"
+        }
     }
 }

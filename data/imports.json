@@ -1,80 +1,86 @@
 {
     "game1": {
-        "away": "Duke",
-        "home": "Northwestern",
-        "time": 1725670800,
-        "humanDate": "Sep 06 20:00"
+        "away": "ASU",
+        "home": "Texas St",
+        "time": 1726183800,
+        "humanDate": "Sep 12 18:30"
     },
     "game2": {
-        "away": "Texas",
-        "home": "Michigan",
-        "time": 1725724800,
-        "humanDate": "Sep 07 11:00"
+        "away": "Arizona",
+        "home": "Kansas St",
+        "time": 1726272000,
+        "humanDate": "Sep 13 19:00"
     },
     "game3": {
-        "away": "Arkansas",
-        "home": "Oklahoma St",
-        "time": 1725724800,
-        "humanDate": "Sep 07 11:00"
+        "away": "Alabama",
+        "home": "Wisconsin",
+        "time": 1726329600,
+        "humanDate": "Sep 14 11:00"
     },
     "game4": {
-        "away": "Baylor",
-        "home": "Utah",
-        "time": 1725737400,
-        "humanDate": "Sep 07 14:30"
+        "away": "LSU",
+        "home": "S Carolina",
+        "time": 1726329600,
+        "humanDate": "Sep 14 11:00"
     },
     "game5": {
-        "away": "Iowa",
-        "home": "Iowa St",
-        "time": 1725737400,
-        "humanDate": "Sep 07 14:30"
+        "away": "Memphis",
+        "home": "Florida St",
+        "time": 1726329600,
+        "humanDate": "Sep 14 11:00"
     },
     "game6": {
-        "away": "California",
-        "home": "Auburn",
-        "time": 1725737400,
-        "humanDate": "Sep 07 14:30"
+        "away": "Boston College",
+        "home": "Missouri",
+        "time": 1726332300,
+        "humanDate": "Sep 14 11:45"
     },
     "game7": {
-        "away": "S Carolina",
-        "home": "Kentucky",
-        "time": 1725737400,
-        "humanDate": "Sep 07 14:30"
+        "away": "Oregon",
+        "home": "Oregon St",
+        "time": 1726342200,
+        "humanDate": "Sep 14 14:30"
     },
     "game8": {
-        "away": "Kansas",
-        "home": "Illinois",
-        "time": 1725750000,
-        "humanDate": "Sep 07 18:00"
+        "away": "Tulane ",
+        "home": "OU",
+        "time": 1726342200,
+        "humanDate": "Sep 14 14:30"
     },
     "game9": {
-        "away": "Tennessee",
-        "home": "Nc State",
-        "time": 1725751800,
-        "humanDate": "Sep 07 18:30"
+        "away": "Texas A&M",
+        "home": "Florida",
+        "time": 1726342200,
+        "humanDate": "Sep 14 14:30"
     },
     "game10": {
-        "away": "Colorado",
-        "home": "Nebraska",
-        "time": 1725751800,
-        "humanDate": "Sep 07 18:30"
+        "away": "Notre Dame",
+        "home": "Purdue",
+        "time": 1726342200,
+        "humanDate": "Sep 14 14:30"
     },
     "game11": {
-        "away": "Texas Tech",
-        "home": "Washington St",
-        "time": 1725760800,
-        "humanDate": "Sep 07 21:00"
+        "away": "Washington St",
+        "home": "Washington",
+        "time": 1726342200,
+        "humanDate": "Sep 14 14:30"
     },
     "game12": {
-        "away": "Boise St",
-        "home": "Oregon",
-        "time": 1725760800,
-        "humanDate": "Sep 07 21:00"
+        "away": "Georgia",
+        "home": "Kentucky",
+        "time": 1726356600,
+        "humanDate": "Sep 14 18:30"
     },
     "game13": {
-        "away": "Mississippi St",
-        "home": "Arizona St",
-        "time": 1725762600,
-        "humanDate": "Sep 07 21:30"
+        "away": "Colorado",
+        "home": "Colorado St",
+        "time": 1726356600,
+        "humanDate": "Sep 14 18:30"
+    },
+    "game14": {
+        "away": "UCF",
+        "home": "TCU",
+        "time": 1726356600,
+        "humanDate": "Sep 14 18:30"
     }
 }
