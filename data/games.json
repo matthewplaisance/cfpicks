@@ -237,5 +237,84 @@
             "time": 1726356600,
             "humanDate": "Sep 14 18:30"
         }
+    },
+    "week4":{
+        "game1": {
+            "away": "Illinois",
+            "home": "Nebraska",
+            "time": 1726876800,
+            "humanDate": "Sep 20 19:00"
+        },
+        "game2": {
+            "away": "Florida ",
+            "home": "Mississsippi St",
+            "time": 1726934400,
+            "humanDate": "Sep 21 11:00"
+        },
+        "game3": {
+            "away": "Kansas ",
+            "home": "West Virginia",
+            "time": 1726934400,
+            "humanDate": "Sep 21 11:00"
+        },
+        "game4": {
+            "away": "Usc ",
+            "home": "Michigan ",
+            "time": 1726947000,
+            "humanDate": "Sep 21 14:30"
+        },
+        "game5": {
+            "away": "Arkansas",
+            "home": "Auburn",
+            "time": 1726947000,
+            "humanDate": "Sep 21 14:30"
+        },
+        "game6": {
+            "away": "Asu",
+            "home": "Texas Tech",
+            "time": 1726947000,
+            "humanDate": "Sep 21 14:30"
+        },
+        "game7": {
+            "away": "Ucla",
+            "home": "Lsu",
+            "time": 1726947600,
+            "humanDate": "Sep 21 14:40"
+        },
+        "game8": {
+            "away": "Utah ",
+            "home": "Oklahoma St",
+            "time": 1726948800,
+            "humanDate": "Sep 21 15:00"
+        },
+        "game9": {
+            "away": "California",
+            "home": "Florida St",
+            "time": 1726959600,
+            "humanDate": "Sep 21 18:00"
+        },
+        "game10": {
+            "away": "Tennesse",
+            "home": "Ou",
+            "time": 1726961400,
+            "humanDate": "Sep 21 18:30"
+        },
+        "game11": {
+            "away": "Baylor",
+            "home": "Colorado",
+            "time": 1726963200,
+            "humanDate": "Sep 21 19:00"
+        },
+        "game12": {
+            "away": "Kansas St",
+            "home": "Byu",
+            "time": 1726972200,
+            "humanDate": "Sep 21 21:30"
+        },
+        "tiebreaker": {
+            "home":"Total yards for Shedeur Sanders?",
+            "time": 1726356600,
+            "humanDate": "Sep 14 18:30"
+        }
     }
 }
