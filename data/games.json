@@ -246,19 +246,19 @@
             "humanDate": "Sep 20 19:00"
         },
         "game2": {
-            "away": "Florida ",
+            "away": "Florida",
             "home": "Mississsippi St",
             "time": 1726934400,
             "humanDate": "Sep 21 11:00"
         },
         "game3": {
-            "away": "Kansas ",
+            "away": "Kansas",
             "home": "West Virginia",
             "time": 1726934400,
             "humanDate": "Sep 21 11:00"
         },
         "game4": {
-            "away": "Usc ",
+            "away": "USC",
             "home": "Michigan ",
             "time": 1726947000,
             "humanDate": "Sep 21 14:30"
@@ -270,14 +270,14 @@
             "humanDate": "Sep 21 14:30"
         },
         "game6": {
-            "away": "Asu",
+            "away": "ASU",
             "home": "Texas Tech",
             "time": 1726947000,
             "humanDate": "Sep 21 14:30"
         },
         "game7": {
-            "away": "Ucla",
-            "home": "Lsu",
+            "away": "UCLA",
+            "home": "LSU",
             "time": 1726947600,
             "humanDate": "Sep 21 14:40"
         },
@@ -295,7 +295,7 @@
         },
         "game10": {
             "away": "Tennesse",
-            "home": "Ou",
+            "home": "OU",
             "time": 1726961400,
             "humanDate": "Sep 21 18:30"
         },
@@ -307,7 +307,7 @@
         },
         "game12": {
             "away": "Kansas St",
-            "home": "Byu",
+            "home": "BYU",
             "time": 1726972200,
             "humanDate": "Sep 21 21:30"
         },
