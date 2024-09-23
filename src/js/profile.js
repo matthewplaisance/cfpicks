@@ -186,7 +186,7 @@ const refer = ref(db, `users/${uid}`)
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
-const NUM_GAMES = 12;
+const NUM_GAMES = 14;
 
 let userData = await fetchData();
 let picks = {};

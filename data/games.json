@@ -313,8 +313,99 @@
         },
         "tiebreaker": {
             "home":"Total yards for Shedeur Sanders?",
-            "time": 1726356600,
-            "humanDate": "Sep 14 18:30"
+             "time": 1726963200,
+            "humanDate": "Sep 21 19:00"
+        }
+    },
+    "week5": {
+        "game1": {
+            "away": "Virginia Tech",
+            "home": "Miami",
+            "time": 1727479800,
+            "humanDate": "Sep 27 18:30"
+        },
+        "game2": {
+            "away": "Minnesota",
+            "home": "Michigan",
+            "time": 1727539200,
+            "humanDate": "Sep 28 11:00"
+        },
+        "game3": {
+            "away": "Kentucky",
+            "home": "Ole Miss",
+            "time": 1727539200,
+            "humanDate": "Sep 28 11:00"
+        },
+        "game4": {
+            "away": "Oklahoma St",
+            "home": "Kansas St",
+            "time": 1727539200,
+            "humanDate": "Sep 28 11:00"
+        },
+        "game5": {
+            "away": "BYU",
+            "home": "Baylor",
+            "time": 1727539200,
+            "humanDate": "Sep 28 11:00"
+        },
+        "game6": {
+            "away": "Wisconsin",
+            "home": "USC",
+            "time": 1727551800,
+            "humanDate": "Sep 28 14:30"
+        },
+        "game7": {
+            "away": "Louisville",
+            "home": "Notre Dame",
+            "time": 1727551800,
+            "humanDate": "Sep 28 14:30"
+        },
+        "game8": {
+            "away": "Arkansas",
+            "home": "Texas A&M",
+            "time": 1727551800,
+            "humanDate": "Sep 28 14:30"
+        },
+        "game9": {
+            "away": "TCU",
+            "home": "Kansas St",
+            "time": 1727551800,
+            "humanDate": "Sep 28 14:30"
+        },
+        "game10": {
+            "away": "Colorado",
+            "home": "UCF",
+            "time": 1727551800,
+            "humanDate": "Sep 28 14:30"
+        },
+        "game11": {
+            "away": "OU",
+            "home": "Auburn",
+            "time": 1727552400,
+            "humanDate": "Sep 28 14:40"
+        },
+        "game12": {
+            "away": "Georgia",
+            "home": "Alabama",
+            "time": 1727566200,
+            "humanDate": "Sep 28 18:30"
+        },
+        "game13": {
+            "away": "Illinois",
+            "home": "Penn St",
+            "time": 1727566200,
+            "humanDate": "Sep 28 18:30"
+        },
+        "game14": {
+            "away": "Arizona",
+            "home": "Utah",
+            "time": 1727575200,
+            "humanDate": "Sep 28 21:00"
+        },
+        "tiebreaker": {
+            "home":"Georgia beats Alabama by x points? (Negative for losses)",
+            "time": 1727566200,
+            "humanDate": "Sep 28 18:30"
         }
     }
 }

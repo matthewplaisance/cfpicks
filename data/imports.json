@@ -1,74 +1,86 @@
 {
     "game1": {
-        "away": "Illinois",
-        "home": "Nebraska",
-        "time": 1726876800,
-        "humanDate": "Sep 20 19:00"
+        "away": "Virginia Tech",
+        "home": "Miami",
+        "time": 1727479800,
+        "humanDate": "Sep 27 18:30"
     },
     "game2": {
-        "away": "Florida ",
-        "home": "Mississsippi St",
-        "time": 1726934400,
-        "humanDate": "Sep 21 11:00"
+        "away": "Minnesota",
+        "home": "Michigan",
+        "time": 1727539200,
+        "humanDate": "Sep 28 11:00"
     },
     "game3": {
-        "away": "Kansas ",
-        "home": "West Virginia",
-        "time": 1726934400,
-        "humanDate": "Sep 21 11:00"
+        "away": "Kentucky",
+        "home": "Ole Miss",
+        "time": 1727539200,
+        "humanDate": "Sep 28 11:00"
     },
     "game4": {
-        "away": "Usc ",
-        "home": "Michigan ",
-        "time": 1726947000,
-        "humanDate": "Sep 21 14:30"
+        "away": "Oklahoma St",
+        "home": "Kansas St",
+        "time": 1727539200,
+        "humanDate": "Sep 28 11:00"
     },
     "game5": {
-        "away": "Arkansas",
-        "home": "Auburn",
-        "time": 1726947000,
-        "humanDate": "Sep 21 14:30"
+        "away": "Byu ",
+        "home": "Baylor",
+        "time": 1727539200,
+        "humanDate": "Sep 28 11:00"
     },
     "game6": {
-        "away": "Asu",
-        "home": "Texas Tech",
-        "time": 1726947000,
-        "humanDate": "Sep 21 14:30"
+        "away": "Wisconsin",
+        "home": "Usc",
+        "time": 1727551800,
+        "humanDate": "Sep 28 14:30"
     },
     "game7": {
-        "away": "Ucla",
-        "home": "Lsu",
-        "time": 1726947600,
-        "humanDate": "Sep 21 14:40"
+        "away": "Louisville",
+        "home": "Notre Dame",
+        "time": 1727551800,
+        "humanDate": "Sep 28 14:30"
     },
     "game8": {
-        "away": "Utah ",
-        "home": "Oklahoma St",
-        "time": 1726948800,
-        "humanDate": "Sep 21 15:00"
+        "away": "Arkansas",
+        "home": "Texas A&M",
+        "time": 1727551800,
+        "humanDate": "Sep 28 14:30"
     },
     "game9": {
-        "away": "California",
-        "home": "Florida St",
-        "time": 1726959600,
-        "humanDate": "Sep 21 18:00"
+        "away": "Tcu ",
+        "home": "Kansas St",
+        "time": 1727551800,
+        "humanDate": "Sep 28 14:30"
     },
     "game10": {
-        "away": "Tennesse",
-        "home": "Ou",
-        "time": 1726961400,
-        "humanDate": "Sep 21 18:30"
+        "away": "Colorado",
+        "home": "Ucf",
+        "time": 1727551800,
+        "humanDate": "Sep 28 14:30"
     },
     "game11": {
-        "away": "Baylor",
-        "home": "Colorado",
-        "time": 1726963200,
-        "humanDate": "Sep 21 19:00"
+        "away": "Ou",
+        "home": "Auburn",
+        "time": 1727552400,
+        "humanDate": "Sep 28 14:40"
     },
     "game12": {
-        "away": "Kansas St",
-        "home": "Byu",
-        "time": 1726972200,
-        "humanDate": "Sep 21 21:30"
+        "away": "Georgia",
+        "home": "Alabama",
+        "time": 1727566200,
+        "humanDate": "Sep 28 18:30"
+    },
+    "game13": {
+        "away": "Illinois",
+        "home": "Penn St",
+        "time": 1727566200,
+        "humanDate": "Sep 28 18:30"
+    },
+    "game14": {
+        "away": "Arizona",
+        "home": "Utah",
+        "time": 1727575200,
+        "humanDate": "Sep 28 21:00"
     }
 }
