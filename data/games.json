@@ -403,7 +403,7 @@
             "humanDate": "Sep 28 21:00"
         },
         "tiebreaker": {
-            "home":"Georgia beats Alabama by x points? (Negative for losses)",
+            "home":"Georgia beats Alabama by __ points? (Negative for losses)",
             "time": 1727566200,
             "humanDate": "Sep 28 18:30"
         }
