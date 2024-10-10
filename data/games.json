@@ -492,5 +492,85 @@
             "time": 1728144000,
             "humanDate": "Oct 05 11:00"
         }
+    },
+    "week7":
+    {
+        "game1": {
+            "away": "Utah",
+            "home": "Arizona St",
+            "time": 1728700200,
+            "humanDate": "Oct 11 21:30"
+        },
+        "game2": {
+            "away": "Washington",
+            "home": "Iowa",
+            "time": 1728748800,
+            "humanDate": "Oct 12 11:00"
+        },
+        "game3": {
+            "away": "S Carolina",
+            "home": "Alabama",
+            "time": 1728748800,
+            "humanDate": "Oct 12 11:00"
+        },
+        "game4": {
+            "away": "Texas",
+            "home": "OU",
+            "time": 1728761400,
+            "humanDate": "Oct 12 14:30"
+        },
+        "game5": {
+            "away": "Penn St",
+            "home": "USC",
+            "time": 1728761400,
+            "humanDate": "Oct 12 14:30"
+        },
+        "game6": {
+            "away": "Arizona",
+            "home": "BYU",
+            "time": 1728763200,
+            "humanDate": "Oct 12 15:00"
+        },
+        "game7": {
+            "away": "Florida",
+            "home": "Tennessee",
+            "time": 1728774000,
+            "humanDate": "Oct 12 18:00"
+        },
+        "game8": {
+            "away": "Ohio St",
+            "home": "Oregon",
+            "time": 1728775800,
+            "humanDate": "Oct 12 18:30"
+        },
+        "game9": {
+            "away": "Ole Miss",
+            "home": "LSU",
+            "time": 1728775800,
+            "humanDate": "Oct 12 18:30"
+        },
+        "game10": {
+            "away": "Vanderbilt",
+            "home": "Kentucky",
+            "time": 1728776700,
+            "humanDate": "Oct 12 18:45"
+        },
+        "game11": {
+            "away": "Iowa St",
+            "home": "West Virginia",
+            "time": 1728777600,
+            "humanDate": "Oct 12 19:00"
+        },
+        "game12": {
+            "away": "Kansas St",
+            "home": "Colorado",
+            "time": 1728785700,
+            "humanDate": "Oct 12 21:15"
+        },
+        "tiebreaker": {
+            "home":"Total yards for Quinn Ewers?",
+            "time": 1728761400,
+            "humanDate": "Oct 12 14:30"
+        }
     }
 }
