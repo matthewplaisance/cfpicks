@@ -1,74 +1,86 @@
 {
     "game1": {
-        "away": "Utah",
-        "home": "Arizona St",
-        "time": 1728700200,
-        "humanDate": "Oct 11 21:30"
+        "away": "Oklahoma St",
+        "home": "Byu",
+        "time": 1729304100,
+        "humanDate": "Oct 18 21:15"
     },
     "game2": {
-        "away": "Washington",
-        "home": "Iowa",
-        "time": 1728748800,
-        "humanDate": "Oct 12 11:00"
+        "away": "Miami",
+        "home": "Louisville",
+        "time": 1729353600,
+        "humanDate": "Oct 19 11:00"
     },
     "game3": {
-        "away": "S Carolina",
-        "home": "Alabama",
-        "time": 1728748800,
-        "humanDate": "Oct 12 11:00"
+        "away": "Nebraska",
+        "home": "Indiana",
+        "time": 1729353600,
+        "humanDate": "Oct 19 11:00"
     },
     "game4": {
-        "away": "Texas",
-        "home": "OU",
-        "time": 1728761400,
-        "humanDate": "Oct 12 14:30"
+        "away": "Auburn",
+        "home": "Missouri",
+        "time": 1729353600,
+        "humanDate": "Oct 19 11:00"
     },
     "game5": {
-        "away": "Penn St",
-        "home": "USC",
-        "time": 1728761400,
-        "humanDate": "Oct 12 14:30"
+        "away": "S Carolina",
+        "home": "Ou",
+        "time": 1729356300,
+        "humanDate": "Oct 19 11:45"
     },
     "game6": {
-        "away": "Arizona",
-        "home": "BYU",
-        "time": 1728763200,
-        "humanDate": "Oct 12 15:00"
+        "away": "Alabama",
+        "home": "Tennessee",
+        "time": 1729366200,
+        "humanDate": "Oct 19 14:30"
     },
     "game7": {
-        "away": "Florida",
-        "home": "Tennessee",
-        "time": 1728774000,
-        "humanDate": "Oct 12 18:00"
+        "away": "Michigan",
+        "home": "Illinois",
+        "time": 1729366200,
+        "humanDate": "Oct 19 14:30"
     },
     "game8": {
-        "away": "Ohio St",
-        "home": "Oregon",
-        "time": 1728775800,
-        "humanDate": "Oct 12 18:30"
+        "away": "Colorado",
+        "home": "Arizona",
+        "time": 1729368000,
+        "humanDate": "Oct 19 15:00"
     },
     "game9": {
-        "away": "Ole Miss",
-        "home": "LSU",
-        "time": 1728775800,
-        "humanDate": "Oct 12 18:30"
+        "away": "Baylor",
+        "home": "Texas Tech",
+        "time": 1729368000,
+        "humanDate": "Oct 19 15:00"
     },
     "game10": {
-        "away": "Vanderbilt",
-        "home": "Kentucky",
-        "time": 1728776700,
-        "humanDate": "Oct 12 18:45"
+        "away": "Texas A&M",
+        "home": "Mississippi St",
+        "time": 1729368900,
+        "humanDate": "Oct 19 15:15"
     },
     "game11": {
-        "away": "Iowa St",
-        "home": "West Virginia",
-        "time": 1728777600,
-        "humanDate": "Oct 12 19:00"
+        "away": "Lsu",
+        "home": "Arkansas",
+        "time": 1729366200,
+        "humanDate": "Oct 19 14:30"
     },
     "game12": {
+        "away": "Georgia",
+        "home": "Texas",
+        "time": 1729380600,
+        "humanDate": "Oct 19 18:30"
+    },
+    "game13": {
         "away": "Kansas St",
-        "home": "Colorado",
-        "time": 1728785700,
-        "humanDate": "Oct 12 21:15"
+        "home": "West Virginia",
+        "time": 1729380600,
+        "humanDate": "Oct 19 18:30"
+    },
+    "game14": {
+        "away": "Kentucky",
+        "home": "Florida",
+        "time": 1729381500,
+        "humanDate": "Oct 19 18:45"
     }
 }

@@ -572,5 +572,97 @@
             "time": 1728761400,
             "humanDate": "Oct 12 14:30"
         }
+    },
+    "week8" : 
+    {
+        "game1": {
+            "away": "Oklahoma St",
+            "home": "BYU",
+            "time": 1729304100,
+            "humanDate": "Oct 18 21:15"
+        },
+        "game2": {
+            "away": "Miami",
+            "home": "Louisville",
+            "time": 1729353600,
+            "humanDate": "Oct 19 11:00"
+        },
+        "game3": {
+            "away": "Nebraska",
+            "home": "Indiana",
+            "time": 1729353600,
+            "humanDate": "Oct 19 11:00"
+        },
+        "game4": {
+            "away": "Auburn",
+            "home": "Missouri",
+            "time": 1729353600,
+            "humanDate": "Oct 19 11:00"
+        },
+        "game5": {
+            "away": "S Carolina",
+            "home": "OU",
+            "time": 1729356300,
+            "humanDate": "Oct 19 11:45"
+        },
+        "game6": {
+            "away": "Alabama",
+            "home": "Tennessee",
+            "time": 1729366200,
+            "humanDate": "Oct 19 14:30"
+        },
+        "game7": {
+            "away": "Michigan",
+            "home": "Illinois",
+            "time": 1729366200,
+            "humanDate": "Oct 19 14:30"
+        },
+        "game8": {
+            "away": "Colorado",
+            "home": "Arizona",
+            "time": 1729368000,
+            "humanDate": "Oct 19 15:00"
+        },
+        "game9": {
+            "away": "Baylor",
+            "home": "Texas Tech",
+            "time": 1729368000,
+            "humanDate": "Oct 19 15:00"
+        },
+        "game10": {
+            "away": "Texas A&M",
+            "home": "Mississippi St",
+            "time": 1729368900,
+            "humanDate": "Oct 19 15:15"
+        },
+        "game11": {
+            "away": "LSU",
+            "home": "Arkansas",
+            "time": 1729366200,
+            "humanDate": "Oct 19 14:30"
+        },
+        "game12": {
+            "away": "Georgia",
+            "home": "Texas",
+            "time": 1729380600,
+            "humanDate": "Oct 19 18:30"
+        },
+        "game13": {
+            "away": "Kansas St",
+            "home": "West Virginia",
+            "time": 1729380600,
+            "humanDate": "Oct 19 18:30"
+        },
+        "game14": {
+            "away": "Kentucky",
+            "home": "Florida",
+            "time": 1729381500,
+            "humanDate": "Oct 19 18:45"
+        },
+        "tiebreaker": {
+            "home":"Texas beats Georgia by __ points (negative for losses)",
+            "time": 1729380600,
+            "humanDate": "Oct 19 18:30"
+        }
     }
 }

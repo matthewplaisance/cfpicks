@@ -144,12 +144,11 @@ function displaySeason(data){
     rowGames.append(c)
     let tableBody = document.getElementById('tbody');
     const podium = ['#FCCB00','#D4D8DC','#B1860F']
-
-    data.forEach((user,idx) => {
+    Object.entries(data).forEach(([idx, user]) => {
         let row = document.createElement('tr');
         let nameCell = cell(user, user['name']);
         let pointsCell = cell(user, user['points']);
-        if (idx < podium.length) nameCell.style.cssText = `color:${podium[idx]};`; 
+        nameCell.style.color = `color:${podium[idx]};`; 
         pointsCell.style.cssText = 'width: 100px;'; 
 
         row.append(nameCell);
@@ -160,7 +159,6 @@ function displaySeason(data){
 }
 
 function th(data){
-    console.log('data :>> ', data);
     const rowGames = document.getElementById('rowGames');
     const rowDates = document.getElementById('rowDates');
     while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);
@@ -231,7 +229,7 @@ const cell = (id,textContent=null,type='td',sticky=false) => {
     return cell
 }
 
-function z(userData,results){
+function calcSeason(userData,results){
     let res = {}
     for (let user in userData){
         res[user] = {'name':userData[user]['name'],'points':0};
@@ -250,7 +248,6 @@ function z(userData,results){
 
     dataArray.sort((a, b) => b.points - a.points);
 
-    console.log('dataArray :>> ', dataArray);
     const sortedData = {};
     dataArray.forEach((item) => {
         sortedData[item.key] = item;
@@ -296,13 +293,10 @@ let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
 const dataGames = await json('../data/games.json');
 const seasonData = await json('../data/season.json');
-
 let weekEl = document.getElementById('weekSelect');
-console.log('weekEl', weekEl)
 let w = weekEl.value
-console.log('w', w)
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
-//z(userData,winnerData)
+//calcSeason(userData,winnerData)
 if (week == 'week14') {
     initTable(userData,winnerData[week],dataGames[week],week)
 }else {
