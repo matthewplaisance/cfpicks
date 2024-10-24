@@ -664,5 +664,98 @@
             "time": 1729380600,
             "humanDate": "Oct 19 18:30"
         }
+    },
+    "week9":
+    {
+        "game1": {
+            "away": "Washington",
+            "home": "Indiana",
+            "time": 1729958400,
+            "humanDate": "Oct 26 11:00"
+        },
+        "game2": {
+            "away": "OU",
+            "home": "Ole Miss",
+            "time": 1729958400,
+            "humanDate": "Oct 26 11:00"
+        },
+        "game3": {
+            "away": "Arkansas",
+            "home": "Mississippi St",
+            "time": 1729961100,
+            "humanDate": "Oct 26 11:45"
+        },
+        "game4": {
+            "away": "Illinois",
+            "home": "Oregon",
+            "time": 1729971000,
+            "humanDate": "Oct 26 14:30"
+        },
+        "game5": {
+            "away": "BYU",
+            "home": "UCF",
+            "time": 1729971000,
+            "humanDate": "Oct 26 14:30"
+        },
+        "game6": {
+            "away": "Missouri",
+            "home": "Alabama",
+            "time": 1729971000,
+            "humanDate": "Oct 26 14:30"
+        },
+        "game7": {
+            "away": "Oklahoma St",
+            "home": "Baylor",
+            "time": 1729971000,
+            "humanDate": "Oct 26 14:30"
+        },
+        "game8": {
+            "away": "Texas Tech",
+            "home": "TCU",
+            "time": 1729971000,
+            "humanDate": "Oct 26 14:30"
+        },
+        "game9": {
+            "away": "Texas",
+            "home": "Vanderbilt",
+            "time": 1729973700,
+            "humanDate": "Oct 26 15:15"
+        },
+        "game10": {
+            "away": "Florida St",
+            "home": "Miami",
+            "time": 1729983600,
+            "humanDate": "Oct 26 18:00"
+        },
+        "game11": {
+            "away": "Penn St",
+            "home": "Wisconsin",
+            "time": 1729985400,
+            "humanDate": "Oct 26 18:30"
+        },
+        "game12": {
+            "away": "LSU",
+            "home": "Texas A&M",
+            "time": 1729985400,
+            "humanDate": "Oct 26 18:30"
+        },
+        "game13": {
+            "away": "Auburn",
+            "home": "Kentucky",
+            "time": 1729986300,
+            "humanDate": "Oct 26 18:45"
+        },
+        "game14": {
+            "away": "Cincinnati",
+            "home": "Colorado",
+            "time": 1729995300,
+            "humanDate": "Oct 26 21:15"
+        },
+        "tiebreaker": {
+            "home":"Which team above will score the most points this week?",
+            "time": 1729958400,
+            "humanDate": "Oct 26 11:00"
+        }
     }
+    
 }
