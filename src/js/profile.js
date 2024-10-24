@@ -61,21 +61,21 @@ function setup(data) {
     let ttbel = document.getElementById('tb');
     if (ttbel){
         if (data.hasOwnProperty('tb')) ttbel.value = data['tb'].pick;
-        else document.getElementById('tb').value = 0;
+        else document.getElementById('tb').value = 'Vanderbilt';
     }
     
 }
 
-async function fetchData() {
-    let picks;
+async function fetchData(refer) {
+    let res;
     await new Promise((resolve, reject) => {
         onValue(refer, (snapshot) => {
             const data = snapshot.val();
-            picks = data;
+            res = data;
             resolve();
         });
     });
-    return picks;
+    return res;
 }
 
 function createCard(data,game,wrapper,gn){
@@ -182,13 +182,18 @@ console.log('uid :>> ', uid);
 const db = getDatabase();
 let weekEl = document.getElementById('selected-week');
 const week = weekEl.textContent.replace(' ','').toLocaleLowerCase()
-const refer = ref(db, `users/${uid}`)  
+const userRefer = ref(db, `users/${uid}`) 
+const gamesRefer = ref(db,'schedule') 
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
 const NUM_GAMES = 14;
 
-let userData = await fetchData();
+let userData = await fetchData(userRefer);
+const gameData = await fetchData(gamesRefer);
+//const gameData = await json('../data/games.json');
+//console.log('gameData1 :>> ', gameData1);
+
 let picks = {};
 
 if (userData){
@@ -196,8 +201,6 @@ if (userData){
     if (userData.hasOwnProperty("name")) localStorage.displayName = userData["name"]   
 }
 
-const gameData = await json('../data/games.json');
-console.log('gameData :>> ', gameData);
 let pointsPicked = [];
 for (let game in picks) pointsPicked.push(String(picks[game].points))
 
