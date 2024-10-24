@@ -296,7 +296,7 @@ const seasonData = await json('../data/season.json');
 let weekEl = document.getElementById('weekSelect');
 let w = weekEl.value
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
-//calcSeason(userData,winnerData)
+calcSeason(userData,winnerData)
 if (week == 'week14') {
     initTable(userData,winnerData[week],dataGames[week],week)
 }else {
