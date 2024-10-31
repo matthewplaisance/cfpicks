@@ -1,6 +1,6 @@
 import { getDatabase, ref, onValue } from 'firebase/database'
 import {onAuthStateChangedFb} from './auth'
-import { json, select } from 'd3';
+import { json, scalePoint, select } from 'd3';
 
 onAuthStateChangedFb();
 
@@ -144,17 +144,28 @@ function displaySeason(data){
     rowGames.append(c)
     let tableBody = document.getElementById('tbody');
     const podium = ['#FCCB00','#D4D8DC','#B1860F']
+    let cnt = 0;
     Object.entries(data).forEach(([idx, user]) => {
         let row = document.createElement('tr');
+        //let spaces = 30 - user['name'].length;
+        //let txt = `${user['name']}${'-'.repeat(spaces)}${user['points']}`;
         let nameCell = cell(user, user['name']);
         let pointsCell = cell(user, user['points']);
         nameCell.style.color = `color:${podium[idx]};`; 
         pointsCell.style.cssText = 'width: 100px;'; 
+        nameCell.style.cssText = 'width: 100px;'; 
+
 
         row.append(nameCell);
         row.append(pointsCell);
 
+        if (cnt % 2 == 1) {
+            row.style.backgroundColor = "#f0f0f0"; // Light grey for odd rows
+        } else {
+            row.style.backgroundColor = ""; // Default for even rows
+        }
         tableBody.append(row);
+        cnt++
     })
 }
 
@@ -266,7 +277,14 @@ function reOrderTable(alp=true,cellIdx=0) {
         else return parseFloat(cellB) - parseFloat(cellA);
     });
 
-    rows.forEach(row => table.appendChild(row));
+    rows.forEach((row, index) => {
+        if (index % 2 === 1) {
+            row.style.backgroundColor = "#f0f0f0"; // Light grey for odd rows
+        } else {
+            row.style.backgroundColor = ""; // Default for even rows
+        }
+        table.appendChild(row);
+    });
 }
 
 const posmap = {
@@ -283,7 +301,8 @@ const posmap = {
     11:"game11",
     12:"game12",
     13:"game13",
-    14:"game14"
+    14:"game14",
+    15:"game15",
 }
 
 const uid = localStorage.uid;

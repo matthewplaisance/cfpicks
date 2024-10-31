@@ -61,7 +61,7 @@ function setup(data) {
     let ttbel = document.getElementById('tb');
     if (ttbel){
         if (data.hasOwnProperty('tb')) ttbel.value = data['tb'].pick;
-        else document.getElementById('tb').value = 'Vanderbilt';
+        else document.getElementById('tb').value = 0;
     }
     
 }
@@ -187,11 +187,11 @@ const gamesRefer = ref(db,'schedule')
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
-const NUM_GAMES = 14;
+const NUM_GAMES = 15;
 
 let userData = await fetchData(userRefer);
-const gameData = await fetchData(gamesRefer);
-//const gameData = await json('../data/games.json');
+//const gameData = await fetchData(gamesRefer);
+const gameData = await json('../data/games.json');
 //console.log('gameData1 :>> ', gameData1);
 
 let picks = {};

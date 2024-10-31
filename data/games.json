@@ -756,6 +756,104 @@
             "time": 1729958400,
             "humanDate": "Oct 26 11:00"
         }
+    },
+    "week10":
+    {
+        "game1": {
+            "away": "Ohio St",
+            "home": "Penn St",
+            "time": 1730563200,
+            "humanDate": "Nov 02 11:00"
+        },
+        "game2": {
+            "away": "Duke",
+            "home": "Miami",
+            "time": 1730563200,
+            "humanDate": "Nov 02 11:00"
+        },
+        "game3": {
+            "away": "Ole Miss",
+            "home": "Arkansas",
+            "time": 1730563200,
+            "humanDate": "Nov 02 11:00"
+        },
+        "game4": {
+            "away": "Minnesota",
+            "home": "Illinois",
+            "time": 1730563200,
+            "humanDate": "Nov 02 11:00"
+        },
+        "game5": {
+            "away": "Vanderbilt",
+            "home": "Auburn",
+            "time": 1730565900,
+            "humanDate": "Nov 02 11:45"
+        },
+        "game6": {
+            "away": "Oregon",
+            "home": "Michigan",
+            "time": 1730575800,
+            "humanDate": "Nov 02 14:30"
+        },
+        "game7": {
+            "away": "Florida",
+            "home": "Georgia",
+            "time": 1730575800,
+            "humanDate": "Nov 02 14:30"
+        },
+        "game8": {
+            "away": "Texas Tech",
+            "home": "Iowa St",
+            "time": 1730575800,
+            "humanDate": "Nov 02 14:30"
+        },
+        "game9": {
+            "away": "Arizona St",
+            "home": "Oklahoma St",
+            "time": 1730588400,
+            "humanDate": "Nov 02 18:00"
+        },
+        "game10": {
+            "away": "Texas A&M",
+            "home": "S Carolina",
+            "time": 1730590200,
+            "humanDate": "Nov 02 18:30"
+        },
+        "game11": {
+            "away": "Louisville",
+            "home": "Clemson",
+            "time": 1730590200,
+            "humanDate": "Nov 02 18:30"
+        },
+        "game12": {
+            "away": "USC",
+            "home": "Washington",
+            "time": 1730590200,
+            "humanDate": "Nov 02 18:30"
+        },
+        "game13": {
+            "away": "Kentucky",
+            "home": "Tennessee",
+            "time": 1730591100,
+            "humanDate": "Nov 02 18:45"
+        },
+        "game14": {
+            "away": "TCU",
+            "home": "Baylor",
+            "time": 1730592000,
+            "humanDate": "Nov 02 19:00"
+        },
+        "game15": {
+            "away": "Pittsburgh",
+            "home": "SMU",
+            "time": 1730592000,
+            "humanDate": "Nov 02 19:00"
+        },
+        "tiebreaker": {
+            "home":"A&M beats S Carolina by __ points (negative for losses)",
+            "time": 1730590200,
+            "humanDate": "Nov 02 18:30"
+        }
     }
     
 }
