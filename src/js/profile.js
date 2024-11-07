@@ -187,7 +187,7 @@ const gamesRefer = ref(db,'schedule')
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
-const NUM_GAMES = 15;
+const NUM_GAMES = 14;
 
 let userData = await fetchData(userRefer);
 //const gameData = await fetchData(gamesRefer);
