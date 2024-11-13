@@ -945,6 +945,85 @@
             "time": 1731171600,
             "humanDate": "Nov 09 11:00"
         }
+    },
+    "week12":{
+        "game1": {
+            "away": "UCLA",
+            "home": "Washigton",
+            "time": 1731722400,
+            "humanDate": "Nov 15 20:00"
+        },
+        "game2": {
+            "away": "Texas",
+            "home": "Arkansas",
+            "time": 1731776400,
+            "humanDate": "Nov 16 11:00"
+        },
+        "game3": {
+            "away": "Clemson",
+            "home": "Pittsburgh",
+            "time": 1731776400,
+            "humanDate": "Nov 16 11:00"
+        },
+        "game4": {
+            "away": "Utah",
+            "home": "Colorado",
+            "time": 1731776400,
+            "humanDate": "Nov 16 11:00"
+        },
+        "game5": {
+            "away": "LSU",
+            "home": "Florida",
+            "time": 1731789000,
+            "humanDate": "Nov 16 14:30"
+        },
+        "game6": {
+            "away": "Baylor",
+            "home": "West Virgina",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "game7": {
+            "away": "Nebraska",
+            "home": "USC",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "game8": {
+            "away": "Missouri",
+            "home": "S Carolina",
+            "time": 1731791700,
+            "humanDate": "Nov 16 15:15"
+        },
+        "game9": {
+            "away": "ASU",
+            "home": "Kansas St",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "game10": {
+            "away": "Oregon",
+            "home": "Wisconsin",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "game11": {
+            "away": "Tennessee",
+            "home": "Georgia",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "game12": {
+            "away": "Kansas",
+            "home": "BYU",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        },
+        "tiebreaker": {
+            "home":"Georgia beats Tennessee by __ points? (Negative for losses)",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        }
     }
     
 }
