@@ -998,26 +998,26 @@
         "game9": {
             "away": "ASU",
             "home": "Kansas St",
-            "time": 1731790800,
-            "humanDate": "Nov 16 15:00"
+            "time": 1731801600,
+            "humanDate": "Nov 16 18:00"
         },
         "game10": {
             "away": "Oregon",
             "home": "Wisconsin",
-            "time": 1731790800,
-            "humanDate": "Nov 16 15:00"
+            "time": 1731803400,
+            "humanDate": "Nov 16 18:30"
         },
         "game11": {
             "away": "Tennessee",
             "home": "Georgia",
-            "time": 1731790800,
-            "humanDate": "Nov 16 15:00"
+            "time": 1731803400,
+            "humanDate": "Nov 16 18:30"
         },
         "game12": {
             "away": "Kansas",
             "home": "BYU",
-            "time": 1731790800,
-            "humanDate": "Nov 16 15:00"
+            "time": 1731806100,
+            "humanDate": "Nov 16 21:15"
         },
         "tiebreaker": {
             "home":"Georgia beats Tennessee by __ points? (Negative for losses)",
