@@ -1024,6 +1024,85 @@
             "time": 1731790800,
             "humanDate": "Nov 16 15:00"
         }
+    },
+    "week13":{
+        "game1": {
+            "away": "Indiana",
+            "home": "Ohio St",
+            "time": 1732381200,
+            "humanDate": "Nov 23 11:00"
+        },
+        "game2": {
+            "away": "Ole Miss",
+            "home": "Florida",
+            "time": 1732381200,
+            "humanDate": "Nov 23 11:00"
+        },
+        "game3": {
+            "away": "SMU",
+            "home": "Virginia",
+            "time": 1732381200,
+            "humanDate": "Nov 23 11:00"
+        },
+        "game4": {
+            "away": "Kentucky",
+            "home": "Texas",
+            "time": 1732393800,
+            "humanDate": "Nov 23 14:30"
+        },
+        "game5": {
+            "away": "BYU",
+            "home": "Arizona St",
+            "time": 1732393800,
+            "humanDate": "Nov 23 14:30"
+        },
+        "game6": {
+            "away": "Colorado",
+            "home": "Kansas",
+            "time": 1732393800,
+            "humanDate": "Nov 23 14:30"
+        },
+        "game7": {
+            "away": "Pittsburgh",
+            "home": "Louisville",
+            "time": 1732395600,
+            "humanDate": "Nov 23 15:00"
+        },
+        "game8": {
+            "away": "Missouri",
+            "home": "Mississippi St",
+            "time": 1732396500,
+            "humanDate": "Nov 23 15:15"
+        },
+        "game9": {
+            "away": "Army",
+            "home": "Notre Dame",
+            "time": 1732406400,
+            "humanDate": "Nov 23 18:00"
+        },
+        "game10": {
+            "away": "Alabama",
+            "home": "OU",
+            "time": 1732408200,
+            "humanDate": "Nov 23 18:30"
+        },
+        "game11": {
+            "away": "Texas A&M",
+            "home": "Auburn",
+            "time": 1732408200,
+            "humanDate": "Nov 23 18:30"
+        },
+        "game12": {
+            "away": "Vanderbilt",
+            "home": "LSU",
+            "time": 1732409100,
+            "humanDate": "Nov 23 18:45"
+        },
+        "tiebreaker": {
+            "home":"Georgia beats Tennessee by __ points? (Negative for losses)",
+            "time": 1731790800,
+            "humanDate": "Nov 16 15:00"
+        }
     }
     
 }

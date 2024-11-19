@@ -20,25 +20,37 @@ async function submit(week, picks){
     }
     
     try{
-        msgEl.innerText = 'Submitting...';
-        msgEl.style.color = 'black';
-        for (let game in picks) {
-            const info = picks[game];
-            try {
-              await set(ref(db, `users/${uid}/${week}/${game}`), {
-                "pick": info["pick"],
-                "points": String(info["points"])
-              });
-            } catch (error) {
-                msgEl.innerText = `FB Err: ${error}`;
-                msgEl.style.color = 'red';
+        if (navigator.onLine) {
+            msgEl.innerText = 'Submitting...';
+            msgEl.style.color = 'black';
+            for (let game in picks) {
+                const info = picks[game];
+                try {
+                    const timeoutPromise = new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('Please refresh or try again on other browser/device. devcode: 0000')), 10000)
+                    );
+                    await Promise.race([
+                        set(ref(db, `users/${uid}/${week}/${game}`), {
+                            "pick": info["pick"],
+                            "points": String(info["points"])
+                        }),
+                        timeoutPromise
+                    ]);
+                } catch (error) {
+                    msgEl.innerText = error
+                    msgEl.style.color = 'red';
+                }
             }
+            msgEl.innerText = 'Submitted!';
+            msgEl.style.color = 'green';
+        }else {
+            msgEl.innerText = 'No internet connection.';
+            msgEl.style.color = 'red';
         }
-        msgEl.innerText = 'Submitted!';
-        msgEl.style.color = 'green';
         
-    }catch (err) {
-        msgEl.innerText = `FB Err: ${err}`;
+        
+    }catch (error) {
+        msgEl.innerText = error;
         msgEl.style.color = 'red';
     }
     
