@@ -46,9 +46,9 @@ function initTable(userData,dataWinners,dataGames,week) {
         row.append(cpp);
 
         for (let i = 1; i < Object.keys(dataGames).length + 1; i++) row.append(cell(posmap[i]));  
-        if (week == 'week14'){
-            for (let i = 1;i<9;i++)row.append(cell(`rank${i}`))
-        }
+        //if (week == 'week14'){
+        //    for (let i = 1;i<9;i++)row.append(cell(`rank${i}`))
+        //}
         for (const [idx, game] of Object.entries(posmap)) {
             const rank = `rank${idx-5}`
             const iRow = parseInt(idx) + 2;
@@ -201,15 +201,15 @@ function th(data){
             rowDates.append(celld);
         }
     }
-    if (week == 'week14'){
-        for (let i = 1; i < 9;i++){
-            let cell = document.createElement('th');
-            cell.textContent = i;
-            if (i == 1) cell.textContent = "Rankings: 1"
-            cell.style.fontWeight = 'bold;'
-            rowGames.append(cell);
-        }
-    }
+    //if (week == 'week14'){
+    //    for (let i = 1; i < 9;i++){
+    //        let cell = document.createElement('th');
+    //        cell.textContent = i;
+    //        if (i == 1) cell.textContent = "Rankings: 1"
+    //        cell.style.fontWeight = 'bold;'
+    //        rowGames.append(cell);
+    //    }
+    //}
     const tbc = document.createElement('th');
     tbc.style.color = '#1991EB';
     tbc.textContent = data['tiebreaker']['home'];
@@ -316,13 +316,10 @@ let weekEl = document.getElementById('weekSelect');
 let w = weekEl.value
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
 calcSeason(userData,winnerData)
-if (week == 'week14') {
-    initTable(userData,winnerData[week],dataGames[week],week)
-}else {
-    if (dataGames) {
-        initTable(userData,winnerData[week],dataGames[week],week);
-        displayTBR(winnerData[week]);
-    }
+
+if (dataGames) {
+    initTable(userData,winnerData[week],dataGames[week],week);
+    displayTBR(winnerData[week]);
 }
 
 select("#weekSelect").on("change", () => {
