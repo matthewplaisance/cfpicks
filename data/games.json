@@ -1103,6 +1103,103 @@
             "time": 1732393800,
             "humanDate": "Nov 23 14:30"
         }
+    },"week14":
+    {
+        "game1": {
+            "away": "Minnesota",
+            "home": "Wisconsin",
+            "time": 1732899600,
+            "humanDate": "Nov 29 11:00"
+        },
+        "game2": {
+            "away": "Georgia Tech",
+            "home": "Georgia",
+            "time": 1732926600,
+            "humanDate": "Nov 29 18:30"
+        },
+        "game3": {
+            "away": "Tennessee",
+            "home": "Vanderbilt",
+            "time": 1732986000,
+            "humanDate": "Nov 30 11:00"
+        },
+        "game4": {
+            "away": "S Carolina",
+            "home": "Clemson",
+            "time": 1732986000,
+            "humanDate": "Nov 30 11:00"
+        },
+        "game5": {
+            "away": "Louisville",
+            "home": "Kentucky",
+            "time": 1732986000,
+            "humanDate": "Nov 30 11:00"
+        },
+        "game6": {
+            "away": "Kansas",
+            "home": "Baylor",
+            "time": 1732986000,
+            "humanDate": "Nov 30 11:00"
+        },
+        "game7": {
+            "away": "West Virginia",
+            "home": "Texas Tech",
+            "time": 1732986000,
+            "humanDate": "Nov 30 11:00"
+        },
+        "game8": {
+            "away": "Notre Dame",
+            "home": "USC",
+            "time": 1732998600,
+            "humanDate": "Nov 30 14:30"
+        },
+        "game9": {
+            "away": "Auburn",
+            "home": "Alabama",
+            "time": 1732998600,
+            "humanDate": "Nov 30 14:30"
+        },
+        "game10": {
+            "away": "Miami",
+            "home": "Syracuse",
+            "time": 1732998600,
+            "humanDate": "Nov 30 14:30"
+        },
+        "game11": {
+            "away": "Arizona St",
+            "home": "Arizona",
+            "time": 1732998600,
+            "humanDate": "Nov 30 14:30"
+        },
+        "game12": {
+            "away": "Arkansas",
+            "home": "Missouri",
+            "time": 1732998600,
+            "humanDate": "Nov 30 14:30"
+        },
+        "game13": {
+            "away": "OU",
+            "home": "LSU",
+            "time": 1733011200,
+            "humanDate": "Nov 30 18:00"
+        },
+        "game14": {
+            "away": "Texas",
+            "home": "Texas A&M",
+            "time": 1733013000,
+            "humanDate": "Nov 30 18:30"
+        },
+        "game15": {
+            "away": "Kansas St",
+            "home": "Iowa St",
+            "time": 1733013000,
+            "humanDate": "Nov 30 18:30"
+        },
+        "tiebreaker": {
+            "home":"Texas beats A&M by __ points? (Negative for losses by)",
+            "time": 1733013000,
+            "humanDate": "Nov 30 18:30"
+        }
     }
     
 }
