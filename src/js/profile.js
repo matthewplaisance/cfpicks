@@ -70,11 +70,15 @@ function setup(data) {
             if (box.textContent == data[game]['points']) box.style.background = chosenColor;
         })
     }
-    let ttbel = document.getElementById('tb');
-    if (ttbel){
-        if (data.hasOwnProperty('tb')) ttbel.value = data['tb'].pick;
-        else document.getElementById('tb').value = 0;
-    }
+    const ttbel = document.getElementById('tb1')
+    if (data.hasOwnProperty('tb1')) ttbel.value = data['tb1'].pick;
+    else document.getElementById('tb1').value = 0;
+
+    const ttbel2 = document.getElementById('tb2')
+    if (data.hasOwnProperty('tb2')) ttbel2.value = data['tb2'].pick;
+    else document.getElementById('tb2').value = 0;
+
+    
     
 }
 
@@ -159,7 +163,7 @@ function createCard(data,game,wrapper,gn){
     }else{
         const tbInput = document.createElement('input');
         tbInput.value = 0;
-        tbInput.id = 'tb'
+        tbInput.id = data['id']
         tbInput.className = "form__input";
         cardBodyDiv.append(tbInput);
     }
@@ -199,7 +203,7 @@ const gamesRefer = ref(db,'schedule')
 const chosenColor = '#FF8000'
 const ccRgb = 'rgb(255, 128, 0)'
 const pickedPColor = "#9494b8";
-const NUM_GAMES = 15;
+const NUM_GAMES = 6;
 
 let userData = await fetchData(userRefer);
 //const gameData = await fetchData(gamesRefer);
@@ -322,9 +326,15 @@ points.forEach(el => {
 });
 
 submitBtn.addEventListener('click',function () {
-    const tbel = document.getElementById('tb')
-    picks['tb'] = {
-        pick:String(tbel.value),
+    const tbel1 = document.getElementById('tb1')
+    const tbel2 = document.getElementById('tb2')
+
+    picks['tb1'] = {
+        pick:String(tbel1.value),
+        points:0
+    }
+    picks['tb2'] = {
+        pick:String(tbel2.value),
         points:0
     }
     submit(week,picks);

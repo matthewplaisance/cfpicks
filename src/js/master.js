@@ -44,8 +44,8 @@ function initTable(userData,dataWinners,dataGames,week) {
         let cpp = cell(`${user}_ppoints`,points)
         row.append(cellp);
         row.append(cpp);
-
-        for (let i = 1; i < Object.keys(dataGames).length + 1; i++) row.append(cell(posmap[i]));  
+        const gameCount = Object.keys(dataGames).filter(key => key.includes('game')).length;
+        for (let i = 1; i < gameCount +1; i++) row.append(cell(posmap[i]));  
         //if (week == 'week14'){
         //    for (let i = 1;i<9;i++)row.append(cell(`rank${i}`))
         //}
@@ -107,8 +107,22 @@ function initTable(userData,dataWinners,dataGames,week) {
         let cellt = document.createElement('td');
         if (weekInfo.hasOwnProperty('tb')) {
             if (dataGames['tiebreaker'].time < unixNow) cellt.textContent = weekInfo['tb'].pick;
+            row.append(cellt) 
         }
-        row.append(cellt)
+
+
+        let cellt1 = document.createElement('td');
+        if (weekInfo.hasOwnProperty('tb1')) {
+            if (dataGames['tiebreaker'].time < unixNow) cellt1.textContent = weekInfo['tb1'].pick;
+            row.append(cellt1)
+        }
+
+        let cellt2 = document.createElement('td');
+        if (weekInfo.hasOwnProperty('tb2')) {
+            if (dataGames['tiebreaker2'].time < unixNow) cellt2.textContent = weekInfo['tb2'].pick;
+            row.append(cellt2)
+        }
+        
         cellp.textContent = points;
         cpp.textContent = pp;
         tableBody.append(row);
@@ -123,10 +137,16 @@ function initTable(userData,dataWinners,dataGames,week) {
 
 function displayTBR(data) {
     if (data) {
-        const tbr = data.tb
-        if (tbr){
-            let tbr_th = document.getElementById('tb_res');
-            tbr_th.textContent = tbr;
+        const tbr1 = data['tb1']
+        if (tbr1){
+            let tbr_th = document.getElementById('tb1_res');
+            tbr_th.textContent = tbr1;
+            tbr_th.style.background = colorW;
+        }
+        const tbr2 = data['tb2']
+        if (tbr2){
+            let tbr_th = document.getElementById('tb2_res');
+            tbr_th.textContent = tbr2;
             tbr_th.style.background = colorW;
         }
     }
@@ -210,14 +230,30 @@ function th(data){
     //        rowGames.append(cell);
     //    }
     //}
-    const tbc = document.createElement('th');
-    tbc.style.color = '#1991EB';
-    tbc.textContent = data['tiebreaker']['home'];
-    const tbcell = document.createElement('td');
-    tbcell.id = 'tb_res';
+    const tbc1 = document.createElement('th');
+    tbc1.style.color = '#1991EB';
+    tbc1.textContent = data['tiebreaker']['home'];
+    const tbcell1 = document.createElement('td');
+    tbcell1.id = 'tb1_res';
 
-    rowGames.append(tbc);
-    rowDates.append(tbcell);
+    rowGames.append(tbc1);
+    rowDates.append(tbcell1);
+
+    if (data.hasOwnProperty('tiebreaker2')) {
+        const tbc2 = document.createElement('th');
+        tbc2.style.color = '#1991EB';
+        tbc2.textContent = data['tiebreaker2']['home'];
+        const tbcell2 = document.createElement('td');
+        tbcell2.id = 'tb2_res';
+        rowGames.append(tbc2);
+        rowDates.append(tbcell2);
+    }
+    
+
+   
+    
+
+    
 }
 
 const holder = () => {
