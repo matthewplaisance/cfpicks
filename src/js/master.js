@@ -87,17 +87,17 @@ function initTable(userData,dataWinners,dataGames,week) {
         if (points > winner["points"]){
             winner["points"] = points;
             winner.user = [user];
-            winner.tb = weekInfo['tb'].pick;
+            winner.tb = weekInfo['tb1'].pick;
         }else if (points == winner.points){
             if (dataWinners.hasOwnProperty('tb')){
                 const tbr = dataWinners.tb;
                 if (tbr){
-                    const currDiff = Math.abs(tbr - weekInfo['tb'].pick);
+                    const currDiff = Math.abs(tbr - weekInfo['tb1'].pick);
                     const winnerDiff = Math.abs(tbr - winner.tb);
                     if (currDiff < winnerDiff){
                         winner["points"] = points;
                         winner.user = [user];
-                        winner.tb = weekInfo['tb'].pick;
+                        winner.tb = weekInfo['tb1'].pick;
                     }else if (currDiff == winnerDiff) winner.user.push(user)
                 }else winner.user.push(user)
             }
@@ -106,7 +106,7 @@ function initTable(userData,dataWinners,dataGames,week) {
 
         let cellt = document.createElement('td');
         if (weekInfo.hasOwnProperty('tb')) {
-            if (dataGames['tiebreaker'].time < unixNow) cellt.textContent = weekInfo['tb'].pick;
+            if (dataGames['tiebreaker'].time < unixNow) cellt.textContent = weekInfo['tb1'].pick;
             row.append(cellt) 
         }
 
