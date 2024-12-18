@@ -1243,7 +1243,7 @@
             "humanDate": "Dec 07 15:00"
         }
        
-    },"week16":
+    },"cfp":
     {
         "game1": {
             "away": "Indiana",
@@ -1270,7 +1270,7 @@
             "humanDate": "Dec 21 19:00"
         },
         "tiebreaker": {
-            "home":"Texas beats Clemson by __ points? (Negative for losses by)",
+            "home":"",
             "time": 1734814800,
             "humanDate": "Dec 21 15:00"
         }

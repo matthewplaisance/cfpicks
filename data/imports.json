@@ -1,1 +1,26 @@
-{"game1": {"away": "Indiana", "home": "Notre Dame", "time": 1734742800, "humanDate": "Dec 20 19:00"}, "game2": {"away": "Smu", "home": "Penn St", "time": 1734800400, "humanDate": "Dec 21 11:00"}, "game3": {"away": "Clemson", "home": "Texas", "time": 1734814800, "humanDate": "Dec 21 15:00"}, "game4": {"away": "Tennessee", "home": "Ohio St", "time": 1734829200, "humanDate": "Dec 21 19:00"}}
+{
+    "game1": {
+        "away": "Indiana",
+        "home": "Notre Dame",
+        "time": 1734742800,
+        "humanDate": "Dec 20 19:00"
+    },
+    "game2": {
+        "away": "Smu",
+        "home": "Penn St",
+        "time": 1734800400,
+        "humanDate": "Dec 21 11:00"
+    },
+    "game3": {
+        "away": "Clemson",
+        "home": "Texas",
+        "time": 1734814800,
+        "humanDate": "Dec 21 15:00"
+    },
+    "game4": {
+        "away": "Tennessee",
+        "home": "Ohio St",
+        "time": 1734829200,
+        "humanDate": "Dec 21 19:00"
+    }
+}
