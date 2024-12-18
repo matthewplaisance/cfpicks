@@ -1,1 +1,266 @@
-(()=>{"use strict";var e,t,o,n,r,a={9353:(e,t,o)=>{o.d(t,{m_:()=>i});var n=o(3977),r=o(3281),a=o(8679);const s=(0,n.ZF)({apiKey:"AIzaSyC8J8_Bo2YSeM1aTkE3--bQLCaeuGU3hQE",authDomain:"cfpicks-66e14.firebaseapp.com",projectId:"cfpicks-66e14",storageBucket:"cfpicks-66e14.appspot.com",messagingSenderId:"924459609957",appId:"1:924459609957:web:c1125a2a8f5147de313b8c"}),c=(0,r.v0)(s),i=((0,a.N8)(),()=>{c.onAuthStateChanged((e=>{if(e)console.log("user mon :>> ",e),localStorage.uid=e.uid,"index.html"==window.location.pathname.split("/").pop()&&(window.location.href="./profile.html");else{const e=window.location.pathname.split("/").pop();if(console.log("currPage :>> ",e),"index.html"!=e){window.location.replace("index.html");const e=window.history.state;window.history.replaceState(e,"",window.location.href),window.onpopstate=function(){window.history.replaceState(e,"",window.location.href)}}}}))})},1292:(e,t,o)=>{o.a(e,(async(e,t)=>{try{var n=o(8679),r=o(9353),a=o(8976);async function s(e){let t;return await new Promise(((o,r)=>{(0,n.jM)(e,(e=>{t=e.val(),o()}))})),t}function c(e,t,o,n){p(o);let r=Math.floor((new Date).getTime()/1e3),a=document.getElementById("tbody"),s={points:0,user:[],tb:0};for(let c in e){if("IWBJNJ2Zd2OEIndMcKgXpRfRF3C3"==c)continue;let i=0,l=0,p=e[c][n];p||(p={});let d=document.createElement("tr");d.append(m(c,e[c].name,"td",!0));let f=m(`${c}_points`,i),u=m(`${c}_ppoints`,i);d.append(f),d.append(u);for(let e=1;e<Object.keys(o).length+1;e++)d.append(m(h[e]));for(const[e,n]of Object.entries(h)){const a="rank"+(e-5),s=parseInt(e)+2;if(p.hasOwnProperty(n)){const e=p[n];e&&(e.hasOwnProperty("pick")&&(o[n].time<r&&(d.cells[s].textContent=`${e.pick}: ${e.points}`),""!=t[n]&&t[n]!=e.pick&&t[n]||(l+=parseInt(e.points))),t.hasOwnProperty(n)&&t[n]==e.pick&&(d.cells[s].style.background=w,i+=parseInt(e.points)))}else if(p.hasOwnProperty(a)){const e=p[a];e.hasOwnProperty("pick")&&1701478800<r&&(d.cells[s].textContent=e.pick),t.hasOwnProperty(a)&&t[a]==e.pick&&(d.cells[s].style.background=w,i+=2),""!=t[a]&&t[a]!=e.pick||(l+=2)}}if(i>s.points)s.points=i,s.user=[c],s.tb=p.tb.pick;else if(i==s.points&&t.hasOwnProperty("tb")){const e=t.tb;if(e){const t=Math.abs(e-p.tb.pick),o=Math.abs(e-s.tb);t<o?(s.points=i,s.user=[c],s.tb=p.tb.pick):t==o&&s.user.push(c)}else s.user.push(c)}let y=document.createElement("td");p.hasOwnProperty("tb")&&o.tiebreaker.time<r&&(y.textContent=p.tb.pick),d.append(y),f.textContent=i,u.textContent=l,a.append(d)}if(0!=s.points)for(let e of s.user)document.getElementById(e).style.color="#FCCB00";const c=document.getElementById(y);c&&(c.style.fontWeight=600),0==s.points?u():u(!1,1)}function i(e){if(e){const t=e.tb;if(t){let e=document.getElementById("tb_res");e.textContent=t,e.style.background=w}}}function l(e){const t=document.getElementById("rowGames"),o=document.getElementById("rowDates");for(;t.firstChild;)t.removeChild(t.firstChild);for(;o.firstChild;)o.removeChild(o.firstChild);t.append(d());const n=document.createElement("th");n.textContent="Season Points",t.append(n);let r=document.getElementById("tbody");const a=["#FCCB00","#D4D8DC","#B1860F"];let s=0;Object.entries(e).forEach((([e,t])=>{let o=document.createElement("tr"),n=m(t,t.name),c=m(t,t.points);n.style.color=`color:${a[e]};`,c.style.cssText="width: 100px;",n.style.cssText="width: 100px;",o.append(n),o.append(c),o.style.backgroundColor=s%2==1?"#f0f0f0":"",r.append(o),s++}))}function p(e){const t=document.getElementById("rowGames"),o=document.getElementById("rowDates");for(;t.firstChild;)t.removeChild(t.firstChild);for(;o.firstChild;)o.removeChild(o.firstChild);t.append(d()),o.append(d()),o.append(d()),o.append(d());const n=document.createElement("th");n.textContent="Current Points";const r=document.createElement("th");r.textContent="Potential Points",t.append(n),t.append(r);for(const[n,r]of Object.entries(h))if(e.hasOwnProperty(r)){let n=document.createElement("th");n.textContent=`${e[r].away} at ${e[r].home}`,t.append(n);let a=document.createElement("td");a.style.color="#1fc4ed",a.textContent=e[r].humanDate,o.append(a)}const a=document.createElement("th");a.style.color="#1991EB",a.textContent=e.tiebreaker.home;const s=document.createElement("td");s.id="tb_res",t.append(a),o.append(s)}(0,r.m_)(),$(document).ready((function(){$("#header").load("../src/pages/header.html")}));const d=()=>{const e=document.createElement("th");return e.textContent="holder",e.style.color="white",e},m=(e,t=null,o="td",n=!1)=>{const r=document.createElement(o);return r.id=e,r.textContent=t,n&&(r.classList.add("sticky-column"),r.style.backgroundColor="#f7faf8"),r};function f(e,t){let o={};for(let n in e){o[n]={name:e[n].name,points:0};for(let r in e[n]){const a=e[n][r];if("object"==typeof a&&null!==a)for(let e in a)a[e].pick==t[r][e]&&(o[n].points+=parseInt(a[e].points))}}const n=Object.entries(o).map((([e,t])=>({key:e,...t})));n.sort(((e,t)=>t.points-e.points));const r={};n.forEach((e=>{r[e.key]=e})),console.log("sortedData :>> ",r)}function u(e=!0,t=0){let o=document.querySelector("tbody"),n=Array.from(o.rows);n.sort(((o,n)=>{let r=o.cells[t].textContent.trim(),a=n.cells[t].textContent.trim();return e?r.localeCompare(a):parseFloat(a)-parseFloat(r)})),n.forEach(((e,t)=>{e.style.backgroundColor=t%2==1?"#f0f0f0":"",o.appendChild(e)}))}const h={1:"game1",2:"game2",3:"game3",4:"game4",5:"game5",6:"game6",7:"game7",8:"game8",9:"game9",10:"game10",11:"game11",12:"game12",13:"game13",14:"game14",15:"game15"},y=localStorage.uid,w="#C0FF00",b=(0,n.N8)();let g=await s((0,n.iH)(b,"users")),C=await s((0,n.iH)(b,"results"));const k=await(0,a.AVB)("../data/games.json"),v=await(0,a.AVB)("../data/season.json");let E=document.getElementById("weekSelect"),x=(E.value,E.value.replace(" ","").toLocaleLowerCase());f(g,C),k&&(c(g,C[x],k[x],x),i(C[x])),(0,a.Ys)("#weekSelect").on("change",(()=>{let e=document.getElementById("weekSelect").value;"default"==e&&(e="Week 13"),e=e.replace(" ","").toLocaleLowerCase();const t=document.getElementById("tbody");for(;t.firstChild;)t.removeChild(t.firstChild);Object.keys(k).includes(e)&&(c(g,C[e],k[e],e),i(C[e])),"season"==e&&l(v)})),t()}catch(O){t(O)}}),1)}},s={};function c(e){var t=s[e];if(void 0!==t)return t.exports;var o=s[e]={exports:{}};return a[e](o,o.exports,c),o.exports}c.m=a,e="function"==typeof Symbol?Symbol("webpack queues"):"__webpack_queues__",t="function"==typeof Symbol?Symbol("webpack exports"):"__webpack_exports__",o="function"==typeof Symbol?Symbol("webpack error"):"__webpack_error__",n=e=>{e&&e.d<1&&(e.d=1,e.forEach((e=>e.r--)),e.forEach((e=>e.r--?e.r++:e())))},c.a=(r,a,s)=>{var c;s&&((c=[]).d=-1);var i,l,p,d=new Set,m=r.exports,f=new Promise(((e,t)=>{p=t,l=e}));f[t]=m,f[e]=e=>(c&&e(c),d.forEach(e),f.catch((e=>{}))),r.exports=f,a((r=>{var a;i=(r=>r.map((r=>{if(null!==r&&"object"==typeof r){if(r[e])return r;if(r.then){var a=[];a.d=0,r.then((e=>{s[t]=e,n(a)}),(e=>{s[o]=e,n(a)}));var s={};return s[e]=e=>e(a),s}}var c={};return c[e]=e=>{},c[t]=r,c})))(r);var s=()=>i.map((e=>{if(e[o])throw e[o];return e[t]})),l=new Promise((t=>{(a=()=>t(s)).r=0;var o=e=>e!==c&&!d.has(e)&&(d.add(e),e&&!e.d&&(a.r++,e.push(a)));i.map((t=>t[e](o)))}));return a.r?l:s()}),(e=>(e?p(f[o]=e):l(m),n(c)))),c&&c.d<0&&(c.d=0)},r=[],c.O=(e,t,o,n)=>{if(!t){var a=1/0;for(p=0;p<r.length;p++){for(var[t,o,n]=r[p],s=!0,i=0;i<t.length;i++)(!1&n||a>=n)&&Object.keys(c.O).every((e=>c.O[e](t[i])))?t.splice(i--,1):(s=!1,n<a&&(a=n));if(s){r.splice(p--,1);var l=o();void 0!==l&&(e=l)}}return e}n=n||0;for(var p=r.length;p>0&&r[p-1][2]>n;p--)r[p]=r[p-1];r[p]=[t,o,n]},c.d=(e,t)=>{for(var o in t)c.o(t,o)&&!c.o(e,o)&&Object.defineProperty(e,o,{enumerable:!0,get:t[o]})},c.g=function(){if("object"==typeof globalThis)return globalThis;try{return this||new Function("return this")()}catch(e){if("object"==typeof window)return window}}(),c.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),(()=>{var e={528:0};c.O.j=t=>0===e[t];var t=(t,o)=>{var n,r,[a,s,i]=o,l=0;if(a.some((t=>0!==e[t]))){for(n in s)c.o(s,n)&&(c.m[n]=s[n]);if(i)var p=i(c)}for(t&&t(o);l<a.length;l++)r=a[l],c.o(e,r)&&e[r]&&e[r][0](),e[r]=0;return c.O(p)},o=self.webpackChunkprod_1=self.webpackChunkprod_1||[];o.forEach(t.bind(null,0)),o.push=t.bind(null,o.push.bind(o))})();var i=c.O(void 0,[529,183,939],(()=>c(1292)));i=c.O(i)})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/js/auth.js":
+/*!************************!*\
+  !*** ./src/js/auth.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   auth: () => (/* binding */ auth),\n/* harmony export */   createUser: () => (/* binding */ createUser),\n/* harmony export */   db: () => (/* binding */ db),\n/* harmony export */   initDb: () => (/* binding */ initDb),\n/* harmony export */   loginFb: () => (/* binding */ loginFb),\n/* harmony export */   logoutFb: () => (/* binding */ logoutFb),\n/* harmony export */   onAuthStateChanged: () => (/* reexport safe */ firebase_auth__WEBPACK_IMPORTED_MODULE_1__.onAuthStateChanged),\n/* harmony export */   onAuthStateChangedFb: () => (/* binding */ onAuthStateChangedFb),\n/* harmony export */   updateName: () => (/* binding */ updateName),\n/* harmony export */   updatePasswordFb: () => (/* binding */ updatePasswordFb)\n/* harmony export */ });\n/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ \"./node_modules/firebase/app/dist/esm/index.esm.js\");\n/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ \"./node_modules/firebase/auth/dist/esm/index.esm.js\");\n/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/database */ \"./node_modules/firebase/database/dist/esm/index.esm.js\");\n\r\n\r\n\r\n\r\n\r\nconst firebaseConfig = {\r\n    apiKey: \"AIzaSyC8J8_Bo2YSeM1aTkE3--bQLCaeuGU3hQE\",\r\n    authDomain: \"cfpicks-66e14.firebaseapp.com\",\r\n    projectId: \"cfpicks-66e14\",\r\n    storageBucket: \"cfpicks-66e14.appspot.com\",\r\n    messagingSenderId: \"924459609957\",\r\n    appId: \"1:924459609957:web:c1125a2a8f5147de313b8c\"\r\n};\r\n  \r\nconst app = (0,firebase_app__WEBPACK_IMPORTED_MODULE_0__.initializeApp)(firebaseConfig);\r\nconst auth = (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.getAuth)(app);\r\nconst db = (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__.getDatabase)();\r\n\r\nconst onAuthStateChangedFb = () => {\r\n    auth.onAuthStateChanged((user) => {\r\n        if (user) {\r\n            console.log('user mon :>> ', user);\r\n            localStorage.uid = user.uid;\r\n            const currPage = window.location.pathname.split(\"/\").pop();\r\n            if (currPage == 'index.html'){\r\n                window.location.href = './profile.html';\r\n            }\r\n        } else {\r\n            const currPage = window.location.pathname.split(\"/\").pop();\r\n            console.log('currPage :>> ', currPage);\r\n            if (currPage != 'index.html'){\r\n                window.location.replace('index.html');\r\n                const currentState = window.history.state;\r\n                window.history.replaceState(currentState, '', window.location.href);\r\n                window.onpopstate = function () {\r\n                window.history.replaceState(currentState, '', window.location.href);\r\n                };\r\n                \r\n            }\r\n        }\r\n    });\r\n};\r\n\r\nconst updateName = (displayName) => {\r\n    (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.updateProfile)(auth.currentUser, {\r\n        displayName: displayName\r\n      }).then(() => {\r\n        console.log('userCredential.user.displayName :>> ', auth.currentUser.displayName);\r\n      }).catch((error) => {\r\n        console.log('error :>> ', error);\r\n      });\r\n};\r\n\r\nconst initDb = (uid,displayName) => {\r\n    console.log('indb :>> ');\r\n    (0,firebase_database__WEBPACK_IMPORTED_MODULE_2__.set)((0,firebase_database__WEBPACK_IMPORTED_MODULE_2__.ref)(db, `users/${uid}/`), {\r\n        \"name\": displayName,\r\n        \"week1\": {}\r\n    });\r\n};\r\n\r\nconst loginFb = (email, password) => {\r\n    return (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.signInWithEmailAndPassword)(auth,email,password)\r\n};\r\n\r\nconst logoutFb = () => {\r\n    sessionStorage.removeItem('siteSelection')\r\n    return (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.signOut)(auth);\r\n};\r\n\r\nconst updatePasswordFb = (newPassword) => {\r\n    const user = auth.currentUser;\r\n    if (user) {\r\n        return (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.updatePassword)(user,newPassword);\r\n    }\r\n    return Promise.reject(new Error('No user is currently signed in.'));\r\n};\r\n\r\nconst createUser = (email,password) => {\r\n    return (0,firebase_auth__WEBPACK_IMPORTED_MODULE_1__.createUserWithEmailAndPassword)(auth,email,password);\r\n}\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack://prod-1/./src/js/auth.js?");
+
+/***/ }),
+
+/***/ "./src/js/master.js":
+/*!**************************!*\
+  !*** ./src/js/master.js ***!
+  \**************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/database */ \"./node_modules/firebase/database/dist/esm/index.esm.js\");\n/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth */ \"./src/js/auth.js\");\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/src/index.js\");\n\r\n\r\n\r\n\r\n(0,_auth__WEBPACK_IMPORTED_MODULE_2__.onAuthStateChangedFb)();\r\n\r\n$(document).ready(function () {\r\n    $(\"#header\").load(\"../src/pages/header.html\")\r\n});\r\n\r\nasync function fetchData(refer) {\r\n    let data;\r\n    await new Promise((resolve, reject) => {\r\n        (0,firebase_database__WEBPACK_IMPORTED_MODULE_0__.onValue)(refer , (snapshot) => {\r\n            data = snapshot.val();\r\n            resolve();\r\n        });\r\n    });\r\n    return data;\r\n}\r\n\r\nfunction initTable(userData,dataWinners,dataGames,week) {\r\n    th(dataGames);\r\n    let unixNow = Math.floor(new Date().getTime() / 1000);\r\n    let tableBody = document.getElementById('tbody');\r\n    let winner = {\r\n        \"points\":0,\r\n        \"user\":[],\r\n        'tb':0\r\n    };\r\n    let cnt = 0;\r\n    let tableArray = [];\r\n    for (let user in userData) {\r\n        if (user == \"IWBJNJ2Zd2OEIndMcKgXpRfRF3C3\") continue;\r\n        let points = 0;\r\n        let pp = 0;\r\n        let weekInfo = userData[user][week];\r\n        if (!weekInfo) weekInfo = {};\r\n        let rowArray = []\r\n        let row = document.createElement('tr')\r\n        row.append(cell(user,userData[user]['name'],'td',true))\r\n\r\n        let cellp = cell(`${user}_points`,points)\r\n        let cpp = cell(`${user}_ppoints`,points)\r\n        row.append(cellp);\r\n        row.append(cpp);\r\n\r\n        for (let i = 1; i < Object.keys(dataGames).length + 1; i++) row.append(cell(posmap[i]));  \r\n        //if (week == 'week14'){\r\n        //    for (let i = 1;i<9;i++)row.append(cell(`rank${i}`))\r\n        //}\r\n        for (const [idx, game] of Object.entries(posmap)) {\r\n            const rank = `rank${idx-5}`\r\n            const iRow = parseInt(idx) + 2;\r\n            if (weekInfo.hasOwnProperty(game)){\r\n                const info = weekInfo[game];\r\n                if (info){\r\n                    if (info.hasOwnProperty(\"pick\")){\r\n                        if (dataGames[game].time < unixNow) row.cells[iRow].textContent = `${info[\"pick\"]}: ${info[\"points\"]}`;\r\n                        if (dataWinners[game] == \"\" || dataWinners[game] == info.pick || !dataWinners[game])pp += parseInt(info.points);\r\n                    }\r\n\r\n                    if (dataWinners.hasOwnProperty(game)) {\r\n                        if (dataWinners[game] == info.pick) {\r\n                            row.cells[iRow].style.background = colorW;\r\n                            points += parseInt(info.points);\r\n                        }\r\n                    }\r\n                }\r\n            }else if (weekInfo.hasOwnProperty(rank)){\r\n                const info = weekInfo[rank];\r\n                const p = 9 - (idx-5)\r\n                if (info.hasOwnProperty(\"pick\")){\r\n                    if (1701478800 < unixNow) row.cells[iRow].textContent = info['pick'];\r\n                }\r\n                if (dataWinners.hasOwnProperty(rank)) {\r\n                    if (dataWinners[rank] == info.pick) {\r\n                        row.cells[iRow].style.background = colorW;\r\n                        points += 2;\r\n                    }\r\n                }\r\n                if (dataWinners[rank] == \"\" || dataWinners[rank] == info.pick)pp += 2;\r\n            }\r\n            \r\n        }\r\n\r\n        if (points > winner[\"points\"]){\r\n            winner[\"points\"] = points;\r\n            winner.user = [user];\r\n            winner.tb = weekInfo['tb'].pick;\r\n        }else if (points == winner.points){\r\n            if (dataWinners.hasOwnProperty('tb')){\r\n                const tbr = dataWinners.tb;\r\n                if (tbr){\r\n                    const currDiff = Math.abs(tbr - weekInfo['tb'].pick);\r\n                    const winnerDiff = Math.abs(tbr - winner.tb);\r\n                    if (currDiff < winnerDiff){\r\n                        winner[\"points\"] = points;\r\n                        winner.user = [user];\r\n                        winner.tb = weekInfo['tb'].pick;\r\n                    }else if (currDiff == winnerDiff) winner.user.push(user)\r\n                }else winner.user.push(user)\r\n            }\r\n            \r\n        }\r\n\r\n        let cellt = document.createElement('td');\r\n        if (weekInfo.hasOwnProperty('tb')) {\r\n            if (dataGames['tiebreaker'].time < unixNow) cellt.textContent = weekInfo['tb'].pick;\r\n        }\r\n        row.append(cellt)\r\n        cellp.textContent = points;\r\n        cpp.textContent = pp;\r\n        tableBody.append(row);\r\n        cnt++\r\n    }\r\n    if (winner.points != 0) for (let w of winner.user) document.getElementById(w).style.color = '#FCCB00';\r\n    const userRow = document.getElementById(uid);\r\n    if (userRow) userRow.style.fontWeight = 600;\r\n    if (winner.points == 0) reOrderTable()\r\n    else reOrderTable(false,1)\r\n}\r\n\r\nfunction displayTBR(data) {\r\n    if (data) {\r\n        const tbr = data.tb\r\n        if (tbr){\r\n            let tbr_th = document.getElementById('tb_res');\r\n            tbr_th.textContent = tbr;\r\n            tbr_th.style.background = colorW;\r\n        }\r\n    }\r\n}\r\n\r\nfunction displaySeason(data){\r\n    const rowGames = document.getElementById('rowGames');\r\n    const rowDates = document.getElementById('rowDates');\r\n    while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);\r\n    while (rowDates.firstChild) rowDates.removeChild(rowDates.firstChild);\r\n    rowGames.append(holder());\r\n\r\n    const c = document.createElement('th')\r\n    c.textContent = 'Season Points'\r\n    rowGames.append(c)\r\n    let tableBody = document.getElementById('tbody');\r\n    const podium = ['#FCCB00','#D4D8DC','#B1860F']\r\n    let cnt = 0;\r\n    Object.entries(data).forEach(([idx, user]) => {\r\n        let row = document.createElement('tr');\r\n        //let spaces = 30 - user['name'].length;\r\n        //let txt = `${user['name']}${'-'.repeat(spaces)}${user['points']}`;\r\n        let nameCell = cell(user, user['name']);\r\n        let pointsCell = cell(user, user['points']);\r\n        nameCell.style.color = `color:${podium[idx]};`; \r\n        pointsCell.style.cssText = 'width: 100px;'; \r\n        nameCell.style.cssText = 'width: 100px;'; \r\n\r\n\r\n        row.append(nameCell);\r\n        row.append(pointsCell);\r\n\r\n        if (cnt % 2 == 1) {\r\n            row.style.backgroundColor = \"#f0f0f0\"; // Light grey for odd rows\r\n        } else {\r\n            row.style.backgroundColor = \"\"; // Default for even rows\r\n        }\r\n        tableBody.append(row);\r\n        cnt++\r\n    })\r\n}\r\n\r\nfunction th(data){\r\n    const rowGames = document.getElementById('rowGames');\r\n    const rowDates = document.getElementById('rowDates');\r\n    while (rowGames.firstChild) rowGames.removeChild(rowGames.firstChild);\r\n    while (rowDates.firstChild) rowDates.removeChild(rowDates.firstChild);\r\n\r\n    rowGames.append(holder());//appending html el removes el from prev loc\r\n    rowDates.append(holder());\r\n    rowDates.append(holder());\r\n    rowDates.append(holder());\r\n\r\n\r\n    const cellp = document.createElement('th')\r\n    cellp.textContent = 'Current Points'\r\n    const c = document.createElement('th')\r\n    c.textContent = 'Potential Points'\r\n    rowGames.append(cellp)\r\n    rowGames.append(c)\r\n    \r\n\r\n    for (const [idx, game] of Object.entries(posmap)) {\r\n        if (data.hasOwnProperty(game)){\r\n            let cell = document.createElement('th');\r\n            cell.textContent = `${data[game]['away']} at ${data[game]['home']}`;\r\n            \r\n            rowGames.append(cell);\r\n            let celld = document.createElement('td');\r\n            celld.style.color = '#1fc4ed';\r\n            celld.textContent = data[game]['humanDate'];\r\n            rowDates.append(celld);\r\n        }\r\n    }\r\n    //if (week == 'week14'){\r\n    //    for (let i = 1; i < 9;i++){\r\n    //        let cell = document.createElement('th');\r\n    //        cell.textContent = i;\r\n    //        if (i == 1) cell.textContent = \"Rankings: 1\"\r\n    //        cell.style.fontWeight = 'bold;'\r\n    //        rowGames.append(cell);\r\n    //    }\r\n    //}\r\n    const tbc = document.createElement('th');\r\n    tbc.style.color = '#1991EB';\r\n    tbc.textContent = data['tiebreaker']['home'];\r\n    const tbcell = document.createElement('td');\r\n    tbcell.id = 'tb_res';\r\n\r\n    rowGames.append(tbc);\r\n    rowDates.append(tbcell);\r\n}\r\n\r\nconst holder = () => {\r\n    const b = document.createElement('th');\r\n    b.textContent = 'holder';\r\n    b.style.color = 'white';\r\n    return b\r\n}\r\n\r\nconst cell = (id,textContent=null,type='td',sticky=false) => {\r\n    \r\n    const cell = document.createElement(type);\r\n    cell.id = id;\r\n    cell.textContent = textContent;\r\n    if (sticky) {\r\n        cell.classList.add('sticky-column');\r\n        cell.style.backgroundColor = '#f7faf8';\r\n    }\r\n\r\n    return cell\r\n}\r\n\r\nfunction calcSeason(userData,results){\r\n    let res = {}\r\n    for (let user in userData){\r\n        res[user] = {'name':userData[user]['name'],'points':0};\r\n        for (let week in userData[user]){\r\n            const weekData = userData[user][week] \r\n            if (typeof weekData == 'object' && weekData !== null){\r\n                for (let game in weekData){\r\n                    if (weekData[game].pick == results[week][game]){\r\n                        res[user].points += parseInt(weekData[game].points)\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    }\r\n    const dataArray = Object.entries(res).map(([key, value]) => ({ key, ...value }));\r\n\r\n    dataArray.sort((a, b) => b.points - a.points);\r\n\r\n    const sortedData = {};\r\n    dataArray.forEach((item) => {\r\n        sortedData[item.key] = item;\r\n    });\r\n    console.log('sortedData :>> ', sortedData);\r\n}\r\n\r\nfunction reOrderTable(alp=true,cellIdx=0) {\r\n    let table = document.querySelector(\"tbody\"); \r\n    let rows = Array.from(table.rows); \r\n    rows.sort((rowA, rowB) => {\r\n        let cellA = rowA.cells[cellIdx].textContent.trim(); \r\n        let cellB = rowB.cells[cellIdx].textContent.trim();\r\n\r\n        if (alp) return cellA.localeCompare(cellB);\r\n        else return parseFloat(cellB) - parseFloat(cellA);\r\n    });\r\n\r\n    rows.forEach((row, index) => {\r\n        if (index % 2 === 1) {\r\n            row.style.backgroundColor = \"#f0f0f0\"; // Light grey for odd rows\r\n        } else {\r\n            row.style.backgroundColor = \"\"; // Default for even rows\r\n        }\r\n        table.appendChild(row);\r\n    });\r\n}\r\n\r\nconst posmap = {\r\n    1:\"game1\",\r\n    2:\"game2\",\r\n    3:\"game3\",\r\n    4:\"game4\",\r\n    5:\"game5\",\r\n    6:\"game6\",\r\n    7:\"game7\",\r\n    8:\"game8\",\r\n    9:\"game9\",\r\n    10:\"game10\",\r\n    11:\"game11\",\r\n    12:\"game12\",\r\n    13:\"game13\",\r\n    14:\"game14\",\r\n    15:\"game15\",\r\n}\r\n\r\nconst uid = localStorage.uid;\r\nconst colorW = '#C0FF00'\r\nconst db = (0,firebase_database__WEBPACK_IMPORTED_MODULE_0__.getDatabase)();\r\nlet userData = await fetchData((0,firebase_database__WEBPACK_IMPORTED_MODULE_0__.ref)(db, `users`));\r\nlet winnerData = await fetchData((0,firebase_database__WEBPACK_IMPORTED_MODULE_0__.ref)(db, `results`));\r\nconst dataGames = await (0,d3__WEBPACK_IMPORTED_MODULE_1__.json)('../data/games.json');\r\nconst seasonData = await (0,d3__WEBPACK_IMPORTED_MODULE_1__.json)('../data/season.json');\r\nlet weekEl = document.getElementById('weekSelect');\r\nlet w = weekEl.value\r\nlet week = weekEl.value.replace(' ','').toLocaleLowerCase();\r\ncalcSeason(userData,winnerData)\r\n\r\nif (dataGames) {\r\n    initTable(userData,winnerData[week],dataGames[week],week);\r\n    displayTBR(winnerData[week]);\r\n}\r\n\r\n(0,d3__WEBPACK_IMPORTED_MODULE_1__.select)(\"#weekSelect\").on(\"change\", () => {\r\n    let week = document.getElementById('weekSelect').value\r\n    if (week == 'default') week = \"Week 13\";\r\n    week = week.replace(' ','').toLocaleLowerCase()\r\n    const table = document.getElementById('tbody');\r\n    \r\n    while (table.firstChild){\r\n        table.removeChild(table.firstChild);\r\n    }\r\n    if (Object.keys(dataGames).includes(week)){\r\n        initTable(userData,winnerData[week],dataGames[week],week);\r\n        displayTBR(winnerData[week]);\r\n    }\r\n    if (week == \"season\") displaySeason(seasonData);\r\n});\r\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } }, 1);\n\n//# sourceURL=webpack://prod-1/./src/js/master.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/async module */
+/******/ 	(() => {
+/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
+/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
+/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 		var resolveQueue = (queue) => {
+/******/ 			if(queue && queue.d < 1) {
+/******/ 				queue.d = 1;
+/******/ 				queue.forEach((fn) => (fn.r--));
+/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
+/******/ 			}
+/******/ 		}
+/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
+/******/ 			if(dep !== null && typeof dep === "object") {
+/******/ 				if(dep[webpackQueues]) return dep;
+/******/ 				if(dep.then) {
+/******/ 					var queue = [];
+/******/ 					queue.d = 0;
+/******/ 					dep.then((r) => {
+/******/ 						obj[webpackExports] = r;
+/******/ 						resolveQueue(queue);
+/******/ 					}, (e) => {
+/******/ 						obj[webpackError] = e;
+/******/ 						resolveQueue(queue);
+/******/ 					});
+/******/ 					var obj = {};
+/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
+/******/ 					return obj;
+/******/ 				}
+/******/ 			}
+/******/ 			var ret = {};
+/******/ 			ret[webpackQueues] = x => {};
+/******/ 			ret[webpackExports] = dep;
+/******/ 			return ret;
+/******/ 		}));
+/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
+/******/ 			var queue;
+/******/ 			hasAwait && ((queue = []).d = -1);
+/******/ 			var depQueues = new Set();
+/******/ 			var exports = module.exports;
+/******/ 			var currentDeps;
+/******/ 			var outerResolve;
+/******/ 			var reject;
+/******/ 			var promise = new Promise((resolve, rej) => {
+/******/ 				reject = rej;
+/******/ 				outerResolve = resolve;
+/******/ 			});
+/******/ 			promise[webpackExports] = exports;
+/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
+/******/ 			module.exports = promise;
+/******/ 			body((deps) => {
+/******/ 				currentDeps = wrapDeps(deps);
+/******/ 				var fn;
+/******/ 				var getResult = () => (currentDeps.map((d) => {
+/******/ 					if(d[webpackError]) throw d[webpackError];
+/******/ 					return d[webpackExports];
+/******/ 				}))
+/******/ 				var promise = new Promise((resolve) => {
+/******/ 					fn = () => (resolve(getResult));
+/******/ 					fn.r = 0;
+/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
+/******/ 				});
+/******/ 				return fn.r ? promise : getResult();
+/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 			queue && queue.d < 0 && (queue.d = 0);
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"master": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkId] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunkprod_1"] = self["webpackChunkprod_1"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_firebase_app_dist_esm_index_esm_js-node_modules_firebase_auth_dist_esm_i-d0574a","vendors-node_modules_d3_src_index_js"], () => (__webpack_require__("./src/js/master.js")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;
