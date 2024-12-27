@@ -69,7 +69,7 @@ nav {
     transform: scale(0.98);
 }
 
-.box {
+.box,.boxOld {
   width: 20px;
   height: 20px;
   background-color: whitesmoke;

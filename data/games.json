@@ -1,6 +1,5 @@
 {
-    "week1":
-    {
+    "week1": {
         "game1": {
             "away": "UNC",
             "home": "Minnesota",
@@ -56,13 +55,12 @@
             "humanDate": "Sep 01 18:30"
         },
         "tiebreaker": {
-            "home":"Total yards for Quinn Ewers?",
+            "home": "Total yards for Quinn Ewers?",
             "time": 1725132600,
             "humanDate": "Aug 31 14:30"
         }
     },
-    "week2":
-    {
+    "week2": {
         "game1": {
             "away": "Duke",
             "home": "Northwestern",
@@ -142,12 +140,12 @@
             "humanDate": "Sep 07 21:30"
         },
         "tiebreaker": {
-            "home":"Total yards for Isaiah Bond?",
+            "home": "Total yards for Isaiah Bond?",
             "time": 1725724800,
             "humanDate": "Sep 07 11:00"
         }
     },
-    "week3":{
+    "week3": {
         "game1": {
             "away": "ASU",
             "home": "Texas St",
@@ -233,12 +231,12 @@
             "humanDate": "Sep 14 18:30"
         },
         "tiebreaker": {
-            "home":"Total yards for Shedeur Sanders?",
+            "home": "Total yards for Shedeur Sanders?",
             "time": 1726356600,
             "humanDate": "Sep 14 18:30"
         }
     },
-    "week4":{
+    "week4": {
         "game1": {
             "away": "Illinois",
             "home": "Nebraska",
@@ -312,8 +310,8 @@
             "humanDate": "Sep 21 21:30"
         },
         "tiebreaker": {
-            "home":"Total yards for Shedeur Sanders?",
-             "time": 1726963200,
+            "home": "Total yards for Shedeur Sanders?",
+            "time": 1726963200,
             "humanDate": "Sep 21 19:00"
         }
     },
@@ -403,12 +401,12 @@
             "humanDate": "Sep 28 21:00"
         },
         "tiebreaker": {
-            "home":"Georgia beats Alabama by __ points? (Negative for losses)",
+            "home": "Georgia beats Alabama by __ points? (Negative for losses)",
             "time": 1727566200,
             "humanDate": "Sep 28 18:30"
         }
     },
-    "week6":{
+    "week6": {
         "game1": {
             "away": "Missouri",
             "home": "Texas A&M",
@@ -488,13 +486,12 @@
             "humanDate": "Oct 05 22:00"
         },
         "tiebreaker": {
-            "home":"Missouri beats A&M by __ points? (Negative for losses)",
+            "home": "Missouri beats A&M by __ points? (Negative for losses)",
             "time": 1728144000,
             "humanDate": "Oct 05 11:00"
         }
     },
-    "week7":
-    {
+    "week7": {
         "game1": {
             "away": "Utah",
             "home": "Arizona St",
@@ -568,13 +565,12 @@
             "humanDate": "Oct 12 21:15"
         },
         "tiebreaker": {
-            "home":"Total yards for Quinn Ewers?",
+            "home": "Total yards for Quinn Ewers?",
             "time": 1728761400,
             "humanDate": "Oct 12 14:30"
         }
     },
-    "week8" : 
-    {
+    "week8": {
         "game1": {
             "away": "Oklahoma St",
             "home": "BYU",
@@ -660,13 +656,12 @@
             "humanDate": "Oct 19 18:45"
         },
         "tiebreaker": {
-            "home":"Texas beats Georgia by __ points (negative for losses)",
+            "home": "Texas beats Georgia by __ points (negative for losses)",
             "time": 1729380600,
             "humanDate": "Oct 19 18:30"
         }
     },
-    "week9":
-    {
+    "week9": {
         "game1": {
             "away": "Washington",
             "home": "Indiana",
@@ -752,13 +747,12 @@
             "humanDate": "Oct 26 21:15"
         },
         "tiebreaker": {
-            "home":"Which team above will score the most points this week?",
+            "home": "Which team above will score the most points this week?",
             "time": 1729958400,
             "humanDate": "Oct 26 11:00"
         }
     },
-    "week10":
-    {
+    "week10": {
         "game1": {
             "away": "Ohio St",
             "home": "Penn St",
@@ -850,12 +844,12 @@
             "humanDate": "Nov 02 19:00"
         },
         "tiebreaker": {
-            "home":"A&M beats S Carolina by __ points (negative for losses)",
+            "home": "A&M beats S Carolina by __ points (negative for losses)",
             "time": 1730590200,
             "humanDate": "Nov 02 18:30"
         }
     },
-    "week11":{
+    "week11": {
         "game1": {
             "away": "Miami",
             "home": "Georgia Tech",
@@ -941,12 +935,12 @@
             "humanDate": "Nov 09 21:15"
         },
         "tiebreaker": {
-            "home":"Passing yards for Quinn Ewers",
+            "home": "Passing yards for Quinn Ewers",
             "time": 1731171600,
             "humanDate": "Nov 09 11:00"
         }
     },
-    "week12":{
+    "week12": {
         "game1": {
             "away": "UCLA",
             "home": "Washington",
@@ -1020,12 +1014,12 @@
             "humanDate": "Nov 16 21:15"
         },
         "tiebreaker": {
-            "home":"Georgia beats Tennessee by __ points? (Negative for losses)",
+            "home": "Georgia beats Tennessee by __ points? (Negative for losses)",
             "time": 1731790800,
             "humanDate": "Nov 16 15:00"
         }
     },
-    "week13":{
+    "week13": {
         "game1": {
             "away": "Indiana",
             "home": "Ohio St",
@@ -1099,12 +1093,12 @@
             "humanDate": "Nov 23 18:45"
         },
         "tiebreaker": {
-            "home":"BYU beats Arizona ST by __ points?",
+            "home": "BYU beats Arizona ST by __ points?",
             "time": 1732393800,
             "humanDate": "Nov 23 14:30"
         }
-    },"week14":
-    {
+    },
+    "week14": {
         "game1": {
             "away": "Minnesota",
             "home": "Wisconsin",
@@ -1196,11 +1190,12 @@
             "humanDate": "Nov 30 18:30"
         },
         "tiebreaker": {
-            "home":"Texas beats A&M by __ points? (Negative for losses by)",
+            "home": "Texas beats A&M by __ points? (Negative for losses by)",
             "time": 1733013000,
             "humanDate": "Nov 30 18:30"
         }
-    },"week15":{
+    },
+    "week15": {
         "game1": {
             "away": "UNLV",
             "home": "Boise St",
@@ -1238,13 +1233,12 @@
             "humanDate": "Dec 07 19:00"
         },
         "tiebreaker": {
-            "home":"Texas beats Georiga by __ points? (Negative for losses by)",
+            "home": "Texas beats Georiga by __ points? (Negative for losses by)",
             "time": 1733605200,
             "humanDate": "Dec 07 15:00"
         }
-       
-    },"cfp":
-    {
+    },
+    "cfp": {
         "game1": {
             "away": "Indiana",
             "home": "Notre Dame",
@@ -1269,11 +1263,34 @@
             "time": 1734829200,
             "humanDate": "Dec 21 19:00"
         },
+        "game5": {
+            "away": "Penn St",
+            "home": "Boise St",
+            "time": 1735691400,
+            "humanDate": "Dec 31 18:30"
+        },
+        "game6": {
+            "away": "Texas",
+            "home": "Arizona St",
+            "time": 1735754400,
+            "humanDate": "Jan 01 12:00"
+        },
+        "game7": {
+            "away": "Ohio St",
+            "home": "Oregon",
+            "time": 1735768800,
+            "humanDate": "Jan 01 16:00"
+        },
+        "game8": {
+            "away": "Notre Dame",
+            "home": "Georgia",
+            "time": 1735782300,
+            "humanDate": "Jan 01 19:45"
+        },
         "tiebreaker": {
-            "home":"",
+            "home": "",
             "time": 1734814800,
             "humanDate": "Dec 21 15:00"
         }
     }
-    
 }

@@ -172,12 +172,15 @@ function createCard(data,game,wrapper,gn){
 
 function initCards(data,week) {
     const wrapper = document.getElementById('card-wrapper');
-    while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
+    //while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
     if (data.hasOwnProperty(week)) {
         let gn = 1;
         for (let game in data[week]){
-            createCard(data[week][game],game,wrapper,gn);
+            if (cfpweek2.includes(game)) {
+                createCard(data[week][game],game,wrapper,gn);
+            }
             gn++
+            
         }
     }
 
@@ -214,7 +217,12 @@ if (userData){
 }
 
 let pointsPicked = [];
-for (let game in picks) pointsPicked.push(String(picks[game].points))
+const cfpweek2 = ['game5','game6','game7','game8']
+for (let game in picks) {
+    if (cfpweek2.includes(game)) {
+        pointsPicked.push(String(picks[game].points))
+    }
+}
 
 initCards(gameData,week);
 setup(picks);
@@ -271,7 +279,7 @@ points.forEach(el => {
         };
 
         if (pointsPicked.includes(this.textContent)) {
-            if (picks.hasOwnProperty(game.id)){
+            if (picks.hasOwnProperty(game.id)){//unpick point
                 if (picks[game.id].points == this.textContent){
                     pointsPicked = pointsPicked.filter(item => item !== picks[game.id].points);
                     picks[game.id].points = null;
@@ -309,6 +317,7 @@ points.forEach(el => {
         });
         pointsPicked.push(String(picks[game.id].points))
         const bxs = document.querySelectorAll('.box');
+        console.log('bxs', bxs)
         bxs.forEach(bx => {
             if (pointsPicked.includes(bx.id) ) {
                 if (bx.style.background != ccRgb & bx.style.background != chosenColor){
@@ -323,10 +332,10 @@ points.forEach(el => {
 
 submitBtn.addEventListener('click',function () {
     const tbel = document.getElementById('tb')
-    picks['tb'] = {
-        pick:String(tbel.value),
-        points:0
-    }
+    //picks['tb'] = {
+    //    pick:String(tbel.value),
+    //    points:0
+    //}
     submit(week,picks);
 });
 
