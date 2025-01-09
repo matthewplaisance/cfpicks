@@ -1,26 +1,14 @@
 {
     "game1": {
-        "away": "Penn St",
-        "home": "Boise St",
-        "time": 1735691400,
-        "humanDate": "Dec 31 18:30"
+        "away": "Ohio St",
+        "home": "Texas",
+        "time": 1736469000,
+        "humanDate": "Jan 09 18:30"
     },
     "game2": {
-        "away": "Texas",
-        "home": "Arizona St",
-        "time": 1735754400,
-        "humanDate": "Jan 01 12:00"
-    },
-    "game3": {
-        "away": "Ohio St",
-        "home": "Oregon",
-        "time": 1735768800,
-        "humanDate": "Jan 01 16:00"
-    },
-    "game4": {
-        "away": "Notre Dame",
-        "home": "Georgia",
-        "time": 1735782300,
-        "humanDate": "Jan 01 19:45"
+        "away": "Penn St",
+        "home": "Notre Dame",
+        "time": 1736555400,
+        "humanDate": "Jan 10 18:30"
     }
 }
