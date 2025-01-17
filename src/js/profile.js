@@ -146,7 +146,7 @@ function createCard(data,game,wrapper,gn){
     cardBodyDiv.appendChild(clearfixDiv);
     cardBodyDiv.appendChild(dateP);
     if (data.hasOwnProperty("away")){
-        for (let i = 2; i <= NUM_GAMES; i +=2) {
+        for (let i = 3; i <= NUM_GAMES; i +=2) {
             const boxDiv = document.createElement('div');
             boxDiv.className = 'box';
             boxDiv.textContent = i;
@@ -217,7 +217,7 @@ if (userData){
 }
 
 let pointsPicked = [];
-const cfpweek2 = ['game9','game10']
+const cfpweek2 = ['game11']
 for (let game in picks) {
     if (cfpweek2.includes(game)) {
         pointsPicked.push(String(picks[game].points))

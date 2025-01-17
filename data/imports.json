@@ -1,14 +1,8 @@
 {
     "game1": {
         "away": "Ohio St",
-        "home": "Texas",
-        "time": 1736469000,
-        "humanDate": "Jan 09 18:30"
-    },
-    "game2": {
-        "away": "Penn St",
         "home": "Notre Dame",
-        "time": 1736555400,
-        "humanDate": "Jan 10 18:30"
+        "time": 1737419400,
+        "humanDate": "Jan 20 18:30"
     }
 }
