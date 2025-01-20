@@ -70,10 +70,16 @@ function setup(data) {
             if (box.textContent == data[game]['points']) box.style.background = chosenColor;
         })
     }
-    let ttbel = document.getElementById('tb');
-    if (ttbel){
-        if (data.hasOwnProperty('tb')) ttbel.value = data['tb'].pick;
-        else document.getElementById('tb').value = 0;
+    let ttbela = document.getElementById('tba');
+    if (ttbela){
+        if (data.hasOwnProperty('tb')) ttbela.value = data['tb'].pick;
+        else document.getElementById('tba').value = 0;
+    }
+
+    let ttbelb = document.getElementById('tbb');
+    if (ttbelb){
+        if (data.hasOwnProperty('tbb')) ttbelb.value = data['tbb'].pick;
+        else document.getElementById('tbb').value = 0;
     }
     
 }
@@ -90,9 +96,8 @@ async function fetchData(refer) {
     return res;
 }
 
-function createCard(data,game,wrapper,gn){
+function createCard(data,game,wrapper,gn,tbNum=null){
     const tb = data.hasOwnProperty("away") ? false : true;
-
     const outerDiv = document.createElement('div');
     outerDiv.className = 'col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4';
 
@@ -159,7 +164,7 @@ function createCard(data,game,wrapper,gn){
     }else{
         const tbInput = document.createElement('input');
         tbInput.value = 0;
-        tbInput.id = 'tb'
+        tbInput.id = `tb${tbNum}`
         tbInput.className = "form__input";
         cardBodyDiv.append(tbInput);
     }
@@ -177,7 +182,13 @@ function initCards(data,week) {
         let gn = 1;
         for (let game in data[week]){
             if (cfpweek2.includes(game)) {
-                createCard(data[week][game],game,wrapper,gn);
+                if  (game == 'tiebreaker'){
+                    createCard(data[week][game]['a'],game,wrapper,gn,'a');
+                    createCard(data[week][game]['b'],game,wrapper,gn,'b');
+                }else{
+                    createCard(data[week][game],game,wrapper,gn);
+
+                }
             }
             gn++
             
@@ -217,7 +228,7 @@ if (userData){
 }
 
 let pointsPicked = [];
-const cfpweek2 = ['game11']
+const cfpweek2 = ['game11','tiebreaker']
 for (let game in picks) {
     if (cfpweek2.includes(game)) {
         pointsPicked.push(String(picks[game].points))
@@ -331,11 +342,17 @@ points.forEach(el => {
 });
 
 submitBtn.addEventListener('click',function () {
-    const tbel = document.getElementById('tb')
-    //picks['tb'] = {
-    //    pick:String(tbel.value),
-    //    points:0
-    //}
+    const tbel = document.getElementById('tba')
+    picks['tb'] = {
+        pick:String(tbel.value),
+        points:0
+    }
+    const tbelb = document.getElementById('tbb')
+
+    picks['tbb'] = {
+        pick:String(tbelb.value),
+        points:0
+    }
     submit(week,picks);
 });
 

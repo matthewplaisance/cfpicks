@@ -1306,9 +1306,16 @@
             "humanDate": "Jan 20 18:30"
         },
         "tiebreaker": {
-            "home": "",
-            "time": 1734814800,
-            "humanDate": "Dec 21 15:00"
+            "a": {
+                "home": "Ohio St will win by __ points? (Negative for losses by)",
+                "time": 1737419400,
+                "humanDate": "Jan 20 18:30"
+            },
+            "b": {
+                "home": "Receiving yards for Jeremiah Smith?",
+                "time": 1737419400,
+                "humanDate": "Jan 20 18:30"
+            }
         }
     }
 }

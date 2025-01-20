@@ -212,7 +212,7 @@ function th(data){
     //}
     const tbc = document.createElement('th');
     tbc.style.color = '#1991EB';
-    tbc.textContent = data['tiebreaker']['home'];
+    tbc.textContent = data['tiebreaker']['a']['home'];
     const tbcell = document.createElement('td');
     tbcell.id = 'tb_res';
 
