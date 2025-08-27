@@ -7,7 +7,8 @@ let allHtmlPlugs = htmlPageNames.map(page => {
   return new HtmlWebpackPlugin({
     template: `./src/pages/${page}.html`, 
     filename: `${page}.html`, 
-    chunks: [`${page}`] 
+    chunks: [`${page}`],
+    favicon:  'assests/football.png'
   })
 });
 
