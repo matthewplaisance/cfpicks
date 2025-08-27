@@ -190,10 +190,11 @@ function initCards(data, week) {
   while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
   if (data.hasOwnProperty(week)) {
     let gn = 1;
-    for (let game in data[week]) {
-      createCard(data[week][game], game, wrapper, gn);
+    for (let i = 1; i < NUM_GAMES; i += 1) {
+      createCard(data[week][`game${i}`], `game${i}`, wrapper, gn);
       gn++;
     }
+    createCard(data[week][`tiebreaker`], `tiebreaker`, wrapper, gn);
   }
 }
 
@@ -223,7 +224,7 @@ const pickedPColor = "#9494b8";
 let userData = await fetchData(ref(db, `users/${uid}`));
 const gameData = await fetchData(ref(db, "schedule"));
 const NUM_GAMES = Object.keys(gameData[week]).length;
-
+console.log('gameData :>> ', gameData);
 //const gameData = await json("../data/games.json");
 
 let picks = {};
