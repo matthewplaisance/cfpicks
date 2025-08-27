@@ -1,8 +1,67 @@
 {
-    "game1": {
-        "away": "Ohio St",
-        "home": "Notre Dame",
-        "time": 1737419400,
-        "humanDate": "Jan 20 18:30"
-    }
+  "game1": {
+    "away": "Nebraska",
+    "home": "Cincinnati",
+    "time": 1756429200,
+    "humanDate": "Aug 28 20:00"
+  },
+  "game2": {
+    "away": "Georgia Tech",
+    "home": "Colorado",
+    "time": 1756512000,
+    "humanDate": "Aug 29 19:00"
+  },
+  "game3": {
+    "away": "Auburn",
+    "home": "Baylor",
+    "time": 1756512000,
+    "humanDate": "Aug 29 19:00"
+  },
+  "game4": {
+    "away": "Texas",
+    "home": "Ohio St",
+    "time": 1756569600,
+    "humanDate": "Aug 30 11:00"
+  },
+  "game5": {
+    "away": "Alabama",
+    "home": "Florida St",
+    "time": 1756582200,
+    "humanDate": "Aug 30 14:30"
+  },
+  "game6": {
+    "away": "Lsu",
+    "home": "Clemson",
+    "time": 1756596600,
+    "humanDate": "Aug 30 18:30"
+  },
+  "game7": {
+    "away": "Utah",
+    "home": "Ucla",
+    "time": 1756609200,
+    "humanDate": "Aug 30 22:00"
+  },
+  "game8": {
+    "away": "Virginia Tech",
+    "home": "South Carolina",
+    "time": 1756666800,
+    "humanDate": "Aug 31 14:00"
+  },
+  "game9": {
+    "away": "Notre Dame",
+    "home": "Miami",
+    "time": 1756683000,
+    "humanDate": "Aug 31 18:30"
+  },
+  "game10": {
+    "away": "Tcu",
+    "home": "North Carolina",
+    "time": 1756771200,
+    "humanDate": "Sep 01 19:00"
+  },
+  "tiebreaker": {
+    "home": "Texas will beat Ohio St by X points? (Negative for losses by)",
+    "time": 1756569600,
+    "humanDate": "Aug 30 11:00"
+  }
 }

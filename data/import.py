@@ -25,4 +25,9 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
+res["tiebreaker"] = {
+        "home": "Texas will beat Ohio St by X points? (Negative for losses by)",
+        "time": 1756569600,
+        "humanDate": "Aug 30 11:00"
+      }
 with open("data/imports.json","w") as f: json.dump(res,f)

@@ -2,7 +2,14 @@ import { getDatabase, ref, onValue } from 'firebase/database'
 import {onAuthStateChangedFb} from './auth'
 import { json, scalePoint, select } from 'd3';
 
-onAuthStateChangedFb();
+const authReady = new Promise((res) => {
+  const unsub = onAuthStateChangedFb((user) => {
+    unsub();
+    res(user);
+  });
+});
+
+await authReady;
 
 $(document).ready(function () {
     $("#header").load("../src/pages/header.html")
@@ -201,18 +208,10 @@ function th(data){
             rowDates.append(celld);
         }
     }
-    //if (week == 'week14'){
-    //    for (let i = 1; i < 9;i++){
-    //        let cell = document.createElement('th');
-    //        cell.textContent = i;
-    //        if (i == 1) cell.textContent = "Rankings: 1"
-    //        cell.style.fontWeight = 'bold;'
-    //        rowGames.append(cell);
-    //    }
-    //}
+    
     const tbc = document.createElement('th');
     tbc.style.color = '#1991EB';
-    tbc.textContent = data['tiebreaker']['a']['home'];
+    tbc.textContent = data['tiebreaker']['home'];
     const tbcell = document.createElement('td');
     tbcell.id = 'tb_res';
 
@@ -263,7 +262,6 @@ function calcSeason(userData,results){
     dataArray.forEach((item) => {
         sortedData[item.key] = item;
     });
-    console.log('sortedData :>> ', sortedData);
 }
 
 function reOrderTable(alp=true,cellIdx=0) {
@@ -310,12 +308,13 @@ const colorW = '#C0FF00'
 const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
-const dataGames = await json('../data/games.json');
-const seasonData = await json('../data/season.json');
+
+const dataGames = await fetchData(ref(db, "schedule"));
+const seasonData = await fetchData(ref(db, "season"));
 let weekEl = document.getElementById('weekSelect');
-let w = weekEl.value
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
-calcSeason(userData,winnerData)
+
+//calcSeason(userData,winnerData)
 
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
