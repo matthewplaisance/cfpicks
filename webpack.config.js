@@ -48,7 +48,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: './src/pages/index.html',
-      chunks: ['main']
+      chunks: ['main'],
+      favicon:  'assests/football.png'
+
     })
   ].concat(allHtmlPlugs),
   module: {
