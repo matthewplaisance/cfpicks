@@ -25,9 +25,13 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
+tb_time_str = "2025-09-06 06:30:00"
+dt_local = cdt.localize(datetime.strptime(tb_time_str, "%Y-%m-%d %H:%M:%S"))
+tb_unix = int(dt_local.astimezone(pytz.utc).timestamp())
+
 res["tiebreaker"] = {
-        "home": "Texas will beat Ohio St by X points? (Negative for losses by)",
-        "time": 1756569600,
-        "humanDate": "Aug 30 11:00"
-      }
+    "home": "Michigan will beat OU by X points? (Negative for losses by)",
+    "time": tb_unix,
+    "humanDate": dt_local.strftime("%b %d %H:%M %Z")
+}
 with open("data/imports.json","w") as f: json.dump(res,f)
