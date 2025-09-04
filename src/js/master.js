@@ -262,6 +262,7 @@ function calcSeason(userData,results){
     dataArray.forEach((item) => {
         sortedData[item.key] = item;
     });
+    return sortedData
 }
 
 function reOrderTable(alp=true,cellIdx=0) {
@@ -310,12 +311,11 @@ let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));
 
 const dataGames = await fetchData(ref(db, "schedule"));
-const seasonData = await fetchData(ref(db, "season"));
+//const seasonData = await fetchData(ref(db, "season"));
 let weekEl = document.getElementById('weekSelect');
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
 
-//calcSeason(userData,winnerData)
-
+const seasonData = calcSeason(userData,winnerData)
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
     displayTBR(winnerData[week]);
