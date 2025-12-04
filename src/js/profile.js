@@ -151,8 +151,11 @@ function createCard(data, game, wrapper, gn) {
   rightTeamH4.textContent = data.home;
 
   const dateP = document.createElement("p");
-  dateP.className = "text-muted";
-  dateP.innerHTML = `<i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data.humanDate}`;
+  dateP.className = "text-muted d-flex justify-content-between align-items-center";
+  dateP.innerHTML = `
+    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data.humanDate}</span>
+    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${cc[gn-1] ? cc[gn-1] : '' }</span>
+  `;
 
   leftTeamDiv.appendChild(leftTeamH4);
   rightTeamDiv.appendChild(rightTeamH4);
@@ -161,6 +164,7 @@ function createCard(data, game, wrapper, gn) {
   clearfixDiv.appendChild(rightTeamDiv);
   cardBodyDiv.appendChild(clearfixDiv);
   cardBodyDiv.appendChild(dateP);
+
   if (data.hasOwnProperty("away")) {
     for (let i = 1; i < NUM_GAMES; i += 1) {
       const boxDiv = document.createElement("div");
@@ -184,6 +188,7 @@ function createCard(data, game, wrapper, gn) {
   outerDiv.appendChild(cardDiv);
   wrapper.appendChild(outerDiv);
 }
+
 
 function initCards(data, week) {
   const wrapper = document.getElementById("card-wrapper");
@@ -210,6 +215,18 @@ await authReady;
 $(document).ready(function () {
   $("#header").load("../src/pages/header.html");
 });
+
+const cc = [
+  'Sun Belt',
+  'CUSA',
+  'American',
+  'Mountain West',
+  'Big 12',
+  'MAC',
+  'SEC',
+  'Big 10',
+  'ACC'
+]
 
 const uid = localStorage.uid;
 console.log("uid :>> ", uid);
