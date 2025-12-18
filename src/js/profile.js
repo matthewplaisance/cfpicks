@@ -178,7 +178,8 @@ function createCard(data, game, wrapper, gn) {
     }
   } else {
     const tbInput = document.createElement("input");
-    tbInput.value = 0;
+    tbInput.placeholder = "Team name...";
+
     tbInput.id = `tb`;
     tbInput.className = "form__input";
     cardBodyDiv.append(tbInput);
@@ -217,15 +218,17 @@ $(document).ready(function () {
 });
 
 const cc = [
-  'Sun Belt',
-  'CUSA',
-  'American',
-  'Mountain West',
-  'Big 12',
-  'MAC',
-  'SEC',
-  'Big 10',
-  'ACC'
+  'First Round',
+  'First Round',
+  'First Round',
+  'First Round',
+  'Quaterfinals Orange Bowl',
+  'Quaterfinals Rose Bowl',
+  'Quaterfinals Sugar Bowl',
+  'Quaterfinals Cotton Bowl',
+  'Semifinals Peach Bowl',
+  'Semifinals Fiesta Bowl',
+  'Championship',
 ]
 
 const uid = localStorage.uid;

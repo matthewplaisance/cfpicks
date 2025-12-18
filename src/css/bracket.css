@@ -1,0 +1,161 @@
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bracket-scroll {
+  overflow: auto;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.bracket-stage {
+  position: relative;
+  width: max-content;
+  min-height: 200px;
+}
+
+.bracket {
+  position: relative;
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.bracket-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.bracket-path {
+  fill: none;
+  stroke: rgba(0,0,0,0.25);
+  stroke-width: 2;
+}
+
+.round {
+  min-width: 280px;
+}
+
+.round-title {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.round-games {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.match {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+  width: 280px;
+}
+
+.match.locked {
+  opacity: 0.65;
+}
+
+.match-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.match-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.match-meta {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.team-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.team-btn.chosen {
+  border-color: rgba(255,128,0,0.7);
+  box-shadow: 0 0 0 2px rgba(255,128,0,0.25);
+}
+
+.points {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.points-label {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  min-width: 90px;
+}
+
+.points-select {
+  flex: 1;
+  min-height: 38px;
+  border-radius: 8px;
+  padding: 6px 10px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: #fff;
+}
+
+.tiebreaker {
+  margin-top: 16px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.tiebreaker.hidden {
+  display: none;
+}
+
+.tiebreaker-title {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tiebreaker-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tiebreaker-label {
+  margin: 0;
+  opacity: 0.75;
+}

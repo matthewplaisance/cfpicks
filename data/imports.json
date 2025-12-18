@@ -1,1 +1,73 @@
-{"game1": {"away": "Troy", "home": "James Madison", "time": 1764979200, "humanDate": "Dec 05 18:00"}, "game2": {"away": "Kennesaw St", "home": "Jacksonville St", "time": 1764979200, "humanDate": "Dec 05 18:00"}, "game3": {"away": "North Texas", "home": "Tulane", "time": 1764982800, "humanDate": "Dec 05 19:00"}, "game4": {"away": "Unlv", "home": "Boise St", "time": 1764982800, "humanDate": "Dec 05 19:00"}, "game5": {"away": "Byu", "home": "Texas Tech", "time": 1765040400, "humanDate": "Dec 06 11:00"}, "game6": {"away": "Miami Oh", "home": "Western Michigan", "time": 1765040400, "humanDate": "Dec 06 11:00"}, "game7": {"away": "Georgia", "home": "Alabama", "time": 1765054800, "humanDate": "Dec 06 15:00"}, "game8": {"away": "Indiana", "home": "Ohio St", "time": 1765069200, "humanDate": "Dec 06 19:00"}, "game9": {"away": "Duke", "home": "Virginia", "time": 1765069200, "humanDate": "Dec 06 19:00"}, "tiebreaker": {"home": "Georgia beats Alabama by x points (negative for losses by)?", "time": 1765054800, "humanDate": "Dec 06 15:00 CST"}}
+{
+  "game1": {
+    "away": "Alabama",
+    "home": "Oklahoma",
+    "time": 1766192400,
+    "humanDate": "Dec 19 19:00"
+  },
+  "game2": {
+    "away": "Miami",
+    "home": "Texas A&M",
+    "time": 1766250000,
+    "humanDate": "Dec 20 11:00"
+  },
+  "game3": {
+    "away": "Tulane",
+    "home": "Ole Miss",
+    "time": 1766262600,
+    "humanDate": "Dec 20 14:30"
+  },
+  "game4": {
+    "away": "Jmu",
+    "home": "Oregon",
+    "time": 1766277000,
+    "humanDate": "Dec 20 18:30"
+  },
+  "game5": {
+    "away": "TBD",
+    "home": "Ohio St",
+    "time": 1767229200,
+    "humanDate": "Dec 31 19:00"
+  },
+  "game6": {
+    "away": "TBD",
+    "home": "Texas Tech",
+    "time": 1767286800,
+    "humanDate": "Jan 01 11:00"
+  },
+  "game7": {
+    "away": "TBD",
+    "home": "Indiana",
+    "time": 1767301200,
+    "humanDate": "Jan 01 15:00"
+  },
+  "game8": {
+    "away": "TBD",
+    "home": "Georgia",
+    "time": 1767315600,
+    "humanDate": "Jan 01 19:00"
+  },
+  "game9": {
+    "away": "TBD",
+    "home": "TBD",
+    "time": 1767918600,
+    "humanDate": "Jan 08 18:30"
+  },
+  "game10": {
+    "away": "TBD",
+    "home": "TBD",
+    "time": 1768005000,
+    "humanDate": "Jan 09 18:30"
+  },
+  "game11": {
+    "away": "TBD",
+    "home": "TBD",
+    "time": 1768869000,
+    "humanDate": "Jan 19 18:30"
+  },
+  "tiebreaker": {
+    "home": "Would will win the National Championship?",
+    "time": 1766192400,
+    "humanDate": "Dec 19 19:00 CST"
+  }
+}

@@ -314,7 +314,6 @@ const dataGames = await fetchData(ref(db, "schedule"));
 //const seasonData = await fetchData(ref(db, "season"));
 let weekEl = document.getElementById('weekSelect');
 let week = weekEl.value.replace(' ','').toLocaleLowerCase();
-
 const seasonData = calcSeason(userData,winnerData)
 if (dataGames) {
     initTable(userData,winnerData[week],dataGames[week],week);
