@@ -169,8 +169,8 @@ function createCard(data, game, wrapper, gn) {
     for (let i = 1; i < NUM_GAMES; i += 1) {
       const boxDiv = document.createElement("div");
       boxDiv.className = "box";
-      boxDiv.textContent = i;
-      boxDiv.id = i;
+      boxDiv.textContent = i*2;
+      boxDiv.id = i*2;
       if (pointsPicked.includes(String(i))) {
         boxDiv.style.background = pickedPColor;
       }
