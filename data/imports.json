@@ -1,15 +1,15 @@
 {
   "game1": {
+    "away": "JMU",
+    "home": "Oregon",
+    "time": 1766277000,
+    "humanDate": "Dec 20 18:30"
+  },
+  "game2": {
     "away": "Alabama",
     "home": "Oklahoma",
     "time": 1766192400,
     "humanDate": "Dec 19 19:00"
-  },
-  "game2": {
-    "away": "Miami",
-    "home": "Texas A&M",
-    "time": 1766250000,
-    "humanDate": "Dec 20 11:00"
   },
   "game3": {
     "away": "Tulane",
@@ -18,46 +18,46 @@
     "humanDate": "Dec 20 14:30"
   },
   "game4": {
-    "away": "Jmu",
-    "home": "Oregon",
-    "time": 1766277000,
-    "humanDate": "Dec 20 18:30"
+    "away": "Miami",
+    "home": "Texas A&M",
+    "time": 1766250000,
+    "humanDate": "Dec 20 11:00"
   },
   "game5": {
-    "away": "TBD",
-    "home": "Ohio St",
-    "time": 1767229200,
-    "humanDate": "Dec 31 19:00"
-  },
-  "game6": {
     "away": "TBD",
     "home": "Texas Tech",
     "time": 1767286800,
     "humanDate": "Jan 01 11:00"
   },
-  "game7": {
+  "game6": {
     "away": "TBD",
     "home": "Indiana",
     "time": 1767301200,
     "humanDate": "Jan 01 15:00"
   },
-  "game8": {
+  "game7": {
     "away": "TBD",
     "home": "Georgia",
     "time": 1767315600,
     "humanDate": "Jan 01 19:00"
   },
-  "game9": {
+  "game8": {
     "away": "TBD",
-    "home": "TBD",
-    "time": 1767918600,
-    "humanDate": "Jan 08 18:30"
+    "home": "Ohio St",
+    "time": 1767229200,
+    "humanDate": "Dec 31 19:00"
   },
-  "game10": {
+  "game9": {
     "away": "TBD",
     "home": "TBD",
     "time": 1768005000,
     "humanDate": "Jan 09 18:30"
+  },
+  "game10": {
+    "away": "TBD",
+    "home": "TBD",
+    "time": 1767918600,
+    "humanDate": "Jan 08 18:30"
   },
   "game11": {
     "away": "TBD",

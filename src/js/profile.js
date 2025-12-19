@@ -107,13 +107,11 @@ async function fetchData(refer) {
   return res;
 }
 
-function createCard(data, game, wrapper, gn) {
-  const tb = data.hasOwnProperty("away") ? false : true;
-  const outerDiv = document.createElement("div");
-  outerDiv.className = "col-xl-3 col-lg-3 col-md-3 col-sm-6 mb-4";
+function createCard(data, game, gn) {
+  const isTiebreaker = !data?.hasOwnProperty("away");
 
   const cardDiv = document.createElement("div");
-  cardDiv.className = "card card-statistics";
+  cardDiv.className = "match-card card card-statistics";
 
   const cardBodyDiv = document.createElement("div");
   cardBodyDiv.className = "card-body";
@@ -124,37 +122,32 @@ function createCard(data, game, wrapper, gn) {
 
   const timeIcon = document.createElement("i");
   timeIcon.className = "time";
-  timeIcon.id = data.time;
+  timeIcon.id = data?.time || "0";
   timeIcon.setAttribute("aria-hidden", "true");
 
   const leftTeamDiv = document.createElement("div");
   leftTeamDiv.className = "float-left";
 
-  const leftTeamH4 = document.createElement("h4");
-  leftTeamH4.className = "bold-text team";
-  leftTeamH4.id = `g${gn}t1`;
-  leftTeamH4.style.cursor = "pointer";
-  leftTeamH4.textContent = data.away;
-
   const rightTeamDiv = document.createElement("div");
   rightTeamDiv.className = "float-right";
 
-  const rightTeamH4 = document.createElement("h4");
-  rightTeamH4.className = "bold-text team";
-  rightTeamH4.id = `g${gn}t2`;
+  const leftTeamH4 = document.createElement("h4");
+  leftTeamH4.className = isTiebreaker ? "bold-text" : "bold-text team";
+  leftTeamH4.id = `g${gn}t1`;
+  leftTeamH4.style.cursor = isTiebreaker ? "default" : "pointer";
+  leftTeamH4.textContent = isTiebreaker ? "Championship Winner?" : data.away;
 
-  if (tb) {
-    rightTeamH4.className = "bold-text";
-    rightTeamH4.style.fontSize = 6;
-  }
-  rightTeamH4.style.cursor = "pointer";
-  rightTeamH4.textContent = data.home;
+  const rightTeamH4 = document.createElement("h4");
+  rightTeamH4.className = isTiebreaker ? "bold-text" : "bold-text team";
+  rightTeamH4.id = `g${gn}t2`;
+  rightTeamH4.style.cursor = isTiebreaker ? "default" : "pointer";
+  rightTeamH4.textContent = isTiebreaker ? "" : data.home;
 
   const dateP = document.createElement("p");
   dateP.className = "text-muted d-flex justify-content-between align-items-center";
   dateP.innerHTML = `
-    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data.humanDate}</span>
-    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${cc[gn-1] ? cc[gn-1] : '' }</span>
+    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data?.humanDate || ""}</span>
+    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${cc[gn - 1] ? cc[gn - 1] : ""}</span>
   `;
 
   leftTeamDiv.appendChild(leftTeamH4);
@@ -165,13 +158,13 @@ function createCard(data, game, wrapper, gn) {
   cardBodyDiv.appendChild(clearfixDiv);
   cardBodyDiv.appendChild(dateP);
 
-  if (data.hasOwnProperty("away")) {
+  if (!isTiebreaker) {
     for (let i = 1; i < NUM_GAMES; i += 1) {
       const boxDiv = document.createElement("div");
       boxDiv.className = "box";
-      boxDiv.textContent = i*2;
-      boxDiv.id = i*2;
-      if (pointsPicked.includes(String(i))) {
+      boxDiv.textContent = i * 2;
+      boxDiv.id = i * 2;
+      if (pointsPicked.includes(String(i*2))) {
         boxDiv.style.background = pickedPColor;
       }
       cardBodyDiv.appendChild(boxDiv);
@@ -179,29 +172,97 @@ function createCard(data, game, wrapper, gn) {
   } else {
     const tbInput = document.createElement("input");
     tbInput.placeholder = "Team name...";
-
-    tbInput.id = `tb`;
+    tbInput.id = "tb";
     tbInput.className = "form__input";
     cardBodyDiv.append(tbInput);
   }
 
   cardDiv.appendChild(cardBodyDiv);
-  outerDiv.appendChild(cardDiv);
-  wrapper.appendChild(outerDiv);
+  return cardDiv;
 }
 
+function makeCol(title, extraClass = "") {
+  const col = document.createElement("div");
+  col.className = `bracket-col ${extraClass}`.trim();
+
+  const h = document.createElement("div");
+  h.className = "bracket-col-title";
+  h.textContent = title;
+
+  const body = document.createElement("div");
+  body.className = "bracket-col-body";
+
+  col.appendChild(h);
+  col.appendChild(body);
+  return { col, body };
+}
+
+function placeMatch(bodyEl, topExpr, cardEl) {
+  const shell = document.createElement("div");
+  shell.className = "match-shell";
+  shell.style.top = topExpr;
+  shell.appendChild(cardEl);
+  bodyEl.appendChild(shell);
+  return shell;
+}
 
 function initCards(data, week) {
   const wrapper = document.getElementById("card-wrapper");
+  wrapper.className = "bracket-stage";
   while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
-  if (data.hasOwnProperty(week)) {
-    let gn = 1;
-    for (let i = 1; i < NUM_GAMES; i += 1) {
-      createCard(data[week][`game${i}`], `game${i}`, wrapper, gn);
-      gn++;
-    }
-    createCard(data[week][`tiebreaker`], `tiebreaker`, wrapper, gn);
+  if (!data?.hasOwnProperty(week)) return;
+
+  const bracket = document.createElement("div");
+  bracket.className = "bracket";
+
+  const c1 = makeCol("First Round", "first-round");
+  const c2 = makeCol("Quarterfinals", "quarterfinals");
+  const c3 = makeCol("Semifinals", "semifinals");
+  const c4 = makeCol("Championship", "final");
+
+  bracket.appendChild(c1.col);
+  bracket.appendChild(c2.col);
+  bracket.appendChild(c3.col);
+  bracket.appendChild(c4.col);
+  wrapper.appendChild(bracket);
+
+  let gn = 1;
+  const pos4 = (n) => `calc((var(--match-h) + var(--match-gap)) * ${n})`;
+
+  for (let i = 1; i <= 4; i += 1) {
+    placeMatch(c1.body, pos4(i - 1), createCard(data[week][`game${i}`], `game${i}`, gn));
+    gn++;
   }
+
+  for (let i = 5; i <= 8; i += 1) {
+    placeMatch(c2.body, pos4(i - 5), createCard(data[week][`game${i}`], `game${i}`, gn));
+    gn++;
+  }
+
+  placeMatch(
+    c3.body,
+    `calc((var(--match-h) / 2) + (var(--match-gap) / 2) + (var(--match-h) + var(--match-gap)) * 0)`,
+    createCard(data[week][`game9`], "game9", gn)
+  );
+  gn++;
+
+  placeMatch(
+    c3.body,
+     `calc((var(--match-h) / 2) + (var(--match-gap) / 2) + (var(--match-h) + var(--match-gap)) * 2)`,
+    createCard(data[week][`game10`], "game10", gn)
+  );
+  gn++;
+
+  const finalTop = `calc(var(--match-h) + var(--match-gap))`;
+  const pairShell = document.createElement("div");
+  pairShell.className = "match-shell final-pair";
+  pairShell.style.top = finalTop;
+
+  pairShell.appendChild(createCard(data[week][`game11`], "game11", gn));
+  gn++;
+  pairShell.appendChild(createCard(data[week][`tiebreaker`], "tiebreaker", gn));
+
+  c4.body.appendChild(pairShell);
 }
 
 const authReady = new Promise((res) => {

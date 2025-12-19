@@ -861,11 +861,11 @@ input:focus {
 
 .content-wrapper {
   background: #f2f7f8;
-  margin-left: 215px;
+  margin-left: 0px;
   min-height: 100vh;
   padding: 2rem 1rem;
   transition: all .8s ease;
-  width: calc(100% - 215px); }
+  width: 100%; }
   @media (max-width: 991px) {
     .content-wrapper {
       margin-left: 0;
@@ -928,3 +928,122 @@ input {
 .auth-pages a.btn {
   height: 39px;
   font-family: Gudea; }
+
+
+  :root{
+  --match-w: 360px;
+  --match-h: 170px;
+  --match-gap: 18px;
+  --col-gap: 72px;
+}
+
+#card-wrapper.bracket-stage{
+  overflow-x: auto;
+  padding: 16px 8px;
+}
+
+#card-wrapper.bracket-stage .bracket{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--col-gap);
+  min-width: max-content;
+}
+
+#card-wrapper.bracket-stage .bracket-col{
+  width: var(--match-w);
+}
+
+#card-wrapper.bracket-stage .bracket-col.final{
+  width: var(--match-w);
+}
+
+#card-wrapper.bracket-stage .bracket-col-title{
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#card-wrapper.bracket-stage .bracket-col-body{
+  position: relative;
+  height: calc((var(--match-h) * 4) + (var(--match-gap) * 3));
+}
+
+#card-wrapper.bracket-stage .match-shell{
+  position: absolute;
+  left: 0;
+  width: var(--match-w);
+}
+
+#card-wrapper.bracket-stage .match-card{
+  width: var(--match-w);
+  min-height: var(--match-h);
+}
+
+#card-wrapper.bracket-stage .final-pair{
+ width: var(--match-w);
+display: flex;
+flex-direction: column;
+gap: var(--match-gap);
+}
+
+#card-wrapper.bracket-stage .final-pair .match-card{
+  flex: 0 0 auto;
+}
+html, body{
+  background: #f2f7f8;
+}
+
+.content-wrapper{
+  background: #f2f7f8;
+}
+
+:root{
+  --match-w: 360px;
+  --match-h: 170px;
+  --match-gap: 18px;
+  --col-gap: 72px;
+  --round-gap: 44px;
+}
+
+#card-wrapper.bracket-stage{
+  overflow-x: auto;
+  padding: 16px 0;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
+
+#card-wrapper.bracket-stage .bracket{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--col-gap);
+  min-width: max-content;
+  padding: 0 1.5rem;
+}
+
+#card-wrapper.bracket-stage .bracket-col{
+  width: var(--match-w);
+}
+
+#card-wrapper.bracket-stage .bracket-col-title{
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+#card-wrapper.bracket-stage .bracket-col-body{
+  position: relative;
+  height: calc((var(--match-h) * 4) + (var(--round-gap) * 3));
+}
+
+#card-wrapper.bracket-stage .match-shell{
+  position: absolute;
+  left: 0;
+  width: var(--match-w);
+}
+
+#card-wrapper.bracket-stage .match-card{
+  width: var(--match-w);
+  min-height: var(--match-h);
+}
