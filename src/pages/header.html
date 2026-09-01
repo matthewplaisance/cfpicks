@@ -2,27 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CML Pick 'Em</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3 main-nav">
-    <div class="container-fluid d-flex justify-content-between">
-        <ul class="navbar-nav" style="list-style-type: none; padding: 0;">
-          <li class="nav-item">
-            <a class="nav-link mx-2 active" aria-current="page" href="./master.html">Scoreboard</a>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav" style="list-style-type: none; padding: 0;">
-          <li class="nav-item">
-            <a id="user_profile" class="nav-link mx-2" href="./profile.html">Picks</a>
-          </li>
-        </ul>
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <a class="nav-brand" href="./master.html">
+        <span aria-hidden="true">&#127944;</span>
+        <span>CML Pick &#8217;Em</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="./master.html">Scoreboard</a>
+        <a id="user_profile" class="nav-link" href="./profile.html">My Picks</a>
+      </div>
     </div>
   </nav>
-    
+  <script>
+    (function () {
+      var page = window.location.pathname.split("/").pop() || "master.html";
+      document.querySelectorAll(".main-nav .nav-link").forEach(function (a) {
+        if (a.getAttribute("href").indexOf(page) !== -1) a.classList.add("active");
+      });
+    })();
+  </script>
 </body>
 </html>

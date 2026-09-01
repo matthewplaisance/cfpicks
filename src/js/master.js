@@ -141,7 +141,7 @@ function initTable(userData, dataWinners, dataGames, week) {
   }
   if (winner.points != 0)
     for (let w of winner.user)
-      document.getElementById(w).style.color = "#FCCB00";
+      document.getElementById(w).style.color = "#d97706";
   const userRow = document.getElementById(uid);
   if (userRow) userRow.style.fontWeight = 600;
   if (winner.points == 0) reOrderTable();
@@ -220,15 +220,14 @@ function th(data) {
 
       rowGames.append(cell);
       let celld = document.createElement("td");
-      celld.style.color = "#1fc4ed";
+      celld.style.color = "#64748b";
       celld.textContent = data[game]["humanDate"];
       rowDates.append(celld);
     }
   }
 
   const tbc = document.createElement("th");
-  tbc.style.color = "#1991EB";
-  tbc.textContent = data["tiebreaker"]["home"];
+  tbc.textContent = `TB: ${data["tiebreaker"]["home"]}`;
   const tbcell = document.createElement("td");
   tbcell.id = "tb_res";
 
@@ -239,7 +238,7 @@ function th(data) {
 const holder = () => {
   const b = document.createElement("th");
   b.textContent = "holder";
-  b.style.color = "white";
+  b.style.color = "transparent";
   return b;
 };
 
@@ -324,7 +323,7 @@ const posmap = {
 };
 
 const uid = localStorage.uid;
-const colorW = "#C0FF00";
+const colorW = "#c6efce";
 const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
 let winnerData = await fetchData(ref(db, `results`));

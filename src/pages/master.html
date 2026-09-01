@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CML Pick em</title>
+    <title>CML Pick 'Em — Scoreboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,6 +17,7 @@
     <link rel="icon" type="image/x-icon" href="../favicon_package/favicon-32x32.png">
     <link rel="stylesheet" href="../src/css/profile.css" />
     <link rel="stylesheet" href="../src/css/main.css" />
+    <link rel="stylesheet" href="../src/css/theme.css" />
 
 </head>
 
@@ -27,30 +31,15 @@
             <div class="card">
               <div class="card-body">
                 <select id="weekSelect" class="active mb-3 mx-auto">
-                  <option hidden value="CFP">CFP</option>
+                  <option hidden value="week1">Week 1</option>
                   <option value="season">Season</option>
                   <option value="week1">Week 1</option>
-                  <option value="week2">Week 2</option>
-                  <option value="week3">Week 3</option>
-                  <option value="week4">Week 4</option>
-                  <option value="week5">Week 5</option>
-                  <option value="week6">Week 6</option>
-                  <option value="week7">Week 7</option>
-                  <option value="week8">Week 8</option>
-                  <option value="week9">Week 9</option>
-                  <option value="week10">Week 10</option>
-                  <option value="week11">Week 11</option>
-                  <option value="week12">Week 12</option>
-                  <option value="week13">Week 13</option>
-                  <option value="week14">Week 14</option>
-                  <option value="week15">Week 15</option>
-                  <option value="CFP">CFP</option>
                 </select>
                 <div class="table-responsive">
                   <table class="table center-aligned-table">
                     <thead>
-                      <tr class="text-primary" id="rowGames">
-                    </tr><tr class="date-holder" class="text-primary" id="rowDates">
+                      <tr class="text-primary" id="rowGames"></tr>
+                      <tr class="date-holder" id="rowDates"></tr>
                     </thead>
                     <tbody id="tbody">
                     </tbody>

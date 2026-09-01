@@ -109,6 +109,7 @@ async function fetchData(refer) {
 
 function createCard(data, game, gn) {
   const isTiebreaker = !data?.hasOwnProperty("away");
+  const isCfp = week === "cfp";
 
   const cardDiv = document.createElement("div");
   cardDiv.className = "match-card card card-statistics";
@@ -135,7 +136,9 @@ function createCard(data, game, gn) {
   leftTeamH4.className = isTiebreaker ? "bold-text" : "bold-text team";
   leftTeamH4.id = `g${gn}t1`;
   leftTeamH4.style.cursor = isTiebreaker ? "default" : "pointer";
-  leftTeamH4.textContent = isTiebreaker ? "Championship Winner?" : data.away;
+  leftTeamH4.textContent = isTiebreaker
+    ? (isCfp ? "Championship Winner?" : data?.home || "Tiebreaker")
+    : data.away;
 
   const rightTeamH4 = document.createElement("h4");
   rightTeamH4.className = isTiebreaker ? "bold-text" : "bold-text team";
@@ -147,7 +150,7 @@ function createCard(data, game, gn) {
   dateP.className = "text-muted d-flex justify-content-between align-items-center";
   dateP.innerHTML = `
     <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${data?.humanDate || ""}</span>
-    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${cc[gn - 1] ? cc[gn - 1] : ""}</span>
+    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i>${isCfp && cc[gn - 1] ? cc[gn - 1] : ""}</span>
   `;
 
   leftTeamDiv.appendChild(leftTeamH4);
@@ -160,18 +163,25 @@ function createCard(data, game, gn) {
 
   if (!isTiebreaker) {
     for (let i = 1; i < NUM_GAMES; i += 1) {
+      const pts = isCfp ? i * 2 : i;
       const boxDiv = document.createElement("div");
       boxDiv.className = "box";
-      boxDiv.textContent = i * 2;
-      boxDiv.id = i * 2;
-      if (pointsPicked.includes(String(i*2))) {
+      boxDiv.textContent = pts;
+      boxDiv.id = pts;
+      if (pointsPicked.includes(String(pts))) {
         boxDiv.style.background = pickedPColor;
       }
       cardBodyDiv.appendChild(boxDiv);
     }
   } else {
     const tbInput = document.createElement("input");
-    tbInput.placeholder = "Team name...";
+    if (isCfp) {
+      tbInput.placeholder = "Team name...";
+    } else {
+      tbInput.type = "number";
+      tbInput.inputMode = "numeric";
+      tbInput.placeholder = "0";
+    }
     tbInput.id = "tb";
     tbInput.className = "form__input";
     cardBodyDiv.append(tbInput);
@@ -208,9 +218,31 @@ function placeMatch(bodyEl, topExpr, cardEl) {
 
 function initCards(data, week) {
   const wrapper = document.getElementById("card-wrapper");
-  wrapper.className = "bracket-stage";
   while (wrapper.firstChild) wrapper.removeChild(wrapper.firstChild);
   if (!data?.hasOwnProperty(week)) return;
+
+  if (week === "cfp") initBracket(wrapper, data, week);
+  else initGrid(wrapper, data, week);
+}
+
+function initGrid(wrapper, data, week) {
+  wrapper.className = "cards-grid";
+
+  let gn = 1;
+  const games = Object.keys(data[week])
+    .filter((k) => k.startsWith("game"))
+    .sort((a, b) => parseInt(a.slice(4)) - parseInt(b.slice(4)));
+
+  for (const game of games) {
+    wrapper.appendChild(createCard(data[week][game], game, gn));
+    gn++;
+  }
+  if (data[week].hasOwnProperty("tiebreaker"))
+    wrapper.appendChild(createCard(data[week]["tiebreaker"], "tiebreaker", gn));
+}
+
+function initBracket(wrapper, data, week) {
+  wrapper.className = "bracket-stage";
 
   const bracket = document.createElement("div");
   bracket.className = "bracket";
