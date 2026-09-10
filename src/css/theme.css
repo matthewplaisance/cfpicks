@@ -284,6 +284,10 @@ body {
   margin: 2px;
   cursor: pointer;
   transition: transform .1s ease, border-color .1s ease;
+  /* keep the picked-chip background when printing (browsers drop
+     backgrounds by default unless the element opts in) */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
 }
 
 .box:hover {
