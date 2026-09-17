@@ -1,1 +1,67 @@
-{"game1": {"away": "Missouri", "home": "Kansas", "time": 1789171200, "humanDate": "Sep 11 19:00"}, "game2": {"away": "Oregon", "home": "Oklahoma St", "time": 1789228800, "humanDate": "Sep 12 11:00"}, "game3": {"away": "Asu", "home": "Texas A&M", "time": 1789228800, "humanDate": "Sep 12 11:00"}, "game4": {"away": "Ou", "home": "Michigan", "time": 1789228800, "humanDate": "Sep 12 11:00"}, "game5": {"away": "Arizona", "home": "Byu", "time": 1789241400, "humanDate": "Sep 12 14:30"}, "game6": {"away": "Alabama", "home": "Kentucky", "time": 1789241400, "humanDate": "Sep 12 14:30"}, "game7": {"away": "Mississippi St", "home": "Minnesota", "time": 1789241400, "humanDate": "Sep 12 14:30"}, "game8": {"away": "Memphis", "home": "Boise St", "time": 1789250400, "humanDate": "Sep 12 17:00"}, "game9": {"away": "Tennesse", "home": "Georgia Tech", "time": 1789254000, "humanDate": "Sep 12 18:00"}, "game10": {"away": "Ohio St", "home": "Texas", "time": 1789255800, "humanDate": "Sep 12 18:30"}, "game11": {"away": "Arkansas", "home": "Utah", "time": 1789265700, "humanDate": "Sep 12 21:15"}, "tiebreaker": {"home": "How many points will Texas win by? (Negative for losses by)", "time": 1789255800, "humanDate": "Sep 12 18:30 CDT"}}
+{
+  "game1": {
+    "away": "Houston",
+    "home": "Texas Tech",
+    "time": 1789776000,
+    "humanDate": "Sep 18 19:00"
+  },
+  "game2": {
+    "away": "ASU",
+    "home": "Kansas",
+    "time": 1789833600,
+    "humanDate": "Sep 19 11:00"
+  },
+  "game3": {
+    "away": "North Carolina",
+    "home": "Clemson",
+    "time": 1789833600,
+    "humanDate": "Sep 19 11:00"
+  },
+  "game4": {
+    "away": "Nc State",
+    "home": "Vanderbilt",
+    "time": 1789836300,
+    "humanDate": "Sep 19 11:45"
+  },
+  "game5": {
+    "away": "Kentucky",
+    "home": "Texas A&M",
+    "time": 1789846200,
+    "humanDate": "Sep 19 14:30"
+  },
+  "game6": {
+    "away": "SMU",
+    "home": "Louisville",
+    "time": 1789846200,
+    "humanDate": "Sep 19 14:30"
+  },
+  "game7": {
+    "away": "Mississippi St",
+    "home": "South Carolina",
+    "time": 1789848900,
+    "humanDate": "Sep 19 15:15"
+  },
+  "game8": {
+    "away": "Florida",
+    "home": "Auburn",
+    "time": 1789858800,
+    "humanDate": "Sep 19 18:00"
+  },
+  "game9": {
+    "away": "Colorado",
+    "home": "Northwestern",
+    "time": 1789860600,
+    "humanDate": "Sep 19 18:30"
+  },
+  "game10": {
+    "away": "LSU",
+    "home": "Ole Miss",
+    "time": 1789860600,
+    "humanDate": "Sep 19 18:30"
+  },
+  "tiebreaker": {
+    "home": "How many points will LSU win by? (Negative for losses by)",
+    "time": 1789860600,
+    "humanDate": "Sep 19 18:30 CDT"
+  }
+}
