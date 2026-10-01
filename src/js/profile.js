@@ -179,7 +179,6 @@ function createCard(data, game, gn) {
       tbInput.placeholder = "Team name...";
     } else {
       tbInput.type = "number";
-      tbInput.inputMode = "numeric";
       tbInput.placeholder = "0";
     }
     tbInput.id = "tb";

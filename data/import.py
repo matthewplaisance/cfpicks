@@ -25,12 +25,12 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
-tb_time_str = "2026-09-26 11:00:00"
+tb_time_str = "2026-10-03 11:00:00"
 dt_local = cdt.localize(datetime.strptime(tb_time_str, "%Y-%m-%d %H:%M:%S"))
 tb_unix = int(dt_local.astimezone(pytz.utc).timestamp())
 
 res["tiebreaker"] = {
-    "home": "How many points will UT (TEXAS) win by? (Negative for losses by)",
+    "home": "How many points will Alabama win by? (Negative for losses by)",
     "time": tb_unix,
 #    "humanDate": dt_local.strftime("%b %d %H:%M %Z")
     "humanDate": dt_local.strftime("%b %d %H:%M %Z")
