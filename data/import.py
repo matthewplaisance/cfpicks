@@ -25,7 +25,7 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
-tb_time_str = "2026-10-10 2:30:00"
+tb_time_str = "2026-10-17 11:00:00"
 dt_local = cdt.localize(datetime.strptime(tb_time_str, "%Y-%m-%d %H:%M:%S"))
 tb_unix = int(dt_local.astimezone(pytz.utc).timestamp())
 
