@@ -1,15 +1,28 @@
 {
-    "rules": {
-      "users": {
-        "$uid": {
-          ".read": "$uid === auth.uid",
-          ".write": "$uid === auth.uid"
-        }
+  "rules": {
+    "users": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "$uid === auth.uid"
       }
     },
-        "rules1": {
-          ".read": "auth != null", 
-          ".write": "auth != null" 
-        }
+    "schedule": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
+    },
+    "results": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
+    },
+    "season": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).val() === true"
+    },
+    "admins": {
+      ".write": false,
+      "$uid": {
+        ".read": "$uid === auth.uid"
+      }
+    }
   }
-  
+}

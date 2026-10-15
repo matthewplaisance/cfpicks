@@ -1,6 +1,19 @@
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, get, update } from "firebase/database";
 import { onAuthStateChangedFb } from "./auth";
+import { startLivePolling } from "./live";
 import { json, scalePoint, select } from "d3";
+
+const reportError = (msg) => {
+  const el = document.getElementById("liveStatus");
+  if (el) {
+    el.textContent = `Page error: ${msg}`;
+    el.style.color = "#dc2626";
+  }
+};
+window.addEventListener("error", (e) => reportError(e.message));
+window.addEventListener("unhandledrejection", (e) =>
+  reportError(e.reason?.message ?? String(e.reason))
+);
 
 const authReady = new Promise((res) => {
   const unsub = onAuthStateChangedFb((user) => {
@@ -16,14 +29,8 @@ $(document).ready(function () {
 });
 
 async function fetchData(refer) {
-  let data;
-  await new Promise((resolve, reject) => {
-    onValue(refer, (snapshot) => {
-      data = snapshot.val();
-      resolve();
-    });
-  });
-  return data;
+  const snapshot = await get(refer);
+  return snapshot.val();
 }
 
 function initTable(userData, dataWinners, dataGames, week) {
@@ -111,17 +118,17 @@ function initTable(userData, dataWinners, dataGames, week) {
     if (points > winner["points"]) {
       winner["points"] = points;
       winner.user = [user];
-      winner.tb = weekInfo["tb"].pick;
+      winner.tb = weekInfo["tb"]?.pick;
     } else if (points == winner.points) {
       if (dataWinners.hasOwnProperty("tb")) {
         const tbr = dataWinners.tb;
         if (tbr) {
-          const currDiff = Math.abs(tbr - weekInfo["tb"].pick);
+          const currDiff = Math.abs(tbr - weekInfo["tb"]?.pick);
           const winnerDiff = Math.abs(tbr - winner.tb);
           if (currDiff < winnerDiff) {
             winner["points"] = points;
             winner.user = [user];
-            winner.tb = weekInfo["tb"].pick;
+            winner.tb = weekInfo["tb"]?.pick;
           } else if (currDiff == winnerDiff) winner.user.push(user);
         } else winner.user.push(user);
       }
@@ -142,10 +149,24 @@ function initTable(userData, dataWinners, dataGames, week) {
   if (winner.points != 0)
     for (let w of winner.user)
       document.getElementById(w).style.color = "#d97706";
-  const userRow = document.getElementById(uid);
-  if (userRow) userRow.style.fontWeight = 600;
   if (winner.points == 0) reOrderTable();
   else reOrderTable(false, 1);
+  highlightMe();
+}
+
+// Make the signed-in user's row stand out. The name cell's id is the uid.
+function highlightMe() {
+  if (!uid) return;
+  const nameCell = document.getElementById(uid);
+  if (!nameCell) return;
+  nameCell.style.backgroundColor = "#fef3c7";
+  nameCell.style.fontWeight = "700";
+  nameCell.style.boxShadow = "inset 4px 0 0 #d97706";
+  const row = nameCell.parentElement;
+  if (row) {
+    row.style.backgroundColor = "#fffbeb";
+    row.style.fontWeight = "600";
+  }
 }
 
 function displayTBR(data) {
@@ -176,8 +197,8 @@ function displaySeason(data) {
     let row = document.createElement("tr");
     //let spaces = 30 - user['name'].length;
     //let txt = `${user['name']}${'-'.repeat(spaces)}${user['points']}`;
-    let nameCell = cell(user, user["name"]);
-    let pointsCell = cell(user, user["points"]);
+    let nameCell = cell(user.key, user["name"], "td", true);
+    let pointsCell = cell(`${user.key}_season`, user["points"]);
     nameCell.style.color = `color:${podium[idx]};`;
     pointsCell.style.cssText = "width: 100px;";
     nameCell.style.cssText = "width: 100px;";
@@ -193,6 +214,7 @@ function displaySeason(data) {
     tableBody.append(row);
     cnt++;
   });
+  highlightMe();
 }
 
 function th(data) {
@@ -220,6 +242,7 @@ function th(data) {
 
       rowGames.append(cell);
       let celld = document.createElement("td");
+      celld.id = `date_${game}`;
       celld.style.color = "#64748b";
       celld.textContent = data[game]["humanDate"];
       rowDates.append(celld);
@@ -261,9 +284,11 @@ function calcSeason(userData, results) {
     for (let week in userData[user]) {
       const weekData = userData[user][week];
       if (typeof weekData == "object" && weekData !== null) {
+        const weekResults = results?.[week] ?? {};
         for (let game in weekData) {
-          if (weekData[game].pick == results[week][game]) {
-            res[user].points += parseInt(weekData[game].points);
+          const pick = weekData[game]?.pick;
+          if (pick && pick == weekResults[game]) {
+            res[user].points += parseInt(weekData[game].points) || 0;
           }
         }
       }
@@ -324,32 +349,153 @@ const posmap = {
 
 const uid = localStorage.uid;
 const colorW = "#c6efce";
+const colorLive = "#dc2626";
 const db = getDatabase();
 let userData = await fetchData(ref(db, `users`));
-let winnerData = await fetchData(ref(db, `results`));
-
+let winnerData = (await fetchData(ref(db, `results`))) ?? {};
 const dataGames = await fetchData(ref(db, "schedule"));
-//const seasonData = await fetchData(ref(db, "season"));
-let weekEl = document.getElementById("weekSelect");
-let week = weekEl.value.replace(" ", "").toLocaleLowerCase();
-const seasonData = calcSeason(userData, winnerData);
+let seasonData = calcSeason(userData, winnerData);
+
+// Admin sessions persist ESPN finals into /results. Grant with
+// admins/<uid>: true in the database (see data/rules.json).
+let isAdmin = false;
+try {
+  if (uid) isAdmin = (await get(ref(db, `admins/${uid}`))).val() === true;
+} catch (_) {
+  isAdmin = false;
+}
+
+// ---- live scores -----------------------------------------------------------
+let live = { week: null, games: {}, tb: null, fetchedAt: 0 };
+let stopPolling = () => {};
+const written = new Set(); // "week/game" keys already pushed this session
+const statusEl = document.getElementById("liveStatus");
+
+function currentWeek() {
+  let w = document.getElementById("weekSelect").value;
+  if (w == "default") w = "Week 13";
+  return w.replace(" ", "").toLocaleLowerCase();
+}
+
+// Database results win; ESPN finals fill in whatever the database lacks.
+function mergedWinners(week) {
+  const merged = { ...(winnerData[week] ?? {}) };
+  if (live.week !== week) return merged;
+  for (const [game, l] of Object.entries(live.games))
+    if (l.winner && !merged[game]) merged[game] = l.winner;
+  if (live.tb != null && !merged.tb) merged.tb = String(live.tb);
+  return merged;
+}
+
+function applyLiveScores(week) {
+  if (live.week !== week) return;
+  const schedule = dataGames?.[week] ?? {};
+  for (const [game, l] of Object.entries(live.games)) {
+    const cellEl = document.getElementById(`date_${game}`);
+    if (!cellEl) continue;
+    if (l.state === "pre") {
+      cellEl.textContent = schedule[game]?.humanDate ?? "";
+      cellEl.style.color = "#64748b";
+    } else {
+      const score = `${l.awayAbbr} ${l.awayScore} - ${l.homeAbbr} ${l.homeScore}`;
+      cellEl.textContent = l.completed ? `Final: ${score}` : `${score} (${l.detail})`;
+      cellEl.style.color = l.completed ? "#334155" : colorLive;
+      cellEl.style.fontWeight = l.completed ? "500" : "600";
+    }
+  }
+}
+
+function setStatus(text, isError = false) {
+  if (!statusEl) return;
+  statusEl.textContent = text;
+  statusEl.style.color = isError ? colorLive : "#64748b";
+}
+
+function render() {
+  try {
+    renderInner();
+  } catch (err) {
+    reportError(err.message ?? String(err));
+    console.error(err);
+  }
+}
+
+function renderInner() {
+  const week = currentWeek();
+  const table = document.getElementById("tbody");
+  while (table.firstChild) table.removeChild(table.firstChild);
+  if (week == "season") {
+    displaySeason(seasonData);
+    return;
+  }
+  if (!dataGames || !Object.keys(dataGames).includes(week)) return;
+  const merged = mergedWinners(week);
+  initTable(userData, merged, dataGames[week], week);
+  displayTBR(merged);
+  applyLiveScores(week);
+}
+
+async function persistFinals(week) {
+  if (!isAdmin || live.week !== week) return;
+  const existing = winnerData[week] ?? {};
+  const updates = {};
+  for (const [game, l] of Object.entries(live.games)) {
+    const key = `${week}/${game}`;
+    if (l.winner && !existing[game] && !written.has(key)) {
+      updates[game] = l.winner;
+      written.add(key);
+    }
+  }
+  if (live.tb != null && !existing.tb && !written.has(`${week}/tb`)) {
+    updates.tb = String(live.tb);
+    written.add(`${week}/tb`);
+  }
+  if (!Object.keys(updates).length) return;
+  try {
+    await update(ref(db, `results/${week}`), updates);
+  } catch (err) {
+    for (const k of Object.keys(updates)) written.delete(`${week}/${k}`);
+    setStatus(`Could not save results: ${err.message ?? err}`, true);
+  }
+}
+
+function watchWeek(week) {
+  stopPolling();
+  live = { week, games: {}, tb: null, fetchedAt: 0 };
+  if (week == "season" || !dataGames?.[week]) {
+    setStatus("");
+    return;
+  }
+  setStatus("Live scores: waiting for kickoff");
+  stopPolling = startLivePolling(dataGames[week], {
+    onUpdate: (result) => {
+      live = { week, ...result };
+      render();
+      const t = new Date(result.fetchedAt).toLocaleTimeString();
+      const n = Object.keys(result.games).length;
+      setStatus(
+        `Live scores via ESPN: ${n} game${n == 1 ? "" : "s"} matched, updated ${t}` +
+          (isAdmin ? " (saving finals as admin)" : "")
+      );
+      persistFinals(week);
+    },
+    onError: (err) => setStatus(`Live scores unavailable: ${err.message ?? err}`, true),
+  });
+}
+
+// Re-render whenever results change in the database (admin edits, auto-saves).
+onValue(ref(db, "results"), (snapshot) => {
+  winnerData = snapshot.val() ?? {};
+  seasonData = calcSeason(userData, winnerData);
+  render();
+});
+
 if (dataGames) {
-  initTable(userData, winnerData[week], dataGames[week], week);
-  displayTBR(winnerData[week]);
+  render();
+  watchWeek(currentWeek());
 }
 
 select("#weekSelect").on("change", () => {
-  let week = document.getElementById("weekSelect").value;
-  if (week == "default") week = "Week 13";
-  week = week.replace(" ", "").toLocaleLowerCase();
-  const table = document.getElementById("tbody");
-
-  while (table.firstChild) {
-    table.removeChild(table.firstChild);
-  }
-  if (Object.keys(dataGames).includes(week)) {
-    initTable(userData, winnerData[week], dataGames[week], week);
-    displayTBR(winnerData[week]);
-  }
-  if (week == "season") displaySeason(seasonData);
+  render();
+  watchWeek(currentWeek());
 });
