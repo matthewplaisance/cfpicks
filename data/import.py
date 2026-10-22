@@ -49,12 +49,20 @@ def find_espn_id(game, events):
     return partial
 
 cdt = pytz.timezone('America/Chicago')
-df = pd.read_excel('data\import.xlsx')
+df = pd.read_excel('data/import.xlsx')
 
 date_format = "%Y-%m-%d %H:%M:%S"
 df['time'] = df['date'].apply(lambda x: int(cdt.localize(x).astimezone(pytz.utc).timestamp()))
-df['away'] = df['away'].str.title()
-df['home'] = df['home'].str.title()
+def team_case(name):
+    # Title-case each word, but keep short all-caps acronyms (LSU, BYU, OU, USC, UCF).
+    out = []
+    for w in str(name).split():
+        core = re.sub(r"[^A-Za-z]", "", w)
+        out.append(w.upper() if core.isupper() and len(core) <= 4 else w.title())
+    return " ".join(out)
+
+df['away'] = df['away'].apply(team_case)
+df['home'] = df['home'].apply(team_case)
 
 df['game'] = [f'game{idx + 1}' for idx in df.index]
 
@@ -70,14 +78,14 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
-tb_time_str = "2026-10-17 11:00:00"
+tb_time_str = "2026-10-24 18:30:00"
 dt_local = cdt.localize(datetime.strptime(tb_time_str, "%Y-%m-%d %H:%M:%S"))
 tb_unix = int(dt_local.astimezone(pytz.utc).timestamp())
 
 # Tiebreaker: `game` is the schedule key it refers to; `type` is "margin"
 # (team points minus opponent points, needs `team`) or "total" (home + away).
 # Leave TB_GAME = None to keep entering the tiebreaker result by hand.
-TB_GAME = "game2"
+TB_GAME = "game10"
 TB_TYPE = "margin"
 TB_TEAM = "Texas"
 
