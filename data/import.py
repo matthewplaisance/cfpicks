@@ -78,19 +78,19 @@ for obj in data:
     del obj['game']
     res[game] = obj
 
-tb_time_str = "2026-10-31 18:30:00"
+tb_time_str = "2026-11-07 18:30:00"
 dt_local = cdt.localize(datetime.strptime(tb_time_str, "%Y-%m-%d %H:%M:%S"))
 tb_unix = int(dt_local.astimezone(pytz.utc).timestamp())
 
 # Tiebreaker: `game` is the schedule key it refers to; `type` is "margin"
 # (team points minus opponent points, needs `team`) or "total" (home + away).
 # Leave TB_GAME = None to keep entering the tiebreaker result by hand.
-TB_GAME = "game9"
+TB_GAME = "game10"
 TB_TYPE = "margin"
-TB_TEAM = "Texas"
+TB_TEAM = "Georgia"
 
 res["tiebreaker"] = {
-    "home": "How many points will Texas win by? (Negative for losses by)",
+    "home": "How many points will Georgia win by? (Negative for losses by)",
     "time": tb_unix,
     "humanDate": dt_local.strftime("%b %d %H:%M %Z"),
 }
